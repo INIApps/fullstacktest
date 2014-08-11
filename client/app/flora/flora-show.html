@@ -1,0 +1,86 @@
+<div class="row">
+	<div class="col-md-12">
+<table class="table" >
+	<tr>
+		<td>I</td>
+		<td>II</td>
+		<td>III</td>
+		<td>IV</td>
+		<td>V</td>
+		<td>VI</td>
+		<td>VII</td>
+		<td>VIII</td>
+		<td>IX</td>
+		<td>X</td>
+		<td>XI</td>
+		<td>XII</td>
+		<td>XIII</td>
+		<td>XIV</td>
+		<td>XV</td>
+	</tr>
+	<tr>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.I">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.II">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.III">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.IV">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.V">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.VI">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.VII">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.VIII">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.IX">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.X">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.XI">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.XII">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.XIII">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.XIV">&#10004;</span></td>
+		<td popover-placement="bottom" popover-append-to-body="true" popover-trigger="mouseenter" popover-title="{{}}" popover="{{}}"><span ng-show="regiones.XV">&#10004;</span></td>
+	</tr>
+</table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<h3>Información general</h3>
+		<p>entomofila : {{singleSp.entomofila}}</p>
+		<p>artificial : {{singleSp.artificial}}</p>
+		<p>familia : {{singleSp.familia}}</p>
+		<p>genero : {{singleSp.genero}}</p>
+		<p>especie : {{singleSp.especie}}</p>
+		<p>variedad : {{singleSp.variedad}}</p>
+		<p>taxa : {{singleSp.taxa}}</p>
+		<p>name_es : {{singleSp.name_es}}</p>
+		<p>origen : {{singleSp.origen}}</p>
+		<p>endemico : {{singleSp.endemico}}</p>
+		<p>nativo : {{singleSp.nativo}}</p>
+		<p>introducido : {{singleSp.introducido}}</p>
+		<p>naturalizado : {{singleSp.naturalizado}}</p>
+		<p>agricola : {{singleSp.agricola}}</p>
+		<p>ornamental : {{singleSp.ornamental}}</p>
+		<p>forestal : {{singleSp.forestal}}</p>
+		<p>maleza : {{singleSp.maleza}}</p>
+		<p>anual : {{singleSp.anual}}</p>
+		<p>bianual : {{singleSp.bianual}}</p>
+		<p>perenne : {{singleSp.perenne}}</p>
+		<p>bulbosa : {{singleSp.bulbosa}}</p>
+		<p>autogama : {{singleSp.autogama}}</p>
+		<p>alogama : {{singleSp.alogama}}</p>
+		<p>anemofila : {{singleSp.anemofila}}</p>
+		<p>landrace : {{singleSp.landrace}}</p>
+		<p>semilla : {{singleSp.semilla}}</p>
+		<p>vegetativa : {{singleSp.vegetativa}}</p>
+	</div>
+	<div class="col-md-6">
+		<h3>Distribución en Chile</h3>
+		<ul>
+			<li ng-repeat="region in singleSp.dist">{{region.name}}
+				<ul>
+					<li ng-repeat="provincia in region.provincias">{{provincia.name}}
+						<ul>
+							<li ng-repeat="comuna in provincia.comunas">{{comuna.name}}</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
