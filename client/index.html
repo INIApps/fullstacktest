@@ -9,7 +9,8 @@
     <base href="/">
     <title>Flujo Génico App</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <!-- <meta name="viewport" content="width=device-width"> -->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
@@ -28,8 +29,13 @@
       <link rel="stylesheet" href="app/main/main.css">
       <!-- endinjector -->
     <!-- endbuild -->
+    <!-- theme -->
+      <link rel="stylesheet" type="text/css" href="theme/css/animate.css">
+      <link rel="stylesheet" type="text/css" href="theme/css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="theme/css/style.css">
+    <!-- end theme -->
   </head>
-  <body ng-app="fullstack012App">
+  <body ng-app="fullstack012App" class="withAnimation">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -55,7 +61,7 @@
 
     <!-- build:js(client) app/vendor.js -->
       <!-- bower:js -->
-      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/jquery/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -63,6 +69,7 @@
       <script src="bower_components/angular-route/angular-route.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/restangular/dist/restangular.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -87,5 +94,28 @@
           <script src="components/navbar/navbar.controller.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
+        <!-- / boxedWrapper -->
+
+<!-- theme scripts -->
+<!-- <script src="theme/js/jquery.min.js"></script> -->
+<!-- <script src="theme/bootstrap/js/bootstrap.min.js"></script> -->
+<script src="theme/js/detectmobilebrowser.js"></script>
+<script src="theme/js/gmap3.min.js"></script>
+<script src="theme/js/jquery.appear.js"></script>
+<script src="theme/js/jquery.isotope.min.js"></script>
+<script src="theme/js/jquery.ba-bbq.min.js"></script>
+<script src="theme/js/jquery.countTo.js"></script>
+<script src="theme/js/jquery.fitvids.js"></script>
+<script src="theme/js/jquery.flexslider-min.js"></script>
+<script src="theme/js/jquery.magnific-popup.min.js"></script>
+<script src="theme/js/jquery.mb.YTPlayer.js"></script>
+<script src="theme/js/jquery.placeholder.min.js"></script>
+<script src="theme/js/retina-1.1.0.min.js"></script>
+<script src="theme/js/timeline/js/storyjs-embed.js"></script>
+<script src="theme/form/js/form.js"></script>
+<script src="theme/twitter/js/jquery.tweet.js"></script>
+<script src="theme/js/main.js"></script>
+<!-- end theme scripts -->
+
 </body>
 </html>

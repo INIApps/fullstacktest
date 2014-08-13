@@ -29,7 +29,9 @@ module.exports = function(config) {
       'client/app/**/*.jade',
       'client/components/**/*.jade',
       'client/app/**/*.html',
-      'client/components/**/*.html'
+      'client/components/**/*.html',
+      'client/bower_components/restangular/src/restangular.js',
+      'client/bower_components/angular-flexslider/angular-flexslider.js'
     ],
 
     preprocessors: {

@@ -5,7 +5,8 @@ angular.module('fullstack012App', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'restangular'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
