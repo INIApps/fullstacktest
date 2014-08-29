@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
+<!-- <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
@@ -26,4 +26,32 @@
       </ul>
     </div>
   </div>
-</div>
+</div> -->
+
+<!-- navbar -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" ng-controller="NavbarCtrl">
+  <div class="row">
+    <div class="navbar-header col-md-5" ng-init="isClick=true" ng-click="isClick = !isClick">
+      <button type="button" class="navbar-toggle" >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button >
+      <a class="navbar-brand" href="/"><img src="inia/logo-conicyt.jpg" style="height:65px" alt=""><img id="logoImg" style="height:65px"  ng-src="{{logoUrl}}"  alt=" " > <span class="titleLogo">Proyecto Flujo Génico</span></a>
+    </div>
+    <div class="navbar-collapse col-md-7" ng-class="{collapse:isClick}"  >
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-repeat="item in menu" ng-class="{ 'active': item.active, 'dropdown': item.subMenu}" >
+          <a ng-click="scrollTo(item.link)" ng-class="{'dropdown-toggle':subMenu}" >{{item.title}}</a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="subItem in item.subMenu">
+              <a href="{{subItem.link}}">{{subItem.title}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- / navbar -->
