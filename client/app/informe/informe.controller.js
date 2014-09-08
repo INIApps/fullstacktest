@@ -28,40 +28,40 @@ $scope.getMatch = function (){
 	    	data[i].nivel = $scope.riskLevel($scope.FlujoGenico(data[i]));
 	    }
 	    $scope.especiesMatch = data;
-		var I = 	{'especies':[],'order':1,"code":"01","name":"Región de Tarapacá"};
-		var II = 	{'especies':[],'order':2,"code":"02","name":"Región de Antofagasta"};
-		var III = 	{'especies':[],'order':3,"code":"03","name":"Región de Atacama"};
-		var IV = 	{'especies':[],'order':4,"code":"04","name":"Región de Coquimbo"};
-		var V = 	{'especies':[],'order':5,"code":"05","name":"Región de Valparaíso"};
-		var VI = 	{'especies':[],'order':8,"code":"06","name":"Región del Libertador General Bernardo O’Higgins"};
-		var VII = 	{'especies':[],'order':9,"code":"07","name":"Región del Maule"};
-		var VIII = 	{'especies':[],'order':10,"code":"08","name":"Región del Biobío"};
-		var IX = 	{'especies':[],'order':11,"code":"09","name":"Región de La Araucanía"};
-		var X = 	{'especies':[],'order':13,"code":"10","name":"Región de Los Lagos"};
-		var XI = 	{'especies':[],'order':14,"code":"12","name":"Región de Magallanes y de la Antártica Chilena"};
-		var XII = 	{'especies':[],'order':15,"code":"11","name":"Región de Aysén del General Carlos Ibáñez del Campo"};
-		var XIII = 	{'especies':[],'order':6,"code":"13","name":"Región Metropolitana de Santiago"};
-		var XIV = 	{'especies':[],'order':12,"code":"14","name":"Región de Los Ríos"};
-		var XV = 	{'especies':[],'order':0,"code":"15","name":"Región de Arica y Parinacota "};
+		var I = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':1,"code":"01","name":"Región de Tarapacá"};
+		var II = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':2,"code":"02","name":"Región de Antofagasta"};
+		var III = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':3,"code":"03","name":"Región de Atacama"};
+		var IV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':4,"code":"04","name":"Región de Coquimbo"};
+		var V = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':5,"code":"05","name":"Región de Valparaíso"};
+		var VI = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':8,"code":"06","name":"Región del Libertador General Bernardo O’Higgins"};
+		var VII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':9,"code":"07","name":"Región del Maule"};
+		var VIII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':10,"code":"08","name":"Región del Biobío"};
+		var IX = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':11,"code":"09","name":"Región de La Araucanía"};
+		var X = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':13,"code":"10","name":"Región de Los Lagos"};
+		var XI = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':14,"code":"12","name":"Región de Magallanes y de la Antártica Chilena"};
+		var XII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':15,"code":"11","name":"Región de Aysén del General Carlos Ibáñez del Campo"};
+		var XIII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':6,"code":"13","name":"Región Metropolitana de Santiago"};
+		var XIV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':12,"code":"14","name":"Región de Los Ríos"};
+		var XV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':0,"code":"15","name":"Región de Arica y Parinacota "};
 		if(data.length>0){
 		    for (var e = data.length - 1; e >= 0; e--) {
 			    if(data[e].dist && data[e].dist.length > 0){
 				    for (var j = data[e].dist.length - 1; j >= 0; j--) {
-				        if(data[e].dist[j].code ==='01'){I.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='02'){II.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='03'){III.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='04'){IV.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='05'){V.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='06'){VI.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='07'){VII.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='08'){VIII.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='09'){IX.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='10'){X.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='11'){XI.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='12'){XII.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='13'){XIII.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='14'){XIV.especies.push(data[e]); }
-				        if(data[e].dist[j].code ==='15'){XV.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='01'){I.especies.push(data[e]); if(data[e].type===3){I.spNativas.push(data[e]);} if(data[e].type===1){I.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='02'){II.especies.push(data[e]); if(data[e].type===3){II.spNativas.push(data[e]);} if(data[e].type===1){II.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='03'){III.especies.push(data[e]); if(data[e].type===3){III.spNativas.push(data[e]);} if(data[e].type===1){III.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='04'){IV.especies.push(data[e]); if(data[e].type===3){IV.spNativas.push(data[e]);} if(data[e].type===1){IV.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='05'){V.especies.push(data[e]); if(data[e].type===3){V.spNativas.push(data[e]);} if(data[e].type===1){V.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='06'){VI.especies.push(data[e]); if(data[e].type===3){VI.spNativas.push(data[e]);} if(data[e].type===1){VI.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='07'){VII.especies.push(data[e]); if(data[e].type===3){VII.spNativas.push(data[e]);} if(data[e].type===1){VII.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='08'){VIII.especies.push(data[e]); if(data[e].type===3){VIII.spNativas.push(data[e]);} if(data[e].type===1){VIII.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='09'){IX.especies.push(data[e]); if(data[e].type===3){IX.spNativas.push(data[e]);} if(data[e].type===1){IX.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='10'){X.especies.push(data[e]); if(data[e].type===3){X.spNativas.push(data[e]);} if(data[e].type===1){X.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='11'){XI.especies.push(data[e]); if(data[e].type===3){XI.spNativas.push(data[e]);} if(data[e].type===1){XI.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='12'){XII.especies.push(data[e]); if(data[e].type===3){XII.spNativas.push(data[e]);} if(data[e].type===1){XII.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='13'){XIII.especies.push(data[e]); if(data[e].type===3){XIII.spNativas.push(data[e]);} if(data[e].type===1){XIII.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='14'){XIV.especies.push(data[e]); if(data[e].type===3){XIV.spNativas.push(data[e]);} if(data[e].type===1){XIV.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='15'){XV.especies.push(data[e]); if(data[e].type===3){XV.spNativas.push(data[e]);} if(data[e].type===1){XV.spCultivadas.push(data[e])}}
 				    }
 			    }
 		    }
@@ -69,7 +69,6 @@ $scope.getMatch = function (){
 	    $scope.spFiltradas = [I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII,XIII,XIV,XV];
 	});
 };
-
 $scope.getReport = function (sp){
   $scope.report = '';
   $scope.report = sp;
@@ -78,7 +77,6 @@ $scope.getReport = function (sp){
   $scope.descriptionShow = '';
   $scope.descriptionShow = $scope.description(sp);
 };
-
 //Objeto con las ponderaciones
 var Re = {
   CtipO:  1,
@@ -240,7 +238,6 @@ $scope.riskLevel = function(flujo){
     return 'Alto';
   }
 };
-
 $scope.description = function(sp){
   	var descripcion =  sp.taxa;	
 
@@ -360,29 +357,6 @@ $scope.description = function(sp){
 
    return descripcion;
 };
-
-//$scope.person = {};
-// $scope.people = [
-//   { name: 'Adam',      email: 'adam@email.com',      age: 10 },
-//   { name: 'Amalie',    email: 'amalie@email.com',    age: 12 },
-//   { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30 },
-//   { name: 'Samantha',  email: 'samantha@email.com',  age: 31 },
-//   { name: 'Estefanía', email: 'estefanía@email.com', age: 16 },
-//   { name: 'Natasha',   email: 'natasha@email.com',   age: 54 },
-//   { name: 'Nicole',    email: 'nicole@email.com',    age: 43 },
-//   { name: 'Adrian',    email: 'adrian@email.com',    age: 21 }
-// ];
-//$scope.spCompare;
-
-  // $scope.$watch('spCompare', function(newValue, oldValue) {
-  //   //$scope.getMatch();
-  //   console.log($scope.spCompare);
-  //   // if ($scope.spCompare) {
-      
-  //   // }
-  // });
-
-
 });
 
 // angular.module('fullstack012App').filter('propsFilter', function() {
