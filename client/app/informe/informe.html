@@ -1,0 +1,448 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- <h4>{{spCompare}}</h4> -->
+
+<div ng-show="modal" class="panel panel-default" style="padding:20px;width:60%; height:80%;overflow: scroll; background:rgba(255,255,255,0.9); position:fixed; z-index:1000; top:100px; left:300px">
+	<div class="page-header">
+		<span ng-click="modal=false" style="margin:10px; padding:5px 10px" class="btn btn-primary pull-right">X</span>
+		<h3 style="margin:10px">Distibución de {{modal.taxa}} <small>nivel de riesgo: {{modal.nivel}}</small></h3>
+	</div>
+	<div class="page-body">
+		<p class="well">{{modal.description}}</p>
+		<h4 ng-show="modal.dist.length==0">No existe información de distribución para {{modal.taxa}}</h4>
+		<accordion close-others="oneAtATime">
+				<accordion-group ng-repeat="region in modal.dist | orderBy:'code'"> 
+					<accordion-heading > 
+					<span style="cursor:pointer;">{{region.name}}</span>
+					</accordion-heading>
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="provincia in region.provincias  | orderBy:'code'"> Provincia: {{provincia.name}}
+							<ul class="list-group">
+							  <li class="list-group-item" ng-repeat="comuna in provincia.comunas  | orderBy:'code'">Comuna : {{comuna.name}}</li>
+							</ul>
+						</li>
+					</ul>
+				<accordion-group>
+			</accordion>
+	</div>
+</div>
+
+<section>
+	<div class="container-fluid" style="padding-top:20px;">
+	<div class="col-md-4">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" ng-init="selectedTab=1">
+		<li ng-class="{active: selectedTab == 1}" style="cursor:pointer;"><a ng-click="selectedTab = 1">Transgénicas</a></li>
+		<!-- <li ng-class="{active: selectedTab == 2}" style="cursor:pointer;"><a ng-click="selectedTab = 2">Cultivadas</a></li> -->
+		</ul>
+		<!-- Tab panes -->
+		<div class="scroll-block" style="height:50px;">
+			<div class="tab-pane" ng-show="selectedTab == 1" id="home">
+				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(); taipo=false" ng-options="a.taxa group by a.familia for a in transgenicas | orderBy: 'familia'"><option value="">Especies Transgénicas</option>
+				</select>
+
+<!-- <ui-select  ng-model="spCompare" ng-disabled="disabled" style="min-width: 300px;"  >
+	<ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.taxa}}</ui-select-match>
+	<ui-select-choices repeat="person in transgenicas | propsFilter: {taxa: $select.search, familia: $select.search}">
+	  <div ng-bind-html="person.name | highlight: $select.search"></div>
+	  <small>
+	    Taxa:  <span ng-bind-html="''+person.taxa | highlight: $select.search"></span> <br>
+	    Familia: <span ng-bind-html="''+person.familia | highlight: $select.search"></span>
+	  </small>
+	</ui-select-choices>
+</ui-select> -->
+
+			</div>
+<!-- 			<div class="tab-pane" ng-show="selectedTab == 2" id="profile">
+				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch()" ng-options="a.taxa group by a.familia for a in cultivadas | orderBy: 'familia'"><option value="">Especies Cultivadas</option></select>
+			</div> -->
+		</div>
+		<div>
+  <div class="panel panel-default">
+  	<div class="panel-heading">
+  		<span ng-hide="CultFilt.length > 0">
+  			<input class="btn" type="text" placeholder="Cultivadas" disabled>
+  		</span>
+  		<span ng-show="CultFilt.length > 0" ng-click="taipo=1" style="cursor:pointer;" ng-class="{'btn btn-primary':CultFilt.length > 0}">
+  			Cultivadas <span class="badge">{{CultFilt.length}}</span>
+  		</span>
+  	</div>
+
+    <div ng-show="taipo==1" class="panel-body">
+    	<ul class="list-group">
+		  <li ng-click="modalFn(spR)" style="cursor:pointer;"ng-repeat="spR in CultFilt = (especiesMatch | filter:{type:1} | orderBy: '-flujo')" class="list-group-item list-group-item-{{color(spR.flujo)}}">
+		  	{{spR.taxa}} <small>({{spR.nivel}})</small>
+		  </li>
+		</ul>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+  	<div class="panel-heading">
+  		<span ng-hide="Nat.length > 0">
+  			<input class="btn" type="text" placeholder="Nativas" disabled>
+  		</span>
+  		<span ng-show="Nat.length > 0" ng-click="taipo=3" style="cursor:pointer;" ng-class="{'btn btn-primary':Nat.length > 0}">
+  			Cultivadas <span class="badge">{{Nat.length}}</span>
+  		</span>
+  	</div>
+
+    <div ng-show="taipo==3" class="panel-body">
+    	<ul class="list-group">
+		  <li ng-click="modalFn(spN)" style="cursor:pointer;"ng-repeat="spN in Nat = (especiesMatch | filter:{type:3} | orderBy: '-flujo')" class="list-group-item list-group-item-{{color(spN.flujo)}}">
+		  	{{spN.taxa}} <small>({{spN.nivel}})</small>
+		  </li>
+		</ul>
+    </div>
+  </div>
+
+
+
+		</div>
+	</div>
+	<div class="col-md-8">
+
+<h3 ng-show="taipo==1">Especies cultivadas por región</h3>
+<h3 ng-show="taipo==3">Especies Nativas por región</h3>
+<h5 ng-show="spFiltradas.length==0 && taipo"> No existe información de distribución</h5>
+<div ng-show="taipo" class="col-md-12" ng-repeat="region in spFiltradas | orderBy:'order' ">
+  <div class="panel panel-default" ng-show="region.especies">
+  	<div class="panel-heading">{{region.name}} </div>
+  	<div class="panel-body" ng-hide="region.especies">Sin información</div>
+    <div class="panel-body" ng-show="region.especies">
+    	<table class="table">
+    		<tr>
+    			<td>Taxa</td>
+    			<td>Nombre común</td>
+    			<td>Riesgo</td>
+    			<td>Nivel</td>
+    		</tr>
+    		<tr ng-repeat="sp in spPresente = (region.especies) | orderBy: '-flujo' | filter: {'type': taipo} ">
+    			<td>{{sp.taxa}}</td>
+    			<td>{{sp.nameEs}}</td>
+    			<td style="width:25px;" class="{{color(sp.flujo)}}">{{sp.flujo | number :0 }}</td>
+    			<td style="width:25px;" class="{{color(sp.flujo)}}">{{sp.nivel}}</td>
+    		</tr>
+    	</table>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <table class="table table-bordered">
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in especiesMatch">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp)}}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+
+
+ -->
+
+
+<!-- 
+
+<table class="table table-bordered">
+	<h3>I Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.I">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+
+<table class="table table-bordered">
+	<h3>II Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.II">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table table-bordered">
+	<h3>III Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.III">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table table-bordered">
+	<h3>VI Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.IV">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table table-bordered">
+	<h3>V Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.V">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table table-bordered">
+	<h3>VI Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.VI">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table">
+	<h3>VII Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.VII">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table">
+	<h3>VIII Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.VIII">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table">
+	<h3>IX Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.IX">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table">
+	<h3>X Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.X">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table">
+	<h3>XI Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.XI">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table">
+	<h3>XII Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.XII">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table">
+	<h3>XIII Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.XIII">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table">
+	<h3>XIV Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.XIV">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+<table class="table">
+	<h3>XV Región</h3>
+	<tr class="info">
+		<th>Especies</th>
+		<th>Índice</th>
+		<th>Riesgo</th>
+	</tr>
+	<tr ng-repeat="sp in spFiltradas.XV">
+		<td>{{sp.taxa}}</td>
+		<td>{{FlujoGenico(sp) | number:0 }}</td>
+		<td>{{riskLevel(FlujoGenico(sp))}}</td>
+	</tr>
+</table>
+
+ -->
+<!-- 
+  <div class="row">
+    <div class="col-xs-6" ng-show="spCompare">
+      <div class="panel panel-default">
+        <div class="panel-body">
+        	<h4>Especie seleccionada:</h4>
+			<h5>{{spCompare.taxa}} <small>({{spCompare.tipo}})</small></h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6" ng-show="report">
+      <div class="panel panel-default">
+        <div class="panel-body">
+        	<h4>Especie a comparar: </h4>
+			<h5>{{report.taxa}} <small>({{report.tipo}})</small></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+ -->
+<!-- 
+		<div class="row">
+			<div class="col-md-6 well" ng-show="spCompare" style="">
+				<h4>Especie seleccionada:</h4>
+				<h5>{{spCompare.taxa}} <small>({{spCompare.tipo}})</small></h5>
+			</div>
+			<div class="col-md-6 well" ng-show="report" style="border-left:2px solid gray">
+				<h4>Especie a comparar: </h4>
+				<h5>{{report.taxa}} <small>({{report.tipo}})</small></h5>
+			</div>
+		</div>
+ -->		<accordion close-others="oneAtATime">
+<!-- 			<accordion-group> 
+				<accordion-heading > 
+				<span style="cursor:pointer;">JSON</span>
+				</accordion-heading>
+				<h1>Especie Elegida</h1>
+				{{spCompare}}
+				<h1>Especie Comparada</h1>
+				{{report}}
+			<accordion-group>
+		</accordion> -->
+
+<!-- 		<div ng-class="{'alert alert-warning': riskLevel(riesgo) == 'Medio', 'alert alert-danger': riskLevel(riesgo) == 'Alto','alert alert-info': riskLevel(riesgo) == 'Bajo'}">
+		<br>
+		<h4 ng-show="report">Riesgo de Flujo Génico <b>{{riskLevel(riesgo)}}</b>  <small>({{riesgo | number:0 }})</small> </h4>
+		<p>{{descriptionShow}}</p>
+		</div>
+			
+		<h4 class="well" ng-show="report.dist.length !== 0 && report">Distribución en Chile</h4>
+		<p ng-show="report.dist.length ===1 ">{{report.taxa}} esta presente en 1 región</p>
+		<p ng-show="report.dist.length > 1 ">{{report.taxa}} esta presente en {{report.dist.length}} regiones</p>
+		<div>
+			<accordion close-others="oneAtATime">
+				<accordion-group ng-repeat="region in report.dist | orderBy:'code'"> 
+					<accordion-heading > 
+					<span style="cursor:pointer;">{{region.name}}</span>
+					</accordion-heading>
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="provincia in region.provincias  | orderBy:'code'"> Provincia: {{provincia.name}}
+							<ul class="list-group">
+							  <li class="list-group-item" ng-repeat="comuna in provincia.comunas  | orderBy:'code'">Comuna : {{comuna.name}}</li>
+							</ul>
+						</li>
+					</ul>
+				<accordion-group>
+			</accordion>
+		</div> -->
+</section>
+
+<!-- <h3>Select2 theme</h3>
+<p>Selected: {{person.selected}}</p>
+<ui-select ng-model="person.selected" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
+<ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.taxa}}</ui-select-match>
+<ui-select-choices repeat="person in people | propsFilter: {taxa: $select.search, familia: $select.search}">
+  <div ng-bind-html="person.name | highlight: $select.search"></div>
+  <small>
+    Taxa: {{person.taxa}} <br>
+    Familia: <span ng-bind-html="''+person.familia | highlight: $select.search"></span>
+  </small>
+</ui-select-choices>
+</ui-select>
+
+
+<h1>{{spCompare}}</h1>
+
+
+
+
+
+
+
+ -->
+
+
+
+
+
+
+

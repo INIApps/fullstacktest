@@ -1,10 +1,13 @@
 'use strict';
 
-angular.module('fullstack012App').controller('FlujoappCtrl', function ($scope, $http) {
-
-$scope.currentPage = 'flujoapp';
-
-$http.get('/api/flora/transgenicas_r').success(function(awesomeThings) {
+angular.module('fullstack012App').controller('InformeCtrl', function ($scope, $http) {
+$scope.modal = false;
+$scope.modalFn = function(sp){
+	$scope.modal = sp;
+	$scope.modal.description = $scope.description(sp);
+};
+//$scope.currentPage = 'informe';
+$http.get('/api/flora/transgenicas_filtradas').success(function(awesomeThings) {
   $scope.transgenicas = awesomeThings;
   $scope.people = awesomeThings;
 });
@@ -12,12 +15,59 @@ $http.get('/api/flora/transgenicas_r').success(function(awesomeThings) {
 $http.get('/api/flora/cultivadas_r').success(function(awesomeThings) {
   $scope.cultivadas = awesomeThings;
 });
-
+$scope.color = function(flujo){
+	if(flujo <= 33){ return 'info'; }
+	if(flujo >34 && flujo <=66){ return 'warning'; }
+	if(flujo >67){ return 'danger'; }
+};
 $scope.getMatch = function (){
-  $http.get('/api/flora/relacion/'+$scope.spCompare.genero).success(function(data){
-    //$scope.especieSeleccionada = sp;
-    $scope.especiesMatch = data;
-  });
+	$http.get('/api/flora/relacion_informe/'+$scope.spCompare.genero).success(function(data){
+	    //$scope.especieSeleccionada = sp;
+	    for (var i = data.length - 1; i >= 0; i--) {
+	    	data[i].flujo = $scope.FlujoGenico(data[i]);
+	    	data[i].nivel = $scope.riskLevel($scope.FlujoGenico(data[i]));
+	    }
+	    $scope.especiesMatch = data;
+		var I = 	{'especies':[],'order':1,"code":"01","name":"Región de Tarapacá"};
+		var II = 	{'especies':[],'order':2,"code":"02","name":"Región de Antofagasta"};
+		var III = 	{'especies':[],'order':3,"code":"03","name":"Región de Atacama"};
+		var IV = 	{'especies':[],'order':4,"code":"04","name":"Región de Coquimbo"};
+		var V = 	{'especies':[],'order':5,"code":"05","name":"Región de Valparaíso"};
+		var VI = 	{'especies':[],'order':8,"code":"06","name":"Región del Libertador General Bernardo O’Higgins"};
+		var VII = 	{'especies':[],'order':9,"code":"07","name":"Región del Maule"};
+		var VIII = 	{'especies':[],'order':10,"code":"08","name":"Región del Biobío"};
+		var IX = 	{'especies':[],'order':11,"code":"09","name":"Región de La Araucanía"};
+		var X = 	{'especies':[],'order':13,"code":"10","name":"Región de Los Lagos"};
+		var XI = 	{'especies':[],'order':14,"code":"12","name":"Región de Magallanes y de la Antártica Chilena"};
+		var XII = 	{'especies':[],'order':15,"code":"11","name":"Región de Aysén del General Carlos Ibáñez del Campo"};
+		var XIII = 	{'especies':[],'order':6,"code":"13","name":"Región Metropolitana de Santiago"};
+		var XIV = 	{'especies':[],'order':12,"code":"14","name":"Región de Los Ríos"};
+		var XV = 	{'especies':[],'order':0,"code":"15","name":"Región de Arica y Parinacota "};
+		if(data.length>0){
+		    for (var e = data.length - 1; e >= 0; e--) {
+			    if(data[e].dist && data[e].dist.length > 0){
+				    for (var j = data[e].dist.length - 1; j >= 0; j--) {
+				        if(data[e].dist[j].code ==='01'){I.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='02'){II.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='03'){III.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='04'){IV.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='05'){V.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='06'){VI.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='07'){VII.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='08'){VIII.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='09'){IX.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='10'){X.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='11'){XI.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='12'){XII.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='13'){XIII.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='14'){XIV.especies.push(data[e]); }
+				        if(data[e].dist[j].code ==='15'){XV.especies.push(data[e]); }
+				    }
+			    }
+		    }
+		}
+	    $scope.spFiltradas = [I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII,XIII,XIV,XV];
+	});
 };
 
 $scope.getReport = function (sp){
@@ -192,11 +242,14 @@ $scope.riskLevel = function(flujo){
 };
 
 $scope.description = function(sp){
-  var descripcion =  sp.taxa;
-  if(sp.nameEs.length > 0 && sp.nameEs[0].name){ 
-    descripcion += ' (nombre común: '+ sp.nameEs[0].name + ')'; 
-  }else if (sp.nameEs){
-    descripcion += ' (nombre común: '+ sp.nameEs + ')';
+  	var descripcion =  sp.taxa;	
+
+  if(sp.nameEs){
+	  if(sp.nameEs.length > 0 && sp.nameEs[0].name){ 
+	    descripcion += ' (nombre común: '+ sp.nameEs[0].name + ')'; 
+	  }else if (sp.nameEs){
+	    descripcion += ' (nombre común: '+ sp.nameEs + ')';
+	  }
   }
    
    descripcion +=' pertenece a la familia '+ sp.familia;
@@ -332,36 +385,36 @@ $scope.description = function(sp){
 
 });
 
-angular.module('fullstack012App').filter('propsFilter', function() {
-  return function(items, props) {
-    var out = [];
+// angular.module('fullstack012App').filter('propsFilter', function() {
+//   return function(items, props) {
+//     var out = [];
 
-    if (angular.isArray(items)) {
-      items.forEach(function(item) {
-        var itemMatches = false;
+//     if (angular.isArray(items)) {
+//       items.forEach(function(item) {
+//         var itemMatches = false;
 
-        var keys = Object.keys(props);
-        for (var i = 0; i < keys.length; i++) {
-          var prop = keys[i];
-          var text = props[prop].toLowerCase();
-          if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
-            itemMatches = true;
-            break;
-          }
-        }
+//         var keys = Object.keys(props);
+//         for (var i = 0; i < keys.length; i++) {
+//           var prop = keys[i];
+//           var text = props[prop].toLowerCase();
+//           if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+//             itemMatches = true;
+//             break;
+//           }
+//         }
 
-        if (itemMatches) {
-          out.push(item);
-        }
-      });
-    } else {
-      // Let the output be the input untouched
-      out = items;
-    }
+//         if (itemMatches) {
+//           out.push(item);
+//         }
+//       });
+//     } else {
+//       // Let the output be the input untouched
+//       out = items;
+//     }
 
-    return out;
-  };
-});
+//     return out;
+//   };
+// });
 
 
 

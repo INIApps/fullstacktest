@@ -5,7 +5,9 @@ var controller = require('./flora.controller');
 
 var router = express.Router();
 router.get('/relacion/:genero', controller.relacion);
+router.get('/relacion_informe/:genero', controller.relacion_informe);
 router.get('/transgenicas_r', controller.transgenicas_r);
+router.get('/transgenicas_filtradas', controller.transgenicas_filtradas);
 router.get('/transgenicas', controller.transgenicas);
 router.get('/cultivadas_r', controller.cultivadas_r);
 router.get('/cultivadas', controller.cultivadas);

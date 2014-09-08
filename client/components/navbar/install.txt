@@ -1,0 +1,23 @@
+Instalación:
+
+1.- Colocar carpeta en "components".
+2.- En app.js colocar el módulo 'NavbarModule'
+3.- En la páginas que requieran navbar colocar : <div ng-include="'components/navbar/navbar.html'"></div>
+4.- En los controladores de las paginas poner $scope.currentPage = <id-pagina>; donde <id-pagina> tiene que ser un nobre distintivo.
+5.- sudo grunt server.
+
+Formato de objeto menu.
+
+$scope.menu = [
+      {'title': 'Home', 'link': '/','id':'home'},
+      {'title': 'Proyecto', 'link': '#','id':'proyecto', 'subMenu':[
+        {'title':'Bases','link':'/','id':'bases'},
+        {'title':'Guía electronica','link':'/','id':'guia'},
+        {'title':'Sistema de modelamiento','link':'/'},
+      ]},
+      {'title': 'Aplicación', 'link': '/flujoapp','id':'flujoapp'},
+      {'title': 'Noticias', 'link': 'seccion-noticias','id':'news'},
+      {'title': 'Grupo', 'link': '/','id':'group'},
+      {'title': 'Contacto', 'link': '/','id':'contacto'},
+      {'title': 'Login', 'link': '/','id':'login'}
+      ];

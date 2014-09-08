@@ -6,6 +6,7 @@ angular.module('fullstack012App', [
   'ngSanitize',
   'ngRoute',
   'ui.bootstrap',
+  'NavbarModule',
   'restangular'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
