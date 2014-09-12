@@ -1,0 +1,140 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- <h4>{{spCompare}}</h4> -->
+
+<div ng-show="modal" class="panel panel-default" style="padding:20px;width:60%; max-height:80%;overflow: scroll; background:white; position:fixed; z-index:1000; top:100px; left:300px">
+	<div class="page-header">
+		<span ng-click="modal=false" style="margin:10px; padding:10px 18px" class="btn btn-primary pull-right">X</span>
+		<h3 class="text-center" style="margin:10px">Distibución de {{modal.taxa}} <br> <small>nivel de riesgo: {{modal.nivel}} ({{modal.flujo | number:0}})</small></h3>
+	</div>
+	<div class="page-body">
+		<p class="well">{{modal.description}}</p>
+		<h4 ng-show="modal.dist.length==0">No existe información de distribución para {{modal.taxa}}</h4>
+		<div ng-repeat="region in modal.dist | orderBy:'code'">
+			<div class="panel panel-default">
+				<div class="panel-heading">{{region.name}} </div>
+				<div class="panel-body" ng-show="provinciasVar.length !== 0">
+					<ul>
+						<li ng-repeat="provincia in provinciasVar = (region.provincias ) | orderBy:'code'">Provincia: {{provincia.name}}
+							<ul >
+							  <li ng-repeat="comuna in provincia.comunas  | orderBy:'code'">Comuna : {{comuna.name}}</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section>
+	<div class="container-fluid" style="padding-top:20px;">
+	<div class="col-md-4">
+		<ul class="nav nav-tabs" ng-init="selectedTab=1">
+		<li ng-class="{active: selectedTab == 1}" style="cursor:pointer;"><a ng-click="selectedTab = 1">Transgénicas</a></li>
+		</ul>
+		<div class="tab-pane" ng-show="selectedTab == 1" id="home" style="margin:20px 3px;">
+			<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(); taipo=false; bienvenida=true; coinidencias=true;" ng-options="a.taxa group by a.familia for a in transgenicas | orderBy: 'familia'"><option value="">Especies Transgénicas</option>
+			</select>
+		</div>
+		<div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span ng-hide="CultFilt.length > 0">
+						<input class="btn" type="text" placeholder="Cultivadas" disabled>
+					</span>
+					<span ng-show="CultFilt.length > 0" ng-click="taipo=1" style="cursor:pointer;" ng-class="{'btn btn-primary':CultFilt.length > 0}">
+						Cultivadas <span class="badge">{{CultFilt.length}}</span>
+					</span>
+				</div>
+				<div ng-show="taipo==1" class="panel-body">
+					<ul class="list-group">
+					  <li ng-repeat="spR in CultFilt = (especiesMatch | filter:{type:1} | orderBy: '-flujo')" class="list-group-item list-group-item-{{color(spR.flujo)}}">
+					  	<a ng-click="modalFn(spR,'false')" style="cursor:pointer;">{{spR.taxa}}</a>
+					  	 <small>({{spR.nivel}})</small>
+					  </li>
+					</ul>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<span ng-hide="Nat.length > 0">
+						<input class="btn" type="text" placeholder="Nativas" disabled>
+					</span>
+					<span ng-show="Nat.length > 0" ng-click="taipo=3" style="cursor:pointer;" ng-class="{'btn btn-primary':Nat.length > 0}">
+						Nativas <span class="badge">{{Nat.length}}</span>
+					</span>
+				</div>
+				<div ng-show="taipo==3" class="panel-body">
+					<ul class="list-group">
+					  <li style="cursor:pointer;"ng-repeat="spN in Nat = (especiesMatch | filter:{type:3} | orderBy: '-flujo')" class="list-group-item list-group-item-{{color(spN.flujo)}}">
+					  	{{spN.taxa}} <small>({{spN.nivel}})</small>
+
+					  </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class="jumbotron" ng-hide="bienvenida">
+			<h2 class="text-center">Bienvenido al informe personalizado de especies transgénicas</h2>
+			<p>En el sector izquierdo de la pantalla encontrarás un menú desplegable donde puedes seleccionar una de las 10 especies vegetales requeridas para el informe, ordenadas por familia taxonómica.</p>
+		</div>
+		<div class="jumbotron" ng-show="coinidencias">
+			<h1 class="pull-left"><span class="glyphicon glyphicon-chevron-left"></span></h1><h2 class="text-center">Coincidencias con la flora chilena <br><small>Especies con potencial riesgo de flujo génico</small></h2>
+
+		</div>
+		<h3 ng-show="taipo==1">Especies cultivadas por región</h3>
+		<h3 ng-show="taipo==3">Especies Nativas por región</h3>
+		<h5 ng-show="spFiltradas.length==0 && taipo"> No existe información de distribución</h5>
+		<div ng-show="taipo==1" class="col-md-12" ng-repeat="region in spFiltradas | orderBy:'order' ">
+		  <div class="panel panel-default" ng-show="region.spCultivadas">
+		  	<div class="panel-heading">{{region.name}} </div>
+		  	<div class="panel-body" ng-hide="region">Sin información</div>
+		    <div class="panel-body" ng-show="region">
+		    	<table class="table table-hover">
+		    		<tr>
+		    			<th>Taxa</th>
+		    			<th>Nombre común</th>
+		    			<th>Riesgo</th>
+		    			<th>Nivel</th>
+		    		</tr>
+		    		<tr ng-repeat="sp in spPresente = (region.especies | orderBy: '-flujo' | filter: {'type': taipo} )">
+		    			<td>
+		    				<a ng-click="modalFn(sp, region)" style="cursor:pointer;">{{sp.taxa}}</a>
+		    				</td>
+		    			<td>{{sp.nameEs}}</td>
+		    			<td style="width:25px;" class="{{color(sp.flujo)}}">{{sp.flujo | number :0 }}
+		    			</td>
+		    			<td style="width:100px;" class="{{color(sp.flujo)}}">{{sp.nivel}}</td>
+		    		</tr>
+		    	</table>
+		    </div>
+		  </div>
+		</div>
+		<div ng-show="taipo==3" class="col-md-12" ng-repeat="region in spFiltradas | orderBy:'order' ">
+		  <div class="panel panel-default" ng-show="region.spNativas">
+		  	<div class="panel-heading">{{region.name}} </div>
+		  	<div class="panel-body" ng-hide="region">Sin información</div>
+		    <div class="panel-body" ng-show="region">
+		    	<table class="table">
+		    		<tr>
+		    			<td>Taxa</td>
+		    			<td>Nombre común</td>
+		    			<td>Riesgo</td>
+		    			<td>Nivel</td>
+		    		</tr>
+		    		<tr ng-repeat="sp in spPresente = (region.especies | orderBy: '-flujo' | filter: {'type': taipo} )">
+		    			<td>{{sp.taxa}}</td>
+		    			<td>{{sp.nameEs}}</td>
+		    			<td style="width:25px;" class="{{color(sp.flujo)}}">{{sp.flujo | number :0 }}</td>
+		    			<td style="width:100px;" class="{{color(sp.flujo)}}">{{sp.nivel}}</td>
+		    		</tr>
+		    	</table>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</section>
+
+

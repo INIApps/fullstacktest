@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('fullstack012App')
-  .controller('AdminCtrl', function ($scope, $http, Auth, User) {
+  .controller('AdminCtrl', function ($scope, $http, Auth, User,$location) {
 
     $http.get('/api/users').success(function(users) {
       $scope.users = users;
+    }).error(function(){
+       $location.path('/login');
     });
 
     $scope.delete = function(user) {

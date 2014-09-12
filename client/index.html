@@ -9,7 +9,8 @@
     <base href="/">
     <title>Flujo Génico App</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <!-- <meta name="viewport" content="width=device-width"> -->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
@@ -21,15 +22,19 @@
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
       <link rel="stylesheet" href="app/account/login/login.css">
+      <link rel="stylesheet" href="app/account/logout/logout.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/flora/flora.css">
       <link rel="stylesheet" href="app/flujoapp/flujoapp.css">
+      <link rel="stylesheet" href="app/informe/informe.css">
       <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="components/navbar/navbar.css">
       <!-- endinjector -->
     <!-- endbuild -->
+
   </head>
-  <body ng-app="fullstack012App">
+  <body ng-app="fullstack012App" class="withAnimation">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -63,6 +68,7 @@
       <script src="bower_components/angular-route/angular-route.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/restangular/dist/restangular.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
@@ -71,6 +77,8 @@
           <!-- injector:js -->
           <script src="app/account/account.js"></script>
           <script src="app/account/login/login.controller.js"></script>
+          <script src="app/account/logout/logout.controller.js"></script>
+          <script src="app/account/logout/logout.js"></script>
           <script src="app/account/settings/settings.controller.js"></script>
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
@@ -79,13 +87,17 @@
           <script src="app/flora/flora.js"></script>
           <script src="app/flujoapp/flujoapp.controller.js"></script>
           <script src="app/flujoapp/flujoapp.js"></script>
+          <script src="app/informe/informe.controller.js"></script>
+          <script src="app/informe/informe.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
-          <script src="components/navbar/navbar.controller.js"></script>
+          <script src="components/navbar/navbarController.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
+        <!-- / boxedWrapper -->
+
 </body>
 </html>
