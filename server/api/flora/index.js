@@ -15,6 +15,12 @@ router.get('/introducidas', controller.introducidas);
 router.get('/nativas', controller.nativas);
 router.get('/', controller.index);
 router.get('/:id', controller.show);
+//Edition Area
+//filtrado
+router.get('/filter/familia', controller.familia);
+router.get('/filter/genero/:familia', controller.genero);
+router.get('/filter/related/:genero', controller.related);
+
 router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);

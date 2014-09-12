@@ -36,7 +36,8 @@ exports.transgenicas_filtradas = function(req, res) {
     {'_id':'53e0ea82eaf791fef256391d'},// alfalfa: 53e0ea82eaf791fef256391d, 
     {'_id':'53e0ea82eaf791fef256394a'},// tomate:53e0ea82eaf791fef256394a, 
     {'_id':'53e0ea82eaf791fef256395a'},// vid: 53e0ea82eaf791fef256395a, 
-    {'_id':'53e0ea82eaf791fef2563952'} // trigo:53e0ea82eaf791fef2563952
+    {'_id':'53e0ea82eaf791fef2563952'},// trigo:53e0ea82eaf791fef2563952
+    {'_id':'53e0ea82eaf791fef2563924'} // arroz:53e0ea82eaf791fef2563924
     ]}; 
   Flora.find(query,{"familia":1,"flujo":1,"tipo":1,"type":1,"taxa":1,"genero":1,"especie":1,"_id":1,"nameEs":1},function (err, floras) {
     if(err) { return handleError(res, err); }
@@ -99,6 +100,32 @@ exports.show = function(req, res) {
     return res.json(flora);
   });
 };
+
+// Edition Area
+//filtrado
+// Get list of cultivadas resumida
+exports.familia = function(req, res) {
+  Flora.distinct('familia',function (err, floras) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, floras);
+  });
+};
+exports.genero = function(req, res) {
+  Flora.distinct('genero',{'familia':req.params.familia},function (err, floras) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, floras);
+  });
+};
+exports.related = function(req, res) {
+  var objR = {};
+  objR.genero = req.params.genero;
+  Flora.find(objR, function (err, flora) {
+    if(err) { return handleError(res, err); }
+    if(!flora) { return res.send(404); }
+    return res.json(flora);
+  });
+};
+
 
 // Creates a new flora in the DB.
 exports.create = function(req, res) {

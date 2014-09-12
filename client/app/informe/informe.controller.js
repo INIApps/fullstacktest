@@ -2,66 +2,92 @@
 
 angular.module('fullstack012App').controller('InformeCtrl', function ($scope, $http) {
 $scope.modal = false;
-$scope.modalFn = function(sp){
-	$scope.modal = sp;
+$scope.modalFn = function(sp, region){
+	$scope.modal = angular.copy(sp);
+	var filteredDist = [];
+	if (region !== 'false') {
+		var code = region.code;
+		for (var i = sp.dist.length - 1; i >= 0; i--) {
+			if(sp.dist[i].code===code){
+				filteredDist.push(sp.dist[i]);
+			}
+		}
+		$scope.modal.dist = filteredDist;	
+	}
 	$scope.modal.description = $scope.description(sp);
 };
 //$scope.currentPage = 'informe';
 $http.get('/api/flora/transgenicas_filtradas').success(function(awesomeThings) {
   $scope.transgenicas = awesomeThings;
-  $scope.people = awesomeThings;
+  //$scope.people = awesomeThings;
 });
 
-$http.get('/api/flora/cultivadas_r').success(function(awesomeThings) {
-  $scope.cultivadas = awesomeThings;
-});
 $scope.color = function(flujo){
-	if(flujo <= 33){ return 'info'; }
-	if(flujo >34 && flujo <=66){ return 'warning'; }
-	if(flujo >67){ return 'danger'; }
+  if(flujo <=0.99999999){
+    return 'default';
+  }
+  if(flujo >=1 && flujo <= 20){
+    return 'info';
+  }
+  if(flujo > 20 && flujo <=40){
+    return 'primary';
+  }
+  if(flujo >40 && flujo <= 60){
+    return 'warning';
+  }
+  if(flujo >60 && flujo <= 80){
+    return 'danger';
+  }
+  if(flujo > 80){
+    return 'danger';
+  }
+
+	// if(flujo <= 33){ return 'info'; }
+	// if(flujo >34 && flujo <=66){ return 'warning'; }
+	// if(flujo >67){ return 'danger'; }
 };
 $scope.getMatch = function (){
-	$http.get('/api/flora/relacion_informe/'+$scope.spCompare.genero).success(function(data){
+	$http.get('/api/flora/relacion/'+$scope.spCompare.genero).success(function(data){
 	    //$scope.especieSeleccionada = sp;
 	    for (var i = data.length - 1; i >= 0; i--) {
 	    	data[i].flujo = $scope.FlujoGenico(data[i]);
 	    	data[i].nivel = $scope.riskLevel($scope.FlujoGenico(data[i]));
 	    }
 	    $scope.especiesMatch = data;
-		var I = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':1,"code":"01","name":"Región de Tarapacá"};
-		var II = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':2,"code":"02","name":"Región de Antofagasta"};
-		var III = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':3,"code":"03","name":"Región de Atacama"};
-		var IV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':4,"code":"04","name":"Región de Coquimbo"};
-		var V = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':5,"code":"05","name":"Región de Valparaíso"};
-		var VI = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':8,"code":"06","name":"Región del Libertador General Bernardo O’Higgins"};
-		var VII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':9,"code":"07","name":"Región del Maule"};
-		var VIII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':10,"code":"08","name":"Región del Biobío"};
-		var IX = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':11,"code":"09","name":"Región de La Araucanía"};
-		var X = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':13,"code":"10","name":"Región de Los Lagos"};
-		var XI = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':14,"code":"12","name":"Región de Magallanes y de la Antártica Chilena"};
-		var XII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':15,"code":"11","name":"Región de Aysén del General Carlos Ibáñez del Campo"};
-		var XIII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':6,"code":"13","name":"Región Metropolitana de Santiago"};
-		var XIV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':12,"code":"14","name":"Región de Los Ríos"};
-		var XV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':0,"code":"15","name":"Región de Arica y Parinacota "};
+		var I = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':1,'code':'01','name':'Región de Tarapacá'};
+		var II = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':2,'code':'02','name':'Región de Antofagasta'};
+		var III = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':3,'code':'03','name':'Región de Atacama'};
+		var IV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':4,'code':'04','name':'Región de Coquimbo'};
+		var V = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':5,'code':'05','name':'Región de Valparaíso'};
+		var VI = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':8,'code':'06','name':'Región del Libertador General Bernardo O’Higgins'};
+		var VII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':9,'code':'07','name':'Región del Maule'};
+		var VIII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':10,'code':'08','name':'Región del Biobío'};
+		var IX = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':11,'code':'09','name':'Región de La Araucanía'};
+		var X = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':13,'code':'10','name':'Región de Los Lagos'};
+		var XI = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':15,'code':'12','name':'Región de Magallanes y de la Antártica Chilena'};
+		var XII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':14,'code':'11','name':'Región de Aysén del General Carlos Ibáñez del Campo'};
+		var XIII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':6,'code':'13','name':'Región Metropolitana de Santiago'};
+		var XIV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':12,'code':'14','name':'Región de Los Ríos'};
+		var XV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':0,'code':'15','name':'Región de Arica y Parinacota'};
 		if(data.length>0){
 		    for (var e = data.length - 1; e >= 0; e--) {
 			    if(data[e].dist && data[e].dist.length > 0){
 				    for (var j = data[e].dist.length - 1; j >= 0; j--) {
-				        if(data[e].dist[j].code ==='01'){I.especies.push(data[e]); if(data[e].type===3){I.spNativas.push(data[e]);} if(data[e].type===1){I.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='02'){II.especies.push(data[e]); if(data[e].type===3){II.spNativas.push(data[e]);} if(data[e].type===1){II.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='03'){III.especies.push(data[e]); if(data[e].type===3){III.spNativas.push(data[e]);} if(data[e].type===1){III.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='04'){IV.especies.push(data[e]); if(data[e].type===3){IV.spNativas.push(data[e]);} if(data[e].type===1){IV.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='05'){V.especies.push(data[e]); if(data[e].type===3){V.spNativas.push(data[e]);} if(data[e].type===1){V.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='06'){VI.especies.push(data[e]); if(data[e].type===3){VI.spNativas.push(data[e]);} if(data[e].type===1){VI.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='07'){VII.especies.push(data[e]); if(data[e].type===3){VII.spNativas.push(data[e]);} if(data[e].type===1){VII.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='08'){VIII.especies.push(data[e]); if(data[e].type===3){VIII.spNativas.push(data[e]);} if(data[e].type===1){VIII.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='09'){IX.especies.push(data[e]); if(data[e].type===3){IX.spNativas.push(data[e]);} if(data[e].type===1){IX.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='10'){X.especies.push(data[e]); if(data[e].type===3){X.spNativas.push(data[e]);} if(data[e].type===1){X.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='11'){XI.especies.push(data[e]); if(data[e].type===3){XI.spNativas.push(data[e]);} if(data[e].type===1){XI.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='12'){XII.especies.push(data[e]); if(data[e].type===3){XII.spNativas.push(data[e]);} if(data[e].type===1){XII.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='13'){XIII.especies.push(data[e]); if(data[e].type===3){XIII.spNativas.push(data[e]);} if(data[e].type===1){XIII.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='14'){XIV.especies.push(data[e]); if(data[e].type===3){XIV.spNativas.push(data[e]);} if(data[e].type===1){XIV.spCultivadas.push(data[e])}}
-				        if(data[e].dist[j].code ==='15'){XV.especies.push(data[e]); if(data[e].type===3){XV.spNativas.push(data[e]);} if(data[e].type===1){XV.spCultivadas.push(data[e])}}
+				        if(data[e].dist[j].code ==='01'){I.especies.push(data[e]); if(data[e].type===3){I.spNativas.push(data[e]);} if(data[e].type===1){I.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='02'){II.especies.push(data[e]); if(data[e].type===3){II.spNativas.push(data[e]);} if(data[e].type===1){II.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='03'){III.especies.push(data[e]); if(data[e].type===3){III.spNativas.push(data[e]);} if(data[e].type===1){III.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='04'){IV.especies.push(data[e]); if(data[e].type===3){IV.spNativas.push(data[e]);} if(data[e].type===1){IV.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='05'){V.especies.push(data[e]); if(data[e].type===3){V.spNativas.push(data[e]);} if(data[e].type===1){V.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='06'){VI.especies.push(data[e]); if(data[e].type===3){VI.spNativas.push(data[e]);} if(data[e].type===1){VI.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='07'){VII.especies.push(data[e]); if(data[e].type===3){VII.spNativas.push(data[e]);} if(data[e].type===1){VII.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='08'){VIII.especies.push(data[e]); if(data[e].type===3){VIII.spNativas.push(data[e]);} if(data[e].type===1){VIII.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='09'){IX.especies.push(data[e]); if(data[e].type===3){IX.spNativas.push(data[e]);} if(data[e].type===1){IX.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='10'){X.especies.push(data[e]); if(data[e].type===3){X.spNativas.push(data[e]);} if(data[e].type===1){X.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='11'){XI.especies.push(data[e]); if(data[e].type===3){XI.spNativas.push(data[e]);} if(data[e].type===1){XI.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='12'){XII.especies.push(data[e]); if(data[e].type===3){XII.spNativas.push(data[e]);} if(data[e].type===1){XII.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='13'){XIII.especies.push(data[e]); if(data[e].type===3){XIII.spNativas.push(data[e]);} if(data[e].type===1){XIII.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='14'){XIV.especies.push(data[e]); if(data[e].type===3){XIV.spNativas.push(data[e]);} if(data[e].type===1){XIV.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='15'){XV.especies.push(data[e]); if(data[e].type===3){XV.spNativas.push(data[e]);} if(data[e].type===1){XV.spCultivadas.push(data[e]);}}
 				    }
 			    }
 		    }
@@ -228,135 +254,145 @@ $scope.rasN = function(sp){
   return $scope.riesgoN;
 };
 $scope.riskLevel = function(flujo){
-  if(flujo < 33.3333){
+  if(flujo <=0.99999999){
+    return 's/reporte';
+  }
+  if(flujo >=1 && flujo <= 20){
+    return 'Muy Bajo';
+  }
+  if(flujo > 20 && flujo <=40){
     return 'Bajo';
   }
-  if(flujo >=33.3333 && flujo< 66.6666){
+  if(flujo >40 && flujo <= 60){
     return 'Medio';
   }
-  if(flujo >= 66.6666){
+  if(flujo >60 && flujo <= 80){
     return 'Alto';
+  }
+  if(flujo > 80){
+    return 'Muy Alto';
   }
 };
 $scope.description = function(sp){
-  	var descripcion =  sp.taxa;	
+  var descripcion =  sp.taxa;	
 
   if(sp.nameEs){
-	  if(sp.nameEs.length > 0 && sp.nameEs[0].name){ 
-	    descripcion += ' (nombre común: '+ sp.nameEs[0].name + ')'; 
-	  }else if (sp.nameEs){
-	    descripcion += ' (nombre común: '+ sp.nameEs + ')';
-	  }
+  if(sp.nameEs.length > 0 && sp.nameEs[0].name){ 
+    descripcion += ' (nombre común: '+ sp.nameEs[0].name + ')'; 
+  }else if (sp.nameEs){
+    descripcion += ' (nombre común: '+ sp.nameEs + ')';
   }
-   
-   descripcion +=' pertenece a la familia '+ sp.familia;
+  }
+
+  descripcion +=' pertenece a la familia '+ sp.familia;
 
   if(sp.type===1){
-    //tipo origen
-    if(sp.nativo===1 && sp.endemico===1){ 
-      descripcion +=' y corresponde a una especie nativa y endémica de Chile. ' ;
-    }else if(sp.endemico===1){ 
-      descripcion +=' y corresponde a una especie de origen endémica en Chile. '; 
-    }else if(sp.nativo===1){ 
-      descripcion +=' y corresponde a una especie nativa de Chile. ';
-    }else if(sp.introducido ===1 && sp.naturalizado ===1){
-      descripcion +=' y corresponde a una especie introducida y naturalizada en Chile. ';
-    }else if(sp.introducido ===1){
-      descripcion +=' y corresponde a una especie introducida en Chile. ';
-    }else if(sp.naturalizado ===1){
-      descripcion +=' y corresponde a una especie naturalizada en Chile. ';
-    }else{
-      descripcion +='.';
-    }
+  //tipo origen
+  if(sp.nativo===1 && sp.endemico===1){ 
+    descripcion +=' y corresponde a una especie nativa y endémica de Chile. ' ;
+  }else if(sp.endemico===1){ 
+    descripcion +=' y corresponde a una especie de origen endémica en Chile. '; 
+  }else if(sp.nativo===1){ 
+    descripcion +=' y corresponde a una especie nativa de Chile. ';
+  }else if(sp.introducido ===1 && sp.naturalizado ===1){
+    descripcion +=' y corresponde a una especie introducida y naturalizada en Chile. ';
+  }else if(sp.introducido ===1){
+    descripcion +=' y corresponde a una especie introducida en Chile. ';
+  }else if(sp.naturalizado ===1){
+    descripcion +=' y corresponde a una especie naturalizada en Chile. ';
+  }else{
+    descripcion +='.';
+  }
 
-    //ciclo de vida
-    if(sp.anual===1 && sp.bianual===1 &&  sp.bulbosa===1){descripcion +='Respecto a su biología, es una especie bulbosa que presenta un ciclo de vida anual y bianual';}
-    else if(sp.anual===1 && sp.bianual===1)      {descripcion +='Respecto a su biología, presenta un ciclo de vida anual y bianual';}
-    else if(sp.bianual===1 && sp.anual===1)      {descripcion +='Respecto a su biología, es una especie bulbosa que presenta un ciclo de vida anual';}
-    else if(sp.bianual===1 && sp.bulbosa===1)      {descripcion +='Respecto a su biología, es una especie bulbosa que presenta un ciclo de vida bianual';}
-    else if(sp.anual===1)                   {descripcion +='Respecto a su biología, presenta un ciclo de vida anual';}
-    else if(sp.bianual===1)                   {descripcion +='Respecto a su biología, presenta un ciclo de vida bianual';}
-    else if(sp.perenne===1 && sp.bulbosa===1)      {descripcion +='Respecto a su biología, es una especie bulbosa que presenta un ciclo de vida perenne';}
-    else if(sp.perenne===1)                   {descripcion +='Respecto a su biología, presenta un ciclo de vida perenne';}
-    else if(sp.bulbosa===1)                   {descripcion +='Respecto a su biología, es una especie bulbosa';}
-    else if(sp.semilla===1 || sp.vegetativa===1)      {descripcion +='Respecto a su biología, es una especie';}
+  //ciclo de vida
+  if(sp.anual===1 && sp.bianual===1 &&  sp.bulbosa===1){descripcion +='Respecto a su biología, es una especie bulbosa que presenta un ciclo de vida anual y bianual';}
+  else if(sp.anual===1 && sp.bianual===1)      {descripcion +='Respecto a su biología, presenta un ciclo de vida anual y bianual';}
+  else if(sp.bianual===1 && sp.anual===1)      {descripcion +='Respecto a su biología, es una especie bulbosa que presenta un ciclo de vida anual';}
+  else if(sp.bianual===1 && sp.bulbosa===1)      {descripcion +='Respecto a su biología, es una especie bulbosa que presenta un ciclo de vida bianual';}
+  else if(sp.anual===1)                   {descripcion +='Respecto a su biología, presenta un ciclo de vida anual';}
+  else if(sp.bianual===1)                   {descripcion +='Respecto a su biología, presenta un ciclo de vida bianual';}
+  else if(sp.perenne===1 && sp.bulbosa===1)      {descripcion +='Respecto a su biología, es una especie bulbosa que presenta un ciclo de vida perenne';}
+  else if(sp.perenne===1)                   {descripcion +='Respecto a su biología, presenta un ciclo de vida perenne';}
+  else if(sp.bulbosa===1)                   {descripcion +='Respecto a su biología, es una especie bulbosa';}
+  else if(sp.semilla===1 || sp.vegetativa===1)      {descripcion +='Respecto a su biología, es una especie';}
 
-    //tipo de reproducción
-    if(sp.semilla===1 && sp.vegetativa===1)           {descripcion +=' con reproducción sexual y vegetativa';}
-    else if(sp.semilla===1)                   {descripcion +=' con reproducción sexual';}
-    else if(sp.vegetativa===1)                   {descripcion +=' con reproducción vegetativa';}
+  //tipo de reproducción
+  if(sp.semilla===1 && sp.vegetativa===1)           {descripcion +=' con reproducción sexual y vegetativa';}
+  else if(sp.semilla===1)                   {descripcion +=' con reproducción sexual';}
+  else if(sp.vegetativa===1)                   {descripcion +=' con reproducción vegetativa';}
 
-    //tipo polinizacion
-    if (sp.autogama===0 && sp.alogama===0)        {descripcion +='.';}
-    else if(sp.autogama===1)                  {descripcion +=' y tipo de polinización autógama.';}
-    else if(sp.alogama===1){
-     if(sp.entomofila===1&&sp.artificial===1)      {descripcion +=' y tipo de polinización alógama realizada por insectos (entomófila), además de polinización artificial en sistemas productivos.';}
-     else if(sp.anemofila===1&&sp.artificial===1) {descripcion +=' y tipo de polinización alógama realizada por viento (anemófila), además de polinización artificial en sistemas productivos.';}
-     else if(sp.anemofila===1)             {descripcion +=' y tipo de polinización alógama realizada por viento (anemófila).';}
-     else if(sp.entomofila===1)             {descripcion +=' y tipo de polinización alógama realizada por insectos (entomófila).';}
-     else if(sp.artificial===1)             {descripcion +=' y tipo de polinización alógama realizada de forma artificial en sistemas productivos.';}
-     else                            {descripcion +='.';}
-    }
+  //tipo polinizacion
+  if (sp.autogama===0 && sp.alogama===0)        {descripcion +='.';}
+  else if(sp.autogama===1)                  {descripcion +=' y tipo de polinización autógama.';}
+  else if(sp.alogama===1){
+   if(sp.entomofila===1&&sp.artificial===1)      {descripcion +=' y tipo de polinización alógama realizada por insectos (entomófila), además de polinización artificial en sistemas productivos.';}
+   else if(sp.anemofila===1&&sp.artificial===1) {descripcion +=' y tipo de polinización alógama realizada por viento (anemófila), además de polinización artificial en sistemas productivos.';}
+   else if(sp.anemofila===1)             {descripcion +=' y tipo de polinización alógama realizada por viento (anemófila).';}
+   else if(sp.entomofila===1)             {descripcion +=' y tipo de polinización alógama realizada por insectos (entomófila).';}
+   else if(sp.artificial===1)             {descripcion +=' y tipo de polinización alógama realizada de forma artificial en sistemas productivos.';}
+   else                            {descripcion +='.';}
+  }
 
-    //tipo de especie
-    if(sp.agricola===1 && sp.ornamental===1 && sp.maleza===1) {descripcion +='En el área productiva, es una especie de importancia agrícola, ornamental y como maleza.';}
-    else if(sp.agricola===1 && sp.maleza===1) {descripcion +='En el área productiva, es una especie de importancia agrícola y como maleza.';}
-    else if(sp.ornamental===1 && sp.maleza===1) {descripcion +='En el área productiva, es una especie de importancia ornamental y como maleza.';}
-    else if(sp.maleza===1)               {descripcion +='En el área productiva, esta especie se comporta como maleza.';}
-    else if(sp.forestal===1)               {descripcion +='En el área productiva, es una especie de importancia forestal.';}
+  //tipo de especie
+  if(sp.agricola===1 && sp.ornamental===1 && sp.maleza===1) {descripcion +='En el área productiva, es una especie de importancia agrícola, ornamental y como maleza.';}
+  else if(sp.agricola===1 && sp.maleza===1) {descripcion +='En el área productiva, es una especie de importancia agrícola y como maleza.';}
+  else if(sp.ornamental===1 && sp.maleza===1) {descripcion +='En el área productiva, es una especie de importancia ornamental y como maleza.';}
+  else if(sp.maleza===1)               {descripcion +='En el área productiva, esta especie se comporta como maleza.';}
+  else if(sp.forestal===1)               {descripcion +='En el área productiva, es una especie de importancia forestal.';}
   }//END... if(sp.type==1){
 
   if(sp.type===2){
-    //2.     Naturalizada
-    var naturalizada ='';
-    if(sp.In===1){
-      naturalizada ='naturalizada';
-    }
+  //2.     Naturalizada
+  var naturalizada ='';
+  if(sp.In===1){
+    naturalizada ='naturalizada';
+  }
 
-    //1.     Tipo de especie
-    if(sp.agricola===1 && sp.ornamental===1 && sp.maleza===1){
-      descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola, ornamental y como maleza';
-    }else if(sp.agricola===1 && sp.maleza===1 && sp.medicinal===1){
-      descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola y como maleza, además de su uso medicinal';
-    }else if(sp.agricola===1 && sp.maleza===1){
-      descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola y como maleza';
-    }else if(sp.ornamental===1 && sp.maleza===1){
-      descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia ornamental y como maleza';
-    }else if(sp.agricola===1 && sp.medicinal===1){
-      descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola y uso medicinal';
-    }else if(sp.agricola===1){
-      descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola';
-    }else if(sp.medicinal===1){
-      descripcion +='. En el área productiva, esta especie '+naturalizada+' se comporta como maleza';
-    }else if(sp.forestal===1){
-      descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia forestal';
-    }else if(sp.maleza===1){
-      descripcion +='. En el área productiva, es una especie '+naturalizada+' de uso medicinal';
-    }else if(sp.ornamental===1){
-      descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia ornamental';
-    }
-    descripcion +='.';
+  //1.     Tipo de especie
+  if(sp.agricola===1 && sp.ornamental===1 && sp.maleza===1){
+    descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola, ornamental y como maleza';
+  }else if(sp.agricola===1 && sp.maleza===1 && sp.medicinal===1){
+    descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola y como maleza, además de su uso medicinal';
+  }else if(sp.agricola===1 && sp.maleza===1){
+    descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola y como maleza';
+  }else if(sp.ornamental===1 && sp.maleza===1){
+    descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia ornamental y como maleza';
+  }else if(sp.agricola===1 && sp.medicinal===1){
+    descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola y uso medicinal';
+  }else if(sp.agricola===1){
+    descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia agrícola';
+  }else if(sp.medicinal===1){
+    descripcion +='. En el área productiva, esta especie '+naturalizada+' se comporta como maleza';
+  }else if(sp.forestal===1){
+    descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia forestal';
+  }else if(sp.maleza===1){
+    descripcion +='. En el área productiva, es una especie '+naturalizada+' de uso medicinal';
+  }else if(sp.ornamental===1){
+    descripcion +='. En el área productiva, es una especie '+naturalizada+' de importancia ornamental';
+  }
+  descripcion +='.';
   }//END... if(sp.type===2){
 
   if(sp.type===3){
-    //2.     Endémica
-    if(sp.endemica===1){
-      descripcion +=' y es endémica de Chile. ';
-      if(sp.extinta === 1){
-        descripcion +='Actualmente su estatus de conservación es "Extinta".';
-      }else if(sp.enPeligro === 1){
-        descripcion +='Actualmente su estatus de conservación es "En peligo de extinción".';
-      }else if(sp.vulnerable === 1){
-        descripcion +='Actualmente su estatus de conservación es "Especie vulnerable".';
-      }else if(sp.rara === 1){
-        descripcion +='Es considerada como una especie "Rara".';
-      }
-    }else{
-      descripcion +='.';}
+  //2.     Endémica
+  if(sp.endemica===1){
+    descripcion +=' y es endémica de Chile. ';
+    if(sp.extinta === 1){
+      descripcion +='Actualmente su estatus de conservación es "Extinta".';
+    }else if(sp.enPeligro === 1){
+      descripcion +='Actualmente su estatus de conservación es "En peligo de extinción".';
+    }else if(sp.vulnerable === 1){
+      descripcion +='Actualmente su estatus de conservación es "Especie vulnerable".';
+    }else if(sp.rara === 1){
+      descripcion +='Es considerada como una especie "Rara".';
+    }
+  }else{
+    descripcion +='.';}
   }//END... if(sp.type===3){
 
-   return descripcion;
+  return descripcion;
 };
+
 });
 
 // angular.module('fullstack012App').filter('propsFilter', function() {

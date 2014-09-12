@@ -9,10 +9,11 @@ angular.module('NavbarModule', [])
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.logout = function() {
-      Auth.logout();
-      $location.path('/login');
-    };
+
+    // $scope.logout = function() {
+    //   Auth.logout();
+    //   $location.path('/login');
+    // };
 
     $scope.isActive = function(route) {
       return route === $location.path();
@@ -29,16 +30,21 @@ angular.module('NavbarModule', [])
       {'title': 'Noticias', 'link': 'seccion-noticias','id':'news'},
       {'title': 'Grupo', 'link': '/','id':'group'},
       {'title': 'Contacto', 'link': '/','id':'contacto'},
-      {'title': 'Login', 'link': '/','id':'login'},
+      {'title': 'Usuarios', 'link': '#','id':'interno', 'subMenu':[
+        {'title': 'Login', 'link': '/login','id':'login'},
+        {'title': 'Logout', 'link': '/logout','id':'logout'},
+        {'title': 'Settings', 'link': '/settings','id':'settings'},
+        {'title': 'Admin', 'link': '/admin','id':'admin'},
+        {'title': 'Registrarse', 'link': '/signup','id':'signup'}
+      ]}
       ];
   })
 .directive('toggleOpen',function(){
   var directive = {};
   directive.restrict = 'A';
-  directive.link = function(scope,element){
-    
-    element.bind('click',function($event){
-      if(element.hasClass('dropdown')){
+  directive.link = function(scope,element){ 
+    element.on('click',function($event){
+      if(element.hasClass('dropdown') && !element.hasClass('open')){
         $event.preventDefault();
         element.toggleClass('open');
       }

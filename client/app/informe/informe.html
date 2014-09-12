@@ -1,7 +1,7 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <!-- <h4>{{spCompare}}</h4> -->
 
-<div ng-show="modal" class="panel panel-default" style="padding:20px;width:60%; height:80%;overflow: scroll; background:white; position:fixed; z-index:1000; top:100px; left:300px">
+<div ng-show="modal" class="panel panel-default" style="padding:20px;width:60%; max-height:80%;overflow: scroll; background:white; position:fixed; z-index:1000; top:100px; left:300px">
 	<div class="page-header">
 		<span ng-click="modal=false" style="margin:10px; padding:10px 18px" class="btn btn-primary pull-right">X</span>
 		<h3 class="text-center" style="margin:10px">Distibución de {{modal.taxa}} <br> <small>nivel de riesgo: {{modal.nivel}} ({{modal.flujo | number:0}})</small></h3>
@@ -32,11 +32,9 @@
 		<ul class="nav nav-tabs" ng-init="selectedTab=1">
 		<li ng-class="{active: selectedTab == 1}" style="cursor:pointer;"><a ng-click="selectedTab = 1">Transgénicas</a></li>
 		</ul>
-		<div class="scroll-block" style="height:50px;">
-			<div class="tab-pane" ng-show="selectedTab == 1" id="home">
-				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(); taipo=false; bienvenida=true; coinidencias=true;" ng-options="a.taxa group by a.familia for a in transgenicas | orderBy: 'familia'"><option value="">Especies Transgénicas</option>
-				</select>
-			</div>
+		<div class="tab-pane" ng-show="selectedTab == 1" id="home" style="margin:20px 3px;">
+			<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(); taipo=false; bienvenida=true; coinidencias=true;" ng-options="a.taxa group by a.familia for a in transgenicas | orderBy: 'familia'"><option value="">Especies Transgénicas</option>
+			</select>
 		</div>
 		<div>
 			<div class="panel panel-default">
@@ -50,8 +48,9 @@
 				</div>
 				<div ng-show="taipo==1" class="panel-body">
 					<ul class="list-group">
-					  <li ng-click="modalFn(spR)" style="cursor:pointer;"ng-repeat="spR in CultFilt = (especiesMatch | filter:{type:1} | orderBy: '-flujo')" class="list-group-item list-group-item-{{color(spR.flujo)}}">
-					  	{{spR.taxa}} <small>({{spR.nivel}})</small> <button class="btn btn-info btn-xs">+info</button>
+					  <li ng-repeat="spR in CultFilt = (especiesMatch | filter:{type:1} | orderBy: '-flujo')" class="list-group-item list-group-item-{{color(spR.flujo)}}">
+					  	<a ng-click="modalFn(spR,'false')" style="cursor:pointer;">{{spR.taxa}}</a>
+					  	 <small>({{spR.nivel}})</small>
 					  </li>
 					</ul>
 				</div>
@@ -67,8 +66,8 @@
 				</div>
 				<div ng-show="taipo==3" class="panel-body">
 					<ul class="list-group">
-					  <li ng-click="modalFn(spN)" style="cursor:pointer;"ng-repeat="spN in Nat = (especiesMatch | filter:{type:3} | orderBy: '-flujo')" class="list-group-item list-group-item-{{color(spN.flujo)}}">
-					  	{{spN.taxa}} <small>({{spN.nivel}})</small> <button class="btn btn-info btn-xs">+info</button>
+					  <li style="cursor:pointer;"ng-repeat="spN in Nat = (especiesMatch | filter:{type:3} | orderBy: '-flujo')" class="list-group-item list-group-item-{{color(spN.flujo)}}">
+					  	{{spN.taxa}} <small>({{spN.nivel}})</small>
 
 					  </li>
 					</ul>
@@ -93,18 +92,21 @@
 		  	<div class="panel-heading">{{region.name}} </div>
 		  	<div class="panel-body" ng-hide="region">Sin información</div>
 		    <div class="panel-body" ng-show="region">
-		    	<table class="table">
+		    	<table class="table table-hover">
 		    		<tr>
-		    			<td>Taxa</td>
-		    			<td>Nombre común</td>
-		    			<td>Riesgo</td>
-		    			<td>Nivel</td>
+		    			<th>Taxa</th>
+		    			<th>Nombre común</th>
+		    			<th>Riesgo</th>
+		    			<th>Nivel</th>
 		    		</tr>
 		    		<tr ng-repeat="sp in spPresente = (region.especies | orderBy: '-flujo' | filter: {'type': taipo} )">
-		    			<td>{{sp.taxa}}</td>
+		    			<td>
+		    				<a ng-click="modalFn(sp, region)" style="cursor:pointer;">{{sp.taxa}}</a>
+		    				</td>
 		    			<td>{{sp.nameEs}}</td>
-		    			<td style="width:25px;" class="{{color(sp.flujo)}}">{{sp.flujo | number :0 }}</td>
-		    			<td style="width:25px;" class="{{color(sp.flujo)}}">{{sp.nivel}}</td>
+		    			<td style="width:25px;" class="{{color(sp.flujo)}}">{{sp.flujo | number :0 }}
+		    			</td>
+		    			<td style="width:100px;" class="{{color(sp.flujo)}}">{{sp.nivel}}</td>
 		    		</tr>
 		    	</table>
 		    </div>
@@ -126,7 +128,7 @@
 		    			<td>{{sp.taxa}}</td>
 		    			<td>{{sp.nameEs}}</td>
 		    			<td style="width:25px;" class="{{color(sp.flujo)}}">{{sp.flujo | number :0 }}</td>
-		    			<td style="width:25px;" class="{{color(sp.flujo)}}">{{sp.nivel}}</td>
+		    			<td style="width:100px;" class="{{color(sp.flujo)}}">{{sp.nivel}}</td>
 		    		</tr>
 		    	</table>
 		    </div>
