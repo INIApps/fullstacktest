@@ -1,167 +1,48 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
-<section>
-	<div class="container-fluid" style="padding-top:20px;">
-	<div class="col-md-4">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" ng-init="selectedTab=1">
-		<li ng-class="{active: selectedTab == 1}" style="cursor:pointer;"><a ng-click="selectedTab = 1">Transgénicas</a></li>
-		<li ng-class="{active: selectedTab == 2}" style="cursor:pointer;"><a ng-click="selectedTab = 2">Cultivadas</a></li>
-		</ul>
-		<!-- Tab panes -->
-		<div class="scroll-block" style="height:50px;">
-			<div ng-hide="transgenicas">
-				<img ng-src="assets/images/loading.gif" class="loadingkrap">
-			</div>
-			<div class="tab-pane" ng-show="selectedTab == 1" id="home">
-				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch()" 
-				ng-options="a.taxa group by a.familia for a in transgenicas | orderBy: 'familia'"><option value="">Especies Transgénicas</option>
-				</select>
-
-<!-- <ui-select  ng-model="spCompare" ng-disabled="disabled" style="min-width: 300px;"  >
-	<ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.taxa}}</ui-select-match>
-	<ui-select-choices repeat="person in transgenicas | propsFilter: {taxa: $select.search, familia: $select.search}">
-	  <div ng-bind-html="person.name | highlight: $select.search"></div>
-	  <small>
-	    Taxa:  <span ng-bind-html="''+person.taxa | highlight: $select.search"></span> <br>
-	    Familia: <span ng-bind-html="''+person.familia | highlight: $select.search"></span>
-	  </small>
-	</ui-select-choices>
-</ui-select> -->
-
-			</div>
-			<div class="tab-pane" ng-show="selectedTab == 2" id="profile">
-				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch()" ng-options="a.taxa group by a.familia for a in cultivadas | orderBy: 'familia'"><option value="">Especies Cultivadas</option></select>
-			</div>
-		</div>
-		<div>
-		  <accordion close-others="oneAtATime">
-		  	<accordion-group is-disabled=true style="display:none"> <accordion-heading> <span class="pull-right" style="padding:20px;">Especies asociadas</span></accordion-heading></accordion-group>
-		    <accordion-group>
-		    <accordion-heading> <span style="cursor:pointer;" ng-class="{'btn btn-primary':CultFilt.length > 0}">Cultivadas <span class="badge">{{CultFilt.length}}</span></span></accordion-heading>
-			<ul>
-				<li style="cursor:pointer;" ng-repeat="spR in CultFilt = (especiesMatch | filter:{type:1})" ng-click="getReport(spR)"> {{spR.taxa}}</li>
-			</ul>
-		    </accordion-group>
-		    <accordion-group>
-		    <accordion-heading> <span style="cursor:pointer;" ng-class="{'btn btn-primary':IntroFilt.length > 0}">Introducidas <span class="badge">{{IntroFilt.length}}</span></span></accordion-heading>
-			<ul>
-				<li style="cursor:pointer;" ng-repeat="spR in IntroFilt = (especiesMatch | filter:{type:2})" ng-click="getReport(spR)"> {{spR.taxa}}</li>
-			</ul>
-		    </accordion-group>
-		    <accordion-group>
-		    <accordion-heading><span style="cursor:pointer;" ng-class="{'btn btn-primary':NatFilt.length > 0}">Nativas <span class="badge">{{NatFilt.length}}</span></span></accordion-heading>
-			<ul>
-				<li style="cursor:pointer;" ng-repeat="spR in NatFilt = (especiesMatch | filter:{type:3})" ng-click="getReport(spR)"> {{spR.taxa}}</li>
-			</ul>
-		    </accordion-group>
-		<!--     <accordion-group >
-		        <accordion-heading><span style="cursor:pointer;">Transgenicas {{TransFilt.length}}</span></accordion-heading>
-			<ul>
-				<li style="cursor:pointer;" ng-repeat="spR in TransFilt = (especiesMatch | filter:{type:4})" ng-click="getReport(spR)"> {{spR.taxa}}</li>
-			</ul>
-		    </accordion-group> -->
-		  </accordion>
-		</div>
-	</div>
-	<div class="col-md-8">
-
+<div class="container">
   <div class="row">
-    <div class="col-xs-6" ng-show="spCompare">
-      <div class="panel panel-default">
-        <div class="panel-body">
-        	<h4>Especie seleccionada:</h4>
-			<h5>{{spCompare.taxa}} <small>({{spCompare.tipo}})</small></h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-6" ng-show="report">
-      <div class="panel panel-default">
-        <div class="panel-body">
-        	<h4>Especie a comparar: </h4>
-			<h5>{{report.taxa}} <small>({{report.tipo}})</small></h5>
-        </div>
-      </div>
+    <div class="col-lg-12">
+      <h1 class="page-header">Features:</h1>
+      <ul class="nav nav-tabs nav-stacked col-lg-6" ng-repeat="thing in awesomeThings">
+        <li><a href="#" tooltip="{{thing.familia}}">{{thing.genero}}</a></li>
+      </ul>
     </div>
   </div>
+</div>
 
-<!-- 
-		<div class="row">
-			<div class="col-md-6 well" ng-show="spCompare" style="">
-				<h4>Especie seleccionada:</h4>
-				<h5>{{spCompare.taxa}} <small>({{spCompare.tipo}})</small></h5>
-			</div>
-			<div class="col-md-6 well" ng-show="report" style="border-left:2px solid gray">
-				<h4>Especie a comparar: </h4>
-				<h5>{{report.taxa}} <small>({{report.tipo}})</small></h5>
-			</div>
-		</div>
- -->		<accordion close-others="oneAtATime">
-<!-- 			<accordion-group> 
-				<accordion-heading > 
-				<span style="cursor:pointer;">JSON</span>
-				</accordion-heading>
-				<h1>Especie Elegida</h1>
-				{{spCompare}}
-				<h1>Especie Comparada</h1>
-				{{report}}
-			<accordion-group>
-		</accordion> -->
-
-		<div ng-class="{'alert alert-warning': riskLevel(riesgo) == 'Medio', 'alert alert-danger': riskLevel(riesgo) == 'Alto','alert alert-info': riskLevel(riesgo) == 'Bajo'}">
-		<br>
-		<h4 ng-show="report">Riesgo de Flujo Génico <b>{{riskLevel(riesgo)}}</b>  <small>({{riesgo | number:0 }})</small> </h4>
-		<p>{{descriptionShow}}</p>
-		</div>
-			
-		<h4 class="well" ng-show="report.dist.length !== 0 && report">Distribución en Chile</h4>
-		<p ng-show="report.dist.length ===1 ">{{report.taxa}} esta presente en 1 región</p>
-		<p ng-show="report.dist.length > 1 ">{{report.taxa}} esta presente en {{report.dist.length}} regiones</p>
-		<div>
-			<accordion close-others="oneAtATime">
-				<accordion-group ng-repeat="region in report.dist | orderBy:'code'"> 
-					<accordion-heading > 
-					<span style="cursor:pointer;">{{region.name}}</span>
-					</accordion-heading>
-					<ul class="list-group">
-						<li class="list-group-item" ng-repeat="provincia in region.provincias  | orderBy:'code'"> Provincia: {{provincia.name}}
-							<ul class="list-group">
-							  <li class="list-group-item" ng-repeat="comuna in provincia.comunas  | orderBy:'code'">Comuna : {{comuna.name}}</li>
-							</ul>
-						</li>
-					</ul>
-				<accordion-group>
-			</accordion>
-		</div>
-</section>
-
-<!-- <h3>Select2 theme</h3>
-<p>Selected: {{person.selected}}</p>
-<ui-select ng-model="person.selected" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
-<ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.taxa}}</ui-select-match>
-<ui-select-choices repeat="person in people | propsFilter: {taxa: $select.search, familia: $select.search}">
-  <div ng-bind-html="person.name | highlight: $select.search"></div>
-  <small>
-    Taxa: {{person.taxa}} <br>
-    Familia: <span ng-bind-html="''+person.familia | highlight: $select.search"></span>
-  </small>
-</ui-select-choices>
-</ui-select>
+<div class="row">
+	<div class="col-md-4">
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" ng-init="selectedTab=1">
+  <li ng-class="{active: selectedTab == 1}"><a ng-click="selectedTab = 1">Transgenicas</a></li>
+  <li ng-class="{active: selectedTab == 2}"><a ng-click="selectedTab = 2">Cultivadas</a></li>
+</ul>
 
 
-<h1>{{spCompare}}</h1>
+<!-- Tab panes -->
+<div class="scroll-block" >
 
+	<div ng-hide="transgenicas">
+		<img ng-src="assets/images/loading.gif" class="loadingkrap">
+	</div>
 
+	<div class="tab-pane" ng-show="selectedTab == 1" id="home">
+		<ul>
+			<li ng-repeat="spT in transgenicas"><a ng-click="especiesRelacionadas(spT,4)">{{spT.TAXA}}</a></li>
+		</ul>
+	</div>
 
+	<div class="tab-pane" ng-show="selectedTab == 2" id="profile">
+		<ul>
+			<li ng-repeat="spT in cultivadas"><a ng-click="especiesRelacionadas(spT,1)">{{spT.taxa}}</a></li>
+		</ul>
+	</div>
 
+</div>
 
+<!-- ... Nav tabs -->
 
-
- -->
-
-
-
-
-
-
-
+	</div>
+	<div class="col-md-8">
+		
+	</div>
+</div>
