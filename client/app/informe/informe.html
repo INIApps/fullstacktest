@@ -29,15 +29,34 @@
 
 <!-- /Modal -->
 
+<!-- Modal2 -->
+
+<!-- <div  class="panel panel-default" style="padding:20px;width:60%; max-height:80%;overflow: scroll; background:white; position:fixed; z-index:1000; top:100px; left:300px">
+	<div class="page-header">
+		<span ng-click="modal=false" style="margin:10px; padding:10px 18px" class="btn btn-primary pull-right">X</span>
+		<h3 class="text-center" style="margin:10px">Distibución de las especies transgénicas <br> <small>tabla de las 10 especies requeridas</small></h3>
+	</div>
+	<p ng-repeat="sp in krappi">{{sp.taxa}}</p>
+	<div class="page-body">
+		<table class="table">
+
+		</table>
+	</div>
+</div> -->
+
+<!-- /Modal2 -->
+
+<button ng-click="tableMakerS()">Clickme</button>
 <section>
-	<div class="container-fluid" style="padding-top:20px;">
+<div class="container-fluid" style="padding-top:20px;">
 	<div class="col-md-4">
+		<!-- Lengüeta -->
 		<ul class="nav nav-tabs" ng-init="selectedTab=1">
 			<li class="active">
 				<a>Transgénicas</a>
 			</li>
 		</ul>
-
+		<!-- Select box -->
 		<div class="tab-pane" style="margin:20px 3px;">
 			<select 
 				class="form-control" 
@@ -52,6 +71,7 @@
 				<option value="">Especies Transgénicas</option>
 			</select>
 		</div>
+		<!-- Paneles de especies -->
 		<div>
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -103,8 +123,16 @@
 					</span>
 				</div>
 				<div ng-show="taipo==3" class="panel-body">
+					<div class="panel-heading">
+						<h4><a >Cultivadas</a> <span class="badge">0</span></h4>
+					</div>
+				</div>
+				<div ng-show="taipo==3" class="panel-body">
+					<div class="panel-heading">
+						<h4>No Cultivadas <span class="badge">{{Natives.length}}</span></h4>
+					</div>
 					<ul class="list-group">
-					  <li ng-repeat="spN in SN | orderBy: '-flujo' " class="list-group-item" style="background:{{color(spN.flujo)}};">
+					  <li ng-repeat="spN in Natives = (SN | orderBy: '-flujo') " class="list-group-item" style="background:{{color(spN.flujo)}};">
 					  	<a ng-click="modalFn(spN,'false')" style="cursor:pointer;">{{spN.taxa}}</a>
 					  	<small>({{spN.nivel}})</small>
 					  </li>
@@ -112,8 +140,13 @@
 				</div>
 			</div>
 		</div>
+
+
 	</div>
 	<div class="col-md-8">
+		<ul>
+			<li ng-repeat="sp in krap[0]">{{sp.taxa}}</li>
+		</ul>
 		<div class="jumbotron" ng-hide="bienvenida">
 			<h2 class="text-center">Bienvenido al informe personalizado de especies transgénicas</h2>
 			<p>En el sector izquierdo de la pantalla encontrarás un menú desplegable donde puedes seleccionar una de las 10 especies vegetales requeridas para el informe, ordenadas por familia taxonómica.</p>
@@ -139,7 +172,7 @@
 		    			<td>Nivel</td>
 		    		</tr>
 		    		<tr ng-repeat="sp in spPresente = (region.especies | orderBy: '-flujo' )" style="background-color:{{color(sp.flujo)}}">
-		    			<td>{{sp.taxa}}</td>
+		    			<td><a ng-click="modalFn(sp,region)" style="cursor:pointer;">{{sp.taxa}}</a></td>
 		    			<td>{{sp.nameEs}}</td>
 		    			<td style="width:25px;">{{sp.flujo | number :0 }}</td>
 		    			<td style="width:100px;">{{sp.nivel}}</td>
