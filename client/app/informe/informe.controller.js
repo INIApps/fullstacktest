@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fullstack012App').controller('InformeCtrl', function ($scope, $http,$q,relationship) {
+angular.module('fullstack012App').controller('InformeCtrl', function ($scope, $http) {
 $scope.modal = false;
 $scope.modalFn = function(sp, region){
 	$scope.modal = angular.copy(sp);
@@ -24,22 +24,22 @@ $http.get('/api/flora/transgenicas_filtradas').success(function(awesomeThings) {
 
 $scope.color = function(flujo){
   if(flujo <=0.99999999){
-    return ''; // sin reporte
+    return 'default';
   }
   if(flujo >=1 && flujo <= 20){
-    return '#F0FAFF'; // muy bajo
+    return 'info';
   }
   if(flujo > 20 && flujo <=40){
-    return '#FFFFE6'; // bajo
+    return 'primary';
   }
   if(flujo >40 && flujo <= 60){
-    return '#FFD699'; // medio
+    return 'warning';
   }
   if(flujo >60 && flujo <= 80){
-    return '#FFAD99'; // alto
+    return 'danger';
   }
   if(flujo > 80){
-    return '#FF6666'; // muy alto
+    return 'danger';
   }
 
 	// if(flujo <= 33){ return 'info'; }
@@ -48,137 +48,53 @@ $scope.color = function(flujo){
 };
 $scope.getMatch = function (){
 	$http.get('/api/flora/relacion/'+$scope.spCompare.genero).success(function(data){
-    //$scope.especieSeleccionada = sp;
-    for (var i = data.length - 1; i >= 0; i--) {
-    	data[i].flujo = $scope.FlujoGenico(data[i]);
-    	data[i].nivel = $scope.riskLevel($scope.FlujoGenico(data[i]));
-    }
-    $scope.especiesMatch = data;
-
-    //introducidas : 
-    
-    //$scope.NN = [];
-    //No nativas cultivadas
-    $scope.NNC = [];
-    //No nativas introducidas
-    $scope.NNNC = [];
-    //Si nativas
-    $scope.SN = [];
-    //Si nativas cultivadas
-    $scope.SNC = []; // 0
-    //Si nativas no cultivadas
-    $scope.SNNC = []; // 0 
-
-    for (var i = data.length - 1; i >= 0; i--) {
-      if(data[i].type === 1 || data[i].type === 2 ){
-        if(data[i].type === 2 && data[i].agricola === 0){
-          $scope.NNNC.push(data[i]);
-        }
-        if(data[i].type === 1){
-          $scope.NNC.push(data[i]);
-        }
-      }
-      if(data[i].type === 3 ){
-        $scope.SN.push(data[i]);
-      }
-    };
-    //No nativas
-    $scope.NN = $scope.NNC.concat($scope.NNNC);
-    //Distribuciones
-    $scope.NNDist = spForRegion($scope.NN,'Especies Introducidas por región');
-    $scope.NNNCDist = spForRegion($scope.NNNC,'Especies Introducidas No cultivadas por región');
-    $scope.NNCDist = spForRegion($scope.NNC,'Especies Introducidas Cultivadas por región');
-    $scope.SNDist = spForRegion($scope.SN,'Especies Nativas No cultivadas por región');
-
-		// var I = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':1,'code':'01','name':'Región de Tarapacá'};
-		// var II = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':2,'code':'02','name':'Región de Antofagasta'};
-		// var III = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':3,'code':'03','name':'Región de Atacama'};
-		// var IV = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':4,'code':'04','name':'Región de Coquimbo'};
-		// var V = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':5,'code':'05','name':'Región de Valparaíso'};
-		// var VI = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':8,'code':'06','name':'Región del Libertador General Bernardo O’Higgins'};
-		// var VII = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':9,'code':'07','name':'Región del Maule'};
-		// var VIII = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':10,'code':'08','name':'Región del Biobío'};
-		// var IX = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':11,'code':'09','name':'Región de La Araucanía'};
-		// var X = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':13,'code':'10','name':'Región de Los Lagos'};
-		// var XI = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':15,'code':'12','name':'Región de Magallanes y de la Antártica Chilena'};
-		// var XII = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':14,'code':'11','name':'Región de Aysén del General Carlos Ibáñez del Campo'};
-		// var XIII = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':6,'code':'13','name':'Región Metropolitana de Santiago'};
-		// var XIV = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':12,'code':'14','name':'Región de Los Ríos'};
-		// var XV = 	{'especies':[], 'spIntroducidas':[],'spNativas':[],'spCultivadas':[],'order':0,'code':'15','name':'Región de Arica y Parinacota'};
-		// if(data.length>0){
-		//     for (var e = data.length - 1; e >= 0; e--) {
-		// 	    if(data[e].dist && data[e].dist.length > 0){
-		// 		    for (var j = data[e].dist.length - 1; j >= 0; j--) {
-		// 		        if(data[e].dist[j].code ==='01'){I.especies.push(data[e]); if(data[e].type===3){I.spNativas.push(data[e]);} if(data[e].type===1){I.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='02'){II.especies.push(data[e]); if(data[e].type===3){II.spNativas.push(data[e]);} if(data[e].type===1){II.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='03'){III.especies.push(data[e]); if(data[e].type===3){III.spNativas.push(data[e]);} if(data[e].type===1){III.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='04'){IV.especies.push(data[e]); if(data[e].type===3){IV.spNativas.push(data[e]);} if(data[e].type===1){IV.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='05'){V.especies.push(data[e]); if(data[e].type===3){V.spNativas.push(data[e]);} if(data[e].type===1){V.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='06'){VI.especies.push(data[e]); if(data[e].type===3){VI.spNativas.push(data[e]);} if(data[e].type===1){VI.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='07'){VII.especies.push(data[e]); if(data[e].type===3){VII.spNativas.push(data[e]);} if(data[e].type===1){VII.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='08'){VIII.especies.push(data[e]); if(data[e].type===3){VIII.spNativas.push(data[e]);} if(data[e].type===1){VIII.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='09'){IX.especies.push(data[e]); if(data[e].type===3){IX.spNativas.push(data[e]);} if(data[e].type===1){IX.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='10'){X.especies.push(data[e]); if(data[e].type===3){X.spNativas.push(data[e]);} if(data[e].type===1){X.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='11'){XI.especies.push(data[e]); if(data[e].type===3){XI.spNativas.push(data[e]);} if(data[e].type===1){XI.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='12'){XII.especies.push(data[e]); if(data[e].type===3){XII.spNativas.push(data[e]);} if(data[e].type===1){XII.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='13'){XIII.especies.push(data[e]); if(data[e].type===3){XIII.spNativas.push(data[e]);} if(data[e].type===1){XIII.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='14'){XIV.especies.push(data[e]); if(data[e].type===3){XIV.spNativas.push(data[e]);} if(data[e].type===1){XIV.spCultivadas.push(data[e]);}}
-		// 		        if(data[e].dist[j].code ==='15'){XV.especies.push(data[e]); if(data[e].type===3){XV.spNativas.push(data[e]);} if(data[e].type===1){XV.spCultivadas.push(data[e]);}}
-		// 		    }
-		// 	    }
-		//     }
-		// }
-	 //    $scope.spFiltradas = [I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII,XIII,XIV,XV];
+	    //$scope.especieSeleccionada = sp;
+	    for (var i = data.length - 1; i >= 0; i--) {
+	    	data[i].flujo = $scope.FlujoGenico(data[i]);
+	    	data[i].nivel = $scope.riskLevel($scope.FlujoGenico(data[i]));
+	    }
+	    $scope.especiesMatch = data;
+		var I = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':1,'code':'01','name':'Región de Tarapacá'};
+		var II = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':2,'code':'02','name':'Región de Antofagasta'};
+		var III = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':3,'code':'03','name':'Región de Atacama'};
+		var IV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':4,'code':'04','name':'Región de Coquimbo'};
+		var V = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':5,'code':'05','name':'Región de Valparaíso'};
+		var VI = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':8,'code':'06','name':'Región del Libertador General Bernardo O’Higgins'};
+		var VII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':9,'code':'07','name':'Región del Maule'};
+		var VIII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':10,'code':'08','name':'Región del Biobío'};
+		var IX = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':11,'code':'09','name':'Región de La Araucanía'};
+		var X = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':13,'code':'10','name':'Región de Los Lagos'};
+		var XI = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':15,'code':'12','name':'Región de Magallanes y de la Antártica Chilena'};
+		var XII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':14,'code':'11','name':'Región de Aysén del General Carlos Ibáñez del Campo'};
+		var XIII = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':6,'code':'13','name':'Región Metropolitana de Santiago'};
+		var XIV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':12,'code':'14','name':'Región de Los Ríos'};
+		var XV = 	{'especies':[],'spNativas':[],'spCultivadas':[],'order':0,'code':'15','name':'Región de Arica y Parinacota'};
+		if(data.length>0){
+		    for (var e = data.length - 1; e >= 0; e--) {
+			    if(data[e].dist && data[e].dist.length > 0){
+				    for (var j = data[e].dist.length - 1; j >= 0; j--) {
+				        if(data[e].dist[j].code ==='01'){I.especies.push(data[e]); if(data[e].type===3){I.spNativas.push(data[e]);} if(data[e].type===1){I.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='02'){II.especies.push(data[e]); if(data[e].type===3){II.spNativas.push(data[e]);} if(data[e].type===1){II.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='03'){III.especies.push(data[e]); if(data[e].type===3){III.spNativas.push(data[e]);} if(data[e].type===1){III.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='04'){IV.especies.push(data[e]); if(data[e].type===3){IV.spNativas.push(data[e]);} if(data[e].type===1){IV.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='05'){V.especies.push(data[e]); if(data[e].type===3){V.spNativas.push(data[e]);} if(data[e].type===1){V.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='06'){VI.especies.push(data[e]); if(data[e].type===3){VI.spNativas.push(data[e]);} if(data[e].type===1){VI.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='07'){VII.especies.push(data[e]); if(data[e].type===3){VII.spNativas.push(data[e]);} if(data[e].type===1){VII.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='08'){VIII.especies.push(data[e]); if(data[e].type===3){VIII.spNativas.push(data[e]);} if(data[e].type===1){VIII.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='09'){IX.especies.push(data[e]); if(data[e].type===3){IX.spNativas.push(data[e]);} if(data[e].type===1){IX.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='10'){X.especies.push(data[e]); if(data[e].type===3){X.spNativas.push(data[e]);} if(data[e].type===1){X.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='11'){XI.especies.push(data[e]); if(data[e].type===3){XI.spNativas.push(data[e]);} if(data[e].type===1){XI.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='12'){XII.especies.push(data[e]); if(data[e].type===3){XII.spNativas.push(data[e]);} if(data[e].type===1){XII.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='13'){XIII.especies.push(data[e]); if(data[e].type===3){XIII.spNativas.push(data[e]);} if(data[e].type===1){XIII.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='14'){XIV.especies.push(data[e]); if(data[e].type===3){XIV.spNativas.push(data[e]);} if(data[e].type===1){XIV.spCultivadas.push(data[e]);}}
+				        if(data[e].dist[j].code ==='15'){XV.especies.push(data[e]); if(data[e].type===3){XV.spNativas.push(data[e]);} if(data[e].type===1){XV.spCultivadas.push(data[e]);}}
+				    }
+			    }
+		    }
+		}
+	    $scope.spFiltradas = [I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII,XIII,XIV,XV];
 	});
 };
-
-var spForRegion = function (data,title) {
-
-    var I =   {'especies':[], 'order':1,'code':'01','name':'Región de Tarapacá'};
-    var II =  {'especies':[], 'order':2,'code':'02','name':'Región de Antofagasta'};
-    var III =   {'especies':[], 'order':3,'code':'03','name':'Región de Atacama'};
-    var IV =  {'especies':[], 'order':4,'code':'04','name':'Región de Coquimbo'};
-    var V =   {'especies':[], 'order':5,'code':'05','name':'Región de Valparaíso'};
-    var VI =  {'especies':[], 'order':8,'code':'06','name':'Región del Libertador General Bernardo O’Higgins'};
-    var VII =   {'especies':[], 'order':9,'code':'07','name':'Región del Maule'};
-    var VIII =  {'especies':[], 'order':10,'code':'08','name':'Región del Biobío'};
-    var IX =  {'especies':[], 'order':11,'code':'09','name':'Región de La Araucanía'};
-    var X =   {'especies':[], 'order':13,'code':'10','name':'Región de Los Lagos'};
-    var XI =  {'especies':[], 'order':15,'code':'12','name':'Región de Magallanes y de la Antártica Chilena'};
-    var XII =   {'especies':[], 'order':14,'code':'11','name':'Región de Aysén del General Carlos Ibáñez del Campo'};
-    var XIII =  {'especies':[], 'order':6,'code':'13','name':'Región Metropolitana de Santiago'};
-    var XIV =   {'especies':[], 'order':12,'code':'14','name':'Región de Los Ríos'};
-    var XV =  {'especies':[], 'order':0,'code':'15','name':'Región de Arica y Parinacota'};
-    if(data.length>0){
-        for (var e = data.length - 1; e >= 0; e--) {
-          if(data[e].dist && data[e].dist.length > 0){
-            for (var j = data[e].dist.length - 1; j >= 0; j--) {
-                if(data[e].dist[j].code ==='01'){I.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='02'){II.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='03'){III.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='04'){IV.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='05'){V.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='06'){VI.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='07'){VII.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='08'){VIII.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='09'){IX.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='10'){X.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='11'){XI.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='12'){XII.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='13'){XIII.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='14'){XIV.especies.push(data[e]);}
-                if(data[e].dist[j].code ==='15'){XV.especies.push(data[e]);}
-            }
-          }
-        }
-    }
-    var result = {};
-    result.regiones = [I,II,III,IV,V,VI,VII,VIII,IX,X,XI,XII,XIII,XIV,XV];
-    result.title = title;
-    return result;
-};
-
-
 $scope.getReport = function (sp){
   $scope.report = '';
   $scope.report = sp;
@@ -477,36 +393,39 @@ $scope.description = function(sp){
   return descripcion;
 };
 
-// relationship.getMatchPerGenus('Zea').then(function(data){
-//   $scope.krap = data
-// });
-// $scope.krap = relationship.getMatchPerGenus('Zea');
-
-relationship.getMultiple(['Zea','Solanum']).then(function(data){
-  $scope.krap = data;
 });
 
- //End Controller
- });
+// angular.module('fullstack012App').filter('propsFilter', function() {
+//   return function(items, props) {
+//     var out = [];
+
+//     if (angular.isArray(items)) {
+//       items.forEach(function(item) {
+//         var itemMatches = false;
+
+//         var keys = Object.keys(props);
+//         for (var i = 0; i < keys.length; i++) {
+//           var prop = keys[i];
+//           var text = props[prop].toLowerCase();
+//           if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
+//             itemMatches = true;
+//             break;
+//           }
+//         }
+
+//         if (itemMatches) {
+//           out.push(item);
+//         }
+//       });
+//     } else {
+//       // Let the output be the input untouched
+//       out = items;
+//     }
+
+//     return out;
+//   };
+// });
 
 
-// {
-//   nombreEs:
-//   taxa:
-//   I: {nativas:'',introducidas:''}
-//   II: {nativas:'',introducidas:''}
-//   III: {nativas:'',introducidas:''}
-//   IV: {nativas:'',introducidas:''}
-//   V: {nativas:'',introducidas:''}
-//   VI: {nativas:'',introducidas:''}
-//   VII: {nativas:'',introducidas:''}
-//   VIII: {nativas:'',introducidas:''}
-//   IX: {nativas:'',introducidas:''}
-//   X: {nativas:'',introducidas:''}
-//   XI: {nativas:'',introducidas:''}
-//   XII: {nativas:'',introducidas:''}
-//   XIII: {nativas:'',introducidas:''}
-//   XIV: {nativas:'',introducidas:''}
-//   XV: {nativas:'',introducidas:''}
-// }
+
 
