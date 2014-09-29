@@ -2,6 +2,39 @@
 
 var _ = require('lodash');
 var Flora = require('./flora.model');
+var async = require('async');
+
+var paginationAsync = function(req, res, query, perPagex, sortx){
+  var perPage = perPagex || 25;
+  var page = req.query.page > 0 ? req.query.page : 0;
+  var sort = sortx || 'familia';
+  var response = {};
+  response.page = page;
+
+  async.parallel([
+    function(callback){
+      Flora.find(query)
+      .limit(perPage)
+      .skip(perPage * page)
+      .sort(sort)
+      .exec(function(err, data ){
+        response.events = data;
+        callback();
+      });
+    },
+    function(callback){
+      Flora.find(query).count().exec(function(err, data){
+        response.count = data;
+        callback();
+      });
+    }
+  ], function(err){
+    var total = Math.ceil(response.count / perPage);
+    response.pages = total;
+    return res.json(200, response);
+  });
+};
+
 
 // Get list of floras
 exports.index = function(req, res) {
@@ -12,10 +45,9 @@ exports.index = function(req, res) {
 };
 // Get list of transgenicas
 exports.transgenicas = function(req, res) {
-  Flora.find({"type":4},function (err, floras) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, floras);
-  });
+
+paginationAsync(req,res,{"type":4}, 40, 'familia');
+
 };
 // Get list of transgenicas resumida
 exports.transgenicas_r = function(req, res) {
@@ -46,10 +78,11 @@ exports.transgenicas_filtradas = function(req, res) {
 };
 // Get list of cultivadas
 exports.cultivadas = function(req, res) {
-  Flora.find({"type":1},function (err, floras) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, floras);
-  });
+  // Flora.find({"type":1},function (err, floras) {
+  //   if(err) { return handleError(res, err); }
+  //   return res.json(200, floras);
+  // });
+paginationAsync(req,res,{"type":1}, 40, 'familia');
 };
 // Get list of cultivadas resumida
 exports.cultivadas_r = function(req, res) {
@@ -60,17 +93,19 @@ exports.cultivadas_r = function(req, res) {
 };
 // Get list of transgenicas
 exports.introducidas = function(req, res) {
-  Flora.find({"type":2},function (err, floras) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, floras);
-  });
+  // Flora.find({"type":2},function (err, floras) {
+  //   if(err) { return handleError(res, err); }
+  //   return res.json(200, floras);
+  // });
+  paginationAsync(req,res,{"type":2}, 70, 'familia');
 };
 // Get list of transgenicas
 exports.nativas = function(req, res) {
-  Flora.find({"type":3},function (err, floras) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, floras);
-  });
+  // Flora.find({"type":3},function (err, floras) {
+  //   if(err) { return handleError(res, err); }
+  //   return res.json(200, floras);
+  // });
+  paginationAsync(req,res,{"type":3}, 100, 'familia');
 };
 // Get list of species relacionadas
 exports.relacion = function(req, res) {

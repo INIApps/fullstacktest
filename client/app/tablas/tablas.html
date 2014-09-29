@@ -1,0 +1,40 @@
+<div class="col-md-12">
+<!-- This is the tablas view.
+<ul>
+	<li ng-repeat="sp in transgenicas.events">{{sp.taxa}}</li>
+</ul> -->
+<table class="table">
+	<tr>
+		<th>Familia</th>
+		<th>Genero</th>
+		<th>Especie</th>
+		<th>Taxa</th>
+		<th>Extinta</th>
+		<th>Vulnerable</th>
+		<th>EnPeligro</th>
+		<th>Rara</th>
+		<th>Anual</th>
+		<th>Endemica</th>
+		<th>Origen</th>
+	</tr>
+	<tr ng-repeat="sp in transgenicas.events">
+		<td>{{sp.familia}}</td>
+		<td>{{sp.genero}}</td>
+		<td>{{sp.especie}}</td>
+		<td>{{sp.taxa}}</td>
+		<td>{{sp.extinta}}</td>
+		<td>{{sp.vulnerable}}</td>
+		<td>{{sp.enPeligro}}</td>
+		<td>{{sp.rara}}</td>
+		<td>{{sp.anual}}</td>
+		<td>{{sp.endemica}}</td>
+		<td><span ng-repeat="origen in sp.origen">{{origen}} - </span></td>
+	</tr>
+</table>
+<!-- {{transgenicas.events}} -->
+<ul class="pagination">
+  <!-- <li><a href="#">&laquo;</a></li> -->
+  <li ng-repeat="num in pages" style="cursor:pointer"><a ng-click="getPage(num-1)">{{num}}</a></li>
+  <!-- <li><a href="#">&raquo;</a></li> -->
+</ul>
+</div>

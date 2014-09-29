@@ -67,10 +67,6 @@ angular.module('fullstack012App')
       return deferred.promise;
     };
 
-
     return dataFactory;
   });
-
-
-
 
