@@ -1,9 +1,24 @@
+<style>
+	.mypointer a{
+		cursor:pointer;
+	}
+</style>
+
 <div class="col-md-12">
-<!-- This is the tablas view.
-<ul>
-	<li ng-repeat="sp in transgenicas.events">{{sp.taxa}}</li>
-</ul> -->
-<table class="table">
+<ul class="nav nav-tabs mypointer" role="tablist">
+  <li ng-class="{'active':transgenicas}"><a ng-click="getSp('transgenicas')">Transgénicas</a></li>
+  <li ng-class="{'active':cultivadas}"><a ng-click="getSp('cultivadas')">Cultivadas</a></li>
+  <li ng-class="{'active':introducidas}"><a ng-click="getSp('introducidas')">Introducidas</a></li>
+  <li ng-class="{'active':nativas}"><a ng-click="getSp('nativas')">Nativas</a></li>
+  <li ng-class="{'active':polinizadores}"><a ng-click="getSpPol()">Polinizadores</a></li>
+</ul>
+
+<ul class="pagination">
+  <!-- <li><a href="#">&laquo;</a></li> -->
+  <li ng-repeat="num in pages" class="mypointer"><a ng-click="getPage(num-1)">{{num}}</a></li>
+  <!-- <li><a href="#">&raquo;</a></li> -->
+</ul>
+<table class="table table-striped table-condensed" ng-show="nativas">
 	<tr>
 		<th>Familia</th>
 		<th>Genero</th>
@@ -17,7 +32,7 @@
 		<th>Endemica</th>
 		<th>Origen</th>
 	</tr>
-	<tr ng-repeat="sp in transgenicas.events">
+	<tr ng-repeat="sp in nativas.events">
 		<td>{{sp.familia}}</td>
 		<td>{{sp.genero}}</td>
 		<td>{{sp.especie}}</td>
@@ -31,10 +46,163 @@
 		<td><span ng-repeat="origen in sp.origen">{{origen}} - </span></td>
 	</tr>
 </table>
-<!-- {{transgenicas.events}} -->
+
+
+<table class="table table-striped table-condensed" ng-show="cultivadas">
+	<tr>
+		<th>Familia</th>
+		<th>Genero</th>
+		<th>Taxa</th>
+		<th>Origen</th>
+		<th>Artificial</th>
+		<th>Endémico</th>
+		<th>Nativo</th>
+		<th>Introducido</th>
+		<th>Naturalizado</th>
+		<th>Agrícola</th>
+		<th>Ornamental</th>
+		<th>Forestal</th>
+		<th>Maleza</th>
+		<th>Anual</th>
+		<th>Bianual</th>
+		<th>Perenne</th>
+		<th>Bulbosa</th>
+		<th>Autógama</th>
+		<th>Alógama</th>
+		<th>Anemófila</th>
+		<th>Entomófila</th>
+		<th>Landrace</th>
+		<th>Semilla</th>
+		<th>Vegetativa</th>
+	</tr>
+	<tr ng-repeat="sp in cultivadas.events">
+		<td>{{sp.familia}}</td>
+		<td>{{sp.genero}}</td>
+		<td>{{sp.taxa}}</td>
+		<td>{{sp.origen}}</td>
+		<td>{{sp.artificial}}</td>
+		<td>{{sp.endemico}}</td>
+		<td>{{sp.nativo}}</td>
+		<td>{{sp.introducido}}</td>
+		<td>{{sp.naturalizado}}</td>
+		<td>{{sp.agricola}}</td>
+		<td>{{sp.ornamental}}</td>
+		<td>{{sp.forestal}}</td>
+		<td>{{sp.maleza}}</td>
+		<td>{{sp.anual}}</td>
+		<td>{{sp.bianual}}</td>
+		<td>{{sp.perenne}}</td>
+		<td>{{sp.bulbosa}}</td>
+		<td>{{sp.autogama}}</td>
+		<td>{{sp.alogama}}</td>
+		<td>{{sp.anemofila}}</td>
+		<td>{{sp.entomofila}}</td>
+		<td>{{sp.landrace}}</td>
+		<td>{{sp.semilla}}</td>
+		<td>{{sp.vegetativa}}</td>
+	</tr>
+</table>
+
+
+<table class="table table-striped table-condensed" ng-show="transgenicas">
+	<tr>
+		<th>Familia</th>
+		<th>Genero</th>
+		<th>Especie</th>
+		<th>Variedad</th>
+		<th>Taxa</th>
+		<th>Nombre(es)</th>
+		<th>Nombre(en)</th>
+		<th>Registro</th>
+		<th>Flujo</th>		
+		<th>GFFS</th>
+		<th>GFFC</th>
+		<th>SB</th>
+	</tr>
+	<tr ng-repeat="sp in transgenicas.events">
+		<td>{{sp.familia}}</td>
+		<td>{{sp.genero}}</td>
+		<td>{{sp.especie}}</td>
+		<td>{{sp.variedad}}</td>
+		<td>{{sp.taxa}}</td>
+		<td>{{sp.nameEs}}</td>
+		<td>{{sp.nameEn}}</td>
+		<td>{{sp.registro}}</td>
+		<td>{{sp.flujo}}</td>
+		<td>{{sp.GFFS}}</td>
+		<td>{{sp.GFFC}}</td>
+		<td>{{sp.SB}}</td>
+	</tr>
+</table>
+
+<table class="table table-striped table-condensed" ng-show="introducidas">
+	<tr>
+		<th>Familia</th>
+		<th>Genero</th>
+		<th>Especie</th>
+		<th>Variedad</th>
+		<th>Taxa</th>
+		<th>Nombre(es)</th>
+		<th>Origen</th>
+		<th>Agrícola</th>
+		<th>Maleza</th>		
+		<th>Ornamental</th>
+		<th>Forestal</th>
+		<th>Medicinal</th>
+		<th>Naturalizada</th>
+	</tr>
+	<tr ng-repeat="sp in introducidas.events">
+		<td>{{sp.familia}}</td>
+		<td>{{sp.genero}}</td>
+		<td>{{sp.especie}}</td>
+		<td>{{sp.variedad}}</td>
+		<td>{{sp.taxa}}</td>
+		<td>{{sp.nameEs}}</td>
+		<td>{{sp.origen}}</td>
+		<td>{{sp.agricola}}</td>
+		<td>{{sp.maleza}}</td>
+		<td>{{sp.ornamental}}</td>
+		<td>{{sp.forestal}}</td>
+		<td>{{sp.medicinal}}</td>
+		<td>{{sp.naturalizada}}</td>
+	</tr>
+</table>
+
+<table class="table table-striped table-condensed" ng-show="polinizadores">
+	<tr>
+		<th>Orden</th>
+		<th>Familia</th>
+		<th>Subfamilia</th>
+		<th>Tribu</th>
+		<th>Genero</th>
+		<th>Especie</th>
+		<th>Taxa</th>
+		<th>Endémico</th>
+		<th>Introducido</th>
+		<th>Poliléctica</th>
+		<th>Oligoléctica</th>		
+	</tr>
+	<tr ng-repeat="sp in polinizadores.events">
+		<td>{{sp.orden}}</td>
+		<td>{{sp.familia}}</td>
+		<td>{{sp.subfamilia}}</td>
+		<td>{{sp.tribu}}</td>
+		<td>{{sp.genero}}</td>
+		<td>{{sp.especie}}</td>
+		<td>{{sp.taxa}}</td>
+		<td>{{sp.endemismo}}</td>
+		<td>{{sp.introducida}}</td>
+		<td>{{sp.polilectica}}</td>
+		<td>{{sp.oligolectica}}</td>
+
+	</tr>
+</table>
+
 <ul class="pagination">
   <!-- <li><a href="#">&laquo;</a></li> -->
-  <li ng-repeat="num in pages" style="cursor:pointer"><a ng-click="getPage(num-1)">{{num}}</a></li>
+  <li ng-repeat="num in pages" class="mypointer"><a ng-click="getPage(num-1)">{{num}}</a></li>
   <!-- <li><a href="#">&raquo;</a></li> -->
 </ul>
+
+
 </div>

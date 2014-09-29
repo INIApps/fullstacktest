@@ -46,7 +46,7 @@ exports.index = function(req, res) {
 // Get list of transgenicas
 exports.transgenicas = function(req, res) {
 
-paginationAsync(req,res,{"type":4}, 40, 'familia');
+paginationAsync(req,res,{"type":4}, 20, 'familia');
 
 };
 // Get list of transgenicas resumida
@@ -82,7 +82,7 @@ exports.cultivadas = function(req, res) {
   //   if(err) { return handleError(res, err); }
   //   return res.json(200, floras);
   // });
-paginationAsync(req,res,{"type":1}, 40, 'familia');
+paginationAsync(req,res,{"type":1}, 20, 'familia');
 };
 // Get list of cultivadas resumida
 exports.cultivadas_r = function(req, res) {
@@ -97,7 +97,7 @@ exports.introducidas = function(req, res) {
   //   if(err) { return handleError(res, err); }
   //   return res.json(200, floras);
   // });
-  paginationAsync(req,res,{"type":2}, 70, 'familia');
+  paginationAsync(req,res,{"type":2}, 100, 'familia');
 };
 // Get list of transgenicas
 exports.nativas = function(req, res) {

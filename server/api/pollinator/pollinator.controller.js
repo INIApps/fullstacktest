@@ -2,13 +2,48 @@
 
 var _ = require('lodash');
 var Pollinator = require('./pollinator.model');
+var async = require('async');
+
+var paginationAsync = function(req, res, query, perPagex, sortx){
+  var perPage = perPagex || 25;
+  var page = req.query.page > 0 ? req.query.page : 0;
+  var sort = sortx || 'familia';
+  var response = {};
+  response.page = page;
+
+  async.parallel([
+    function(callback){
+      Pollinator.find(query)
+      .limit(perPage)
+      .skip(perPage * page)
+      .sort(sort)
+      .exec(function(err, data ){
+        response.events = data;
+        callback();
+      });
+    },
+    function(callback){
+      Pollinator.find(query).count().exec(function(err, data){
+        response.count = data;
+        callback();
+      });
+    }
+  ], function(err){
+    var total = Math.ceil(response.count / perPage);
+    response.pages = total;
+    return res.json(200, response);
+  });
+};
+
 
 // Get list of pollinators
 exports.index = function(req, res) {
-  Pollinator.find(function (err, pollinators) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, pollinators);
-  });
+  // Pollinator.find(function (err, pollinators) {
+  //   if(err) { return handleError(res, err); }
+  //   return res.json(200, pollinators);
+  // });
+paginationAsync(req,res,{},20,'orden');
+
 };
 
 // Get a single pollinator
