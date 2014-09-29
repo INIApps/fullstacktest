@@ -14,13 +14,13 @@
 				<img ng-src="assets/images/loading.gif" class="loadingkrap">
 			</div>
 			<div class="tab-pane" ng-show="selectedTab == 1" id="home">
-				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(spCompare)" 
+				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(spCompare); spSelected=null;" 
 				ng-options="a.taxa group by a.familia for a in transgenicas | orderBy: 'familia'">
 					<option value="">Especies Transgénicas</option>
 				</select>
 			</div>
 			<div class="tab-pane" ng-show="selectedTab == 2" id="profile">
-				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(spCompare)" ng-options="a.taxa group by a.familia for a in cultivadas | orderBy: 'familia'">
+				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(spCompare); spSelected=null;" ng-options="a.taxa group by a.familia for a in cultivadas | orderBy: 'familia'">
 					<option value="">Especies Cultivadas</option>
 				</select>
 			</div>
@@ -35,7 +35,7 @@
 		    <accordion-group>
 		    <accordion-heading> <span style="cursor:pointer;" ng-class="{'btn btn-primary':CultFilt.length > 0}">Cultivadas <span class="badge">{{CultFilt.length}}</span></span></accordion-heading>
 			<ul>
-				<li style="cursor:pointer;" ng-repeat="spR in CultFilt = (especiesMatch | filter:{type:1})" ng-click="getReport(spR)"> {{spR.taxa}}</li>
+				<li style="cursor:pointer;" ng-repeat="spR in CultFilt = (especiesMatch | filter:{type:1})" ng-click="getReport(spR)"> {{spR.taxa}} -> {{spR.riskLevelM()}} <input type="text" ng-model="spR.flujoGenico"></li>
 			</ul>
 		    </accordion-group>
 
@@ -65,6 +65,17 @@
 		    <div class="panel-body">
 		    	<h4>Especie seleccionada:</h4>
 				<h5>{{spCompare.taxa}} <small>({{spCompare.tipo}})</small></h5>
+				<div ng-show="spCompare.polSingle.list.length>0">
+					<p class="small">
+						Hymenopteros <span class="badge">{{spCompare.polSingle.hymenoptera}}</span>
+						Lepidopteros <span class="badge">{{spCompare.polSingle.lepidoptera}}</span>
+						Dipteros <span class="badge">{{spCompare.polSingle.diptera}}</span>
+						Coleopteros <span class="badge">{{spCompare.polSingle.coleoptera}}</span>
+					</p>
+					<ul>
+						<li ng-repeat="pollinator in spCompare.polSingle.list">{{pollinator.taxa}}</li>
+					</ul>
+				</div>
 		    </div>
 		  </div>
 		</div>
@@ -73,16 +84,41 @@
 		    <div class="panel-body">
 		    	<h4>Especie a comparar: </h4>
 				<h5>{{spSelected.taxa}} <small>({{spSelected.tipo}})</small></h5>
+				<div ng-show="spSelected.polSingle.list.length>0">
+					<p class="small">
+						Hymenopteros <span class="badge">{{spSelected.polSingle.hymenoptera}}</span>
+						Lepidopteros <span class="badge">{{spSelected.polSingle.lepidoptera}}</span>
+						Dipteros <span class="badge">{{spSelected.polSingle.diptera}}</span>
+						Coleopteros <span class="badge">{{spSelected.polSingle.coleoptera}}</span>
+					</p>
+					<ul>
+						<li ng-repeat="pollinator in spSelected.polSingle.list">{{pollinator.taxa}}</li>
+					</ul>
+				</div>
 		    </div>
 		  </div>
+		</div>
+		<div class="col-xs-6 col-xs-offset-3" ng-show="spSelected.pollinators.list.length>0">
+			<div class="well">
+				<h4>Coincidencias en polinizadores </h4>
+				<p class="small">
+					Hymenopteros <span class="badge">{{spSelected.pollinators.hymenoptera}}</span>
+					Lepidopteros <span class="badge">{{spSelected.pollinators.lepidoptera}}</span>
+					Dipteros <span class="badge">{{spSelected.pollinators.diptera}}</span>
+					Coleopteros <span class="badge">{{spSelected.pollinators.coleoptera}}</span>
+				</p>
+				<ul>
+					<li ng-repeat="pollinator in spSelected.pollinators.list">{{pollinator.taxa}}</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 
 <!-- END bloque superior derecho -->
 
-	<div ng-show="spSelected" class="well" style="background-color:{{spSelected.colorRisk}};">
+	<div ng-show="spSelected" class="well" style="background-color:{{spSelected.colorRisk()}};">
 		<br>
-		<h4 >Riesgo de Flujo Génico <b>{{spSelected.riskLevel}}</b>  <small>({{spSelected.flujoGenico | number:0 }})</small> </h4>
+		<h4 >Riesgo de Flujo Génico <b>{{spSelected.riskLevel()}}</b>  <small>({{spSelected.flujoGenico | number:0 }})</small> </h4>
 		<p>{{spSelected.descripcion}}</p>
 	</div>
 		

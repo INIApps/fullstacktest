@@ -19,7 +19,7 @@ exports.transgenicas = function(req, res) {
 };
 // Get list of transgenicas resumida
 exports.transgenicas_r = function(req, res) {
-  Flora.find({"type":4},{"familia":1,"flujo":1,"tipo":1,"type":1,"taxa":1,"genero":1,"especie":1,"_id":0},function (err, floras) {
+  Flora.find({"type":4},{"familia":1,"flujo":1,"tipo":1,"type":1,"taxa":1,"genero":1,"especie":1,"_id":1},function (err, floras) {
     if(err) { return handleError(res, err); }
     return res.json(200, floras);
   });
@@ -53,7 +53,7 @@ exports.cultivadas = function(req, res) {
 };
 // Get list of cultivadas resumida
 exports.cultivadas_r = function(req, res) {
-  Flora.find({"type":1},{"familia":1,"tipo":1,"type":1,"taxa":1,"genero":1,"especie":1,"_id":0},function (err, floras) {
+  Flora.find({"type":1},{"familia":1,"tipo":1,"type":1,"taxa":1,"genero":1,"especie":1,"_id":1},function (err, floras) {
     if(err) { return handleError(res, err); }
     return res.json(200, floras);
   });
@@ -79,8 +79,26 @@ exports.relacion = function(req, res) {
   Flora.find(objR, function (err, flora) {
     if(err) { return handleError(res, err); }
     if(!flora) { return res.send(404); }
+
     return res.json(flora);
   });
+
+  // Flora.find({},{},{ limit: 5 })
+  // .exec(function (err, data){
+  //   if(err) { return handleError(res, err); }
+  //   if(!data) { return res.send(404); }
+  //   return data;
+  // })
+  // .then(function(data){
+  //   for (var i = data.length - 1; i >= 0; i--) {
+  //     data[i]
+  //   }
+  //   return data;
+  // })
+  // .then(function(data){
+  //   return res.json(data);
+  // });
+
 };
 // Get list of species relacionadas para informe
 exports.relacion_informe = function(req, res) {

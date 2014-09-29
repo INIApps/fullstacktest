@@ -122,6 +122,18 @@ angular.module('fullstack012App')
       }
     };
 
+    var riskLevelM = function(){
+      if(this.flujoGenico < 33.3333){
+        return 'Bajo';
+      }
+      if(this.flujoGenico >=33.3333 && this.flujoGenico< 66.6666){
+        return 'Medio';
+      }
+      if(this.flujoGenico >= 66.6666){
+        return 'Alto';
+      }
+    };
+
     this.colorRisk = function(flujo){
       if(flujo < 33.3333){
         return 'blue';
@@ -131,6 +143,18 @@ angular.module('fullstack012App')
       }
       if(flujo >= 66.6666){
         return 'red';
+      }
+    };
+
+    var colorRiskM = function(){
+      if(this.flujoGenico < 33.3333){
+        return '#04d0ff';
+      }
+      if(this.flujoGenico >=33.3333 && this.flujoGenico < 66.6666){
+        return '#fffa49';
+      }
+      if(this.flujoGenico >= 66.6666){
+        return '#ff7670';
       }
     };
 
@@ -300,7 +324,7 @@ angular.module('fullstack012App')
 	        Nen :3
 	    };
 	    return Re;
-    }
+    };
 
     this.setAndConfig = function (data, spComp){
 		for (var i = data.length - 1; i >= 0; i--) {
@@ -308,9 +332,73 @@ angular.module('fullstack012App')
 			data[i].R            = that.R();
 			data[i].flujoGenico  = that.FlujoGenico(data[i]);
 			data[i].descripcion  = that.description(data[i]);
-			data[i].riskLevel    = that.riskLevel(data[i].flujoGenico);
-			data[i].colorRisk    = that.colorRisk(data[i].flujoGenico);
+			//data[i].riskLevel    = that.riskLevel(data[i].flujoGenico);
+			//data[i].colorRisk    = that.colorRisk(data[i].flujoGenico);
+			data[i].riskLevel   = riskLevelM;
+			data[i].colorRisk    = colorRiskM;
 		};
 		return data;
-    }
+    };
+
+    this.pollinatorFx = function(data, sp){
+    	var pollinators =  that.configPollinatorObj(data);
+    	sp.pollinators = pollinators;
+    	if(data.length > 0){
+    		console.log('dentro del if');
+    		var H = 0;
+    		var D = 0;
+    		var C = 0;
+    		var L = 0;
+    		if(pollinators.hymenoptera	> 0){ H =1;}
+    		if(pollinators.lepidoptera	> 0){ L =1;}
+    		if(pollinators.coleoptera	> 0){ C =1;}
+    		if(pollinators.diptera		> 0){ D =1;}
+    		var P = {
+    			fg : 4,
+    			ipG : 5,
+    			h : 5,
+    			d : 3,
+    			l : 4,
+    			c : 2
+    		};
+    		var ip = (H*P.h + D*P.d + C*P.c + L*P.l)/20;
+    		var fgOld = sp.flujoGenico/100;
+    		var rest = 1-fgOld;
+    		var pondPol = 0.8;
+    		var cira = (fgOld + ip*rest*pondPol)*100;
+    		console.log('cira -> '+cira);
+    		if(cira > sp.flujoGenico){
+    			sp.oldFlujoGenico = sp.flujoGenico;
+    			sp.flujoGenico = cira;
+    		}
+    	}
+    	return sp;
+    };
+
+    this.configPollinatorObj = function(data){
+		var pollinators = {};
+		pollinators.list = data;
+		pollinators.hymenoptera = 0;
+		pollinators.lepidoptera = 0;
+		pollinators.coleoptera = 0;
+		pollinators.diptera = 0;
+		for (var i = data.length - 1; i >= 0; i--) {
+			switch (data[i].orden){
+			  case 'Hymenoptera':
+			      pollinators.hymenoptera++;
+			      break;
+			  case 'Lepidoptera':
+			      pollinators.lepidoptera++;
+			      break;
+			  case 'Coleoptera':
+			      pollinators.coleoptera++;
+			      break;
+			  case 'Diptera':
+			      pollinators.diptera++;
+			      break;
+			}
+		}
+		return pollinators;
+    };
+
   });
