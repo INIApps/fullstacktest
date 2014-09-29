@@ -336,7 +336,7 @@ angular.module('fullstack012App')
 			//data[i].colorRisk    = that.colorRisk(data[i].flujoGenico);
 			data[i].riskLevel   = riskLevelM;
 			data[i].colorRisk    = colorRiskM;
-		};
+		}
 		return data;
     };
 

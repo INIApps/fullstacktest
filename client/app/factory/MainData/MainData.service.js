@@ -23,7 +23,7 @@ angular.module('fullstack012App')
           deferred.resolve(data);
         })
         .error(function(){
-          deferred.reject("Ocurrió un error al buscar un match con la especie "+spCompare.taxa);
+          deferred.reject('Ocurrió un error al buscar un match con la especie '+spCompare.taxa);
         });
 
       return deferred.promise;
@@ -40,8 +40,7 @@ angular.module('fullstack012App')
             deferred.resolve(answer);
         })
         .error(function(){
-          var answer = sp;
-          deferred.reject("Ocurrió un error al buscar un match con polinizadores");
+          deferred.reject('Ocurrió un error al buscar un match con polinizadores');
           console.log('Error en la llamada al servidor');
         });
 
@@ -60,7 +59,7 @@ angular.module('fullstack012App')
           deferred.resolve(answer);
         })
         .error(function(){
-          deferred.reject("Ocurrió un error al buscar un match con polinizadores");
+          deferred.reject('Ocurrió un error al buscar un match con polinizadores');
           console.log('Error en la llamada al servidor');
         });
 

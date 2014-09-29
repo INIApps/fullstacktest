@@ -38,11 +38,15 @@ var paginationAsync = function(req, res, query, perPagex, sortx){
 
 // Get list of pollinators
 exports.index = function(req, res) {
-  // Pollinator.find(function (err, pollinators) {
-  //   if(err) { return handleError(res, err); }
-  //   return res.json(200, pollinators);
-  // });
-paginationAsync(req,res,{},20,'orden');
+  Pollinator.find(function (err, pollinators) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, pollinators);
+  });
+
+};
+exports.paginado = function(req, res) {
+
+  paginationAsync(req,res,{},20,'orden');
 
 };
 

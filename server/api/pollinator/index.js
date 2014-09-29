@@ -6,6 +6,7 @@ var controller = require('./pollinator.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/paginado', controller.paginado);
 router.get('/:id', controller.show);
 router.get('/idlink/:id', controller.showlink);
 router.get('/relation/:idA/:idB', controller.getMatch);

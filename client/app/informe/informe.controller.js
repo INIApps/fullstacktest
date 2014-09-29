@@ -69,19 +69,19 @@ $scope.getMatch = function (){
     //Si nativas no cultivadas
     $scope.SNNC = []; // 0 
 
-    for (var i = data.length - 1; i >= 0; i--) {
-      if(data[i].type === 1 || data[i].type === 2 ){
-        if(data[i].type === 2 && data[i].agricola === 0){
-          $scope.NNNC.push(data[i]);
+    for (var w = data.length - 1; w >= 0; w--) {
+      if(data[w].type === 1 || data[w].type === 2 ){
+        if(data[w].type === 2 && data[w].agricola === 0){
+          $scope.NNNC.push(data[w]);
         }
-        if(data[i].type === 1){
-          $scope.NNC.push(data[i]);
+        if(data[w].type === 1){
+          $scope.NNC.push(data[w]);
         }
       }
-      if(data[i].type === 3 ){
-        $scope.SN.push(data[i]);
+      if(data[w].type === 3 ){
+        $scope.SN.push(data[w]);
       }
-    };
+    }
     //No nativas
     $scope.NN = $scope.NNC.concat($scope.NNNC);
     //Distribuciones
