@@ -15,7 +15,7 @@ angular.module('fullstack012App')
 		return resultFlujoGenico;
     };
 
-	this.FlujoGenicoTransgenico = function (sp){
+    this.FlujoGenicoTransgenico = function (sp){
       var resultFlujoGenicoTransgenico;
       if(sp.type===1){ resultFlujoGenicoTransgenico = that.rasC(sp); }
       if(sp.type===2){ resultFlujoGenicoTransgenico = that.rasI(sp); }
@@ -279,65 +279,65 @@ angular.module('fullstack012App')
     };
 
     this.R = function (){
-		var Re = {
-	        CtipO:  1,
-	        Cen:  6,
-	        Cnati:  5,
-	        Cin:  2,
-	        Cnatu:  4,
-	        CtipC:  1,
-	        Cag:  3,
-	        Cor:  2,
-	        Cfo:  2,
-	        Cma:  6,
-	        CtipR:  1,
-	        Cse:  4,
-	        Cve:  5,
-	        Ccv:  1,
-	        Can:  4,
-	        Cbi:  4,
-	        Cpe:  3,
-	        Cbu:  3,
-	        CtipP:  1,
-	        Cang:   2,
-	        Calg:   5,
-	        CagP:   1,
-	        Cent:   4,
-	        Cane:   3,
-	        Cart:   2,
-	        Cland:  1,
-	        Clan:   5,
-	        Itipoc :  1,
-	        Ia :  3,
-	        Io :  2,
-	        If :  2,
-	        Ime : 3,
-	        Ima : 6,
-	        Iotr :1,
-	        In :  5,
-	        NcEc :1,
-	        Nex :2,
-	        Np :6,
-	        Nv :5,
-	        Nr :4,
-	        Notr :1,
-	        Nen :3
-	    };
+  		var Re = {
+  	        CtipO:  1,
+  	        Cen:  6,
+  	        Cnati:  5,
+  	        Cin:  2,
+  	        Cnatu:  4,
+  	        CtipC:  1,
+  	        Cag:  3,
+  	        Cor:  2,
+  	        Cfo:  2,
+  	        Cma:  6,
+  	        CtipR:  1,
+  	        Cse:  4,
+  	        Cve:  5,
+  	        Ccv:  1,
+  	        Can:  4,
+  	        Cbi:  4,
+  	        Cpe:  3,
+  	        Cbu:  3,
+  	        CtipP:  1,
+  	        Cang:   2,
+  	        Calg:   5,
+  	        CagP:   1,
+  	        Cent:   4,
+  	        Cane:   3,
+  	        Cart:   2,
+  	        Cland:  1,
+  	        Clan:   5,
+  	        Itipoc :  1,
+  	        Ia :  3,
+  	        Io :  2,
+  	        If :  2,
+  	        Ime : 3,
+  	        Ima : 6,
+  	        Iotr :1,
+  	        In :  5,
+  	        NcEc :1,
+  	        Nex :2,
+  	        Np :6,
+  	        Nv :5,
+  	        Nr :4,
+  	        Notr :1,
+  	        Nen :3
+  	    };
 	    return Re;
     };
 
     this.setAndConfig = function (data, spComp){
-		for (var i = data.length - 1; i >= 0; i--) {
-			data[i].spCompare    = spComp;
-			data[i].R            = that.R();
-			data[i].flujoGenico  = that.FlujoGenico(data[i]);
-			data[i].descripcion  = that.description(data[i]);
-			//data[i].riskLevel    = that.riskLevel(data[i].flujoGenico);
-			//data[i].colorRisk    = that.colorRisk(data[i].flujoGenico);
-			data[i].riskLevel   = riskLevelM;
-			data[i].colorRisk    = colorRiskM;
-		}
-		return data;
+  		for (var i = data.length - 1; i >= 0; i--) {
+  			data[i].spCompare    = spComp;
+  			data[i].R            = that.R();
+  			data[i].flujoGenico  = that.FlujoGenico(data[i]);
+  			data[i].descripcion  = that.description(data[i]);
+  			//data[i].riskLevel    = that.riskLevel(data[i].flujoGenico);
+  			//data[i].colorRisk    = that.colorRisk(data[i].flujoGenico);
+  			data[i].riskLevel   = riskLevelM;
+  			data[i].colorRisk    = colorRiskM;
+  		}
+  		return data;
     };
 
     this.pollinatorFx = function(data, sp){
@@ -376,29 +376,29 @@ angular.module('fullstack012App')
     };
 
     this.configPollinatorObj = function(data){
-		var pollinators = {};
-		pollinators.list = data;
-		pollinators.hymenoptera = 0;
-		pollinators.lepidoptera = 0;
-		pollinators.coleoptera = 0;
-		pollinators.diptera = 0;
-		for (var i = data.length - 1; i >= 0; i--) {
-			switch (data[i].orden){
-			  case 'Hymenoptera':
-			      pollinators.hymenoptera++;
-			      break;
-			  case 'Lepidoptera':
-			      pollinators.lepidoptera++;
-			      break;
-			  case 'Coleoptera':
-			      pollinators.coleoptera++;
-			      break;
-			  case 'Diptera':
-			      pollinators.diptera++;
-			      break;
-			}
-		}
-		return pollinators;
+  		var pollinators = {};
+  		pollinators.list = data;
+  		pollinators.hymenoptera = 0;
+  		pollinators.lepidoptera = 0;
+  		pollinators.coleoptera = 0;
+  		pollinators.diptera = 0;
+  		for (var i = data.length - 1; i >= 0; i--) {
+  			switch (data[i].orden){
+  			  case 'Hymenoptera':
+  			      pollinators.hymenoptera++;
+  			      break;
+  			  case 'Lepidoptera':
+  			      pollinators.lepidoptera++;
+  			      break;
+  			  case 'Coleoptera':
+  			      pollinators.coleoptera++;
+  			      break;
+  			  case 'Diptera':
+  			      pollinators.diptera++;
+  			      break;
+  			}
+  		}
+  		return pollinators;
     };
 
   });

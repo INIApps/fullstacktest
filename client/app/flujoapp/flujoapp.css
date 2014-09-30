@@ -27,3 +27,6 @@ button.ponderacion{
 	margin-top:100px; 
 	width:33px;
 }
+.mypointer{
+	cursor:pointer;
+}

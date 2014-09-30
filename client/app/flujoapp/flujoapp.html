@@ -5,8 +5,8 @@
 	<div class="col-md-4">
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" ng-init="selectedTab=1">
-			<li ng-class="{active: selectedTab == 1}" style="cursor:pointer;"><a ng-click="selectedTab = 1">Transgénicas</a></li>
-			<li ng-class="{active: selectedTab == 2}" style="cursor:pointer;"><a ng-click="selectedTab = 2">Cultivadas</a></li>
+			<li ng-class="{active: selectedTab == 1}" style="cursor:pointer;"><a ng-click="selectedTab = 1; cleanVariables();">Transgénicas</a></li>
+			<li ng-class="{active: selectedTab == 2}" style="cursor:pointer;"><a ng-click="selectedTab = 2; cleanVariables();">Cultivadas</a></li>
 		</ul>
 		<!-- Tab panes -->
 		<div class="scroll-block" style="height:50px;">
@@ -15,45 +15,125 @@
 			</div>
 			<div class="tab-pane" ng-show="selectedTab == 1" id="home">
 				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(spCompare); spSelected=null;" 
-				ng-options="a.taxa group by a.familia for a in transgenicas | orderBy: 'familia'">
+				ng-options="a.getShortName() group by a.familia for a in transgenicas | orderBy: 'familia'">
 					<option value="">Especies Transgénicas</option>
 				</select>
 			</div>
 			<div class="tab-pane" ng-show="selectedTab == 2" id="profile">
-				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(spCompare); spSelected=null;" ng-options="a.taxa group by a.familia for a in cultivadas | orderBy: 'familia'">
+				<select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(spCompare); spSelected=null;" ng-options="a.getShortName() group by a.familia for a in cultivadas | orderBy: 'familia'">
 					<option value="">Especies Cultivadas</option>
 				</select>
 			</div>
 		</div>
 		<div>
-		  <accordion close-others="oneAtATime">
-			<!-- fix accordion-group -->
+
+	<!-- CULTIVADAS -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span ng-hide="especiesMatch.cultivadas.length > 0">
+					<input class="btn" type="text" placeholder="Cultivadas" disabled>
+				</span>
+
+				<span class="mypointer" ng-show="especiesMatch.cultivadas.length > 0" ng-click="taipo=1;" ng-class="{'btn btn-primary':especiesMatch.cultivadas.length > 0}">
+					Cultivadas <span class="badge">{{especiesMatch.cultivadas.length}}</span>
+				</span>
+			</div>
+			<div ng-show="taipo==1" >
+				<div class="panel-body">
+					<ul class="list-group">
+					  <li 
+					  	class="list-group-item" 
+					  	ng-repeat="spR in especiesMatch.cultivadas | orderByFlujo " 
+					  	style="background:{{spR.colorRisk()}};">
+					  	<a class="mypointer" ng-click="getReport(spR)" >{{spR.taxa}}</a>
+					  	 <small>({{spR.riskLevel()}})</small>
+					  	 <a href="flora/{{spR._id}}">Edit</a>
+					  </li>
+					</ul> 
+				</div>
+			</div>
+		</div>
+		<!-- INTRODUCIDAS -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span ng-hide="especiesMatch.introducidas.length > 0">
+					<input class="btn" type="text" placeholder="Introducidas" disabled>
+				</span>
+
+				<span class="mypointer" ng-show="especiesMatch.introducidas.length > 0" ng-click="taipo=2;" ng-class="{'btn btn-primary':especiesMatch.introducidas.length > 0}">
+					Introducidas <span class="badge">{{especiesMatch.introducidas.length}}</span>
+				</span>
+			</div>
+			<div ng-show="taipo==2" >
+				<div class="panel-body">
+					<ul class="list-group">
+					  <li 
+					  	class="list-group-item" 
+					  	ng-repeat="spR in especiesMatch.introducidas | orderByFlujo " 
+					  	style="background:{{spR.colorRisk()}};">
+					  	<a class="mypointer" ng-click="getReport(spR)" >{{spR.taxa}}</a>
+					  	 <small>({{spR.riskLevel()}})</small>
+					  	 <a href="flora/{{spR._id}}">Edit</a>
+					  </li>
+					</ul> 
+				</div>
+			</div>
+		</div>
+		<!-- NATIVAS -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span ng-hide="especiesMatch.nativas.length > 0">
+					<input class="btn" type="text" placeholder="Nativas" disabled>
+				</span>
+
+				<span class="mypointer" ng-show="especiesMatch.nativas.length > 0" ng-click="taipo=3;" ng-class="{'btn btn-primary':especiesMatch.nativas.length > 0}">
+					Nativas <span class="badge">{{especiesMatch.nativas.length}}</span>
+				</span>
+			</div>
+			<div ng-show="taipo==3" >
+				<div class="panel-body">
+					<ul class="list-group">
+					  <li 
+					  	class="list-group-item" 
+					  	ng-repeat="spR in especiesMatch.nativas | orderByFlujo " 
+					  	style="background:{{spR.colorRisk()}};">
+					  	<a class="mypointer" ng-click="getReport(spR)" >{{spR.taxa}}</a>
+					  	 <small>({{spR.riskLevel()}})</small>
+					  	 <a href="flora/{{spR._id}}">Edit</a>
+					  </li>
+					</ul> 
+				</div>
+			</div>
+		</div>
+<!-- 		  <accordion close-others="oneAtATime">
+
 		  	<accordion-group is-disabled=true style="display:none"> <accordion-heading> <span class="pull-right" style="padding:20px;">Especies asociadas</span></accordion-heading>
 		  	</accordion-group>
-			<!-- END fix accordion-group -->
+
 
 		    <accordion-group>
 		    <accordion-heading> <span style="cursor:pointer;" ng-class="{'btn btn-primary':CultFilt.length > 0}">Cultivadas <span class="badge">{{CultFilt.length}}</span></span></accordion-heading>
 			<ul>
-				<li style="cursor:pointer;" ng-repeat="spR in CultFilt = (especiesMatch | filter:{type:1})" ng-click="getReport(spR)"> {{spR.taxa}} -> {{spR.riskLevelM()}} <input type="text" ng-model="spR.flujoGenico"></li>
+				<li style="cursor:pointer; background-color:{{spR.colorRisk()}};" ng-repeat="spR in CultFilt = especiesMatch.cultivadas | orderByFlujo" ng-click="getReport(spR)"> {{spR.taxa}}</li>
 			</ul>
 		    </accordion-group>
 
 		    <accordion-group>
 		    <accordion-heading> <span style="cursor:pointer;" ng-class="{'btn btn-primary':IntroFilt.length > 0}">Introducidas <span class="badge">{{IntroFilt.length}}</span></span></accordion-heading>
 			<ul>
-				<li style="cursor:pointer;" ng-repeat="spR in IntroFilt = (especiesMatch | filter:{type:2})" ng-click="getReport(spR)"> {{spR.taxa}}</li>
+				<li style="cursor:pointer; background-color:{{spR.colorRisk()}};" ng-repeat="spR in IntroFilt = especiesMatch.introducidas | orderByFlujo" ng-click="getReport(spR)"> {{spR.taxa}}</li>
 			</ul>
 		    </accordion-group>
 
 		    <accordion-group>
 		    <accordion-heading><span style="cursor:pointer;" ng-class="{'btn btn-primary':NatFilt.length > 0}">Nativas <span class="badge">{{NatFilt.length}}</span></span></accordion-heading>
 			<ul>
-				<li style="cursor:pointer;" ng-repeat="spR in NatFilt = (especiesMatch | filter:{type:3})" ng-click="getReport(spR)"> {{spR.taxa}}</li>
+				<li style="cursor:pointer; background-color:{{spR.colorRisk()}};" ng-repeat="spR in NatFilt = especiesMatch.nativas | orderByFlujo " ng-click="getReport(spR)"> {{spR.taxa}}</li>
 			</ul>
 		    </accordion-group>
 
-		  </accordion>
+		  </accordion> -->
+
 		</div>
 	</div>
 
@@ -66,6 +146,8 @@
 		    	<h4>Especie seleccionada:</h4>
 				<h5>{{spCompare.taxa}} <small>({{spCompare.tipo}})</small></h5>
 				<div ng-show="spCompare.polSingle.list.length>0">
+					<hr>
+					<h6>Agentes polinizadores</h6>
 					<p class="small">
 						Hymenopteros <span class="badge">{{spCompare.polSingle.hymenoptera}}</span>
 						Lepidopteros <span class="badge">{{spCompare.polSingle.lepidoptera}}</span>
@@ -85,6 +167,8 @@
 		    	<h4>Especie a comparar: </h4>
 				<h5>{{spSelected.taxa}} <small>({{spSelected.tipo}})</small></h5>
 				<div ng-show="spSelected.polSingle.list.length>0">
+					<hr>
+					<h6>Agentes polinizadores</h6>
 					<p class="small">
 						Hymenopteros <span class="badge">{{spSelected.polSingle.hymenoptera}}</span>
 						Lepidopteros <span class="badge">{{spSelected.polSingle.lepidoptera}}</span>
@@ -107,9 +191,9 @@
 					Dipteros <span class="badge">{{spSelected.pollinators.diptera}}</span>
 					Coleopteros <span class="badge">{{spSelected.pollinators.coleoptera}}</span>
 				</p>
-				<ul>
+<!-- 				<ul>
 					<li ng-repeat="pollinator in spSelected.pollinators.list">{{pollinator.taxa}}</li>
-				</ul>
+				</ul> -->
 			</div>
 		</div>
 	</div>
@@ -118,8 +202,8 @@
 
 	<div ng-show="spSelected" class="well" style="background-color:{{spSelected.colorRisk()}};">
 		<br>
-		<h4 >Riesgo de Flujo Génico <b>{{spSelected.riskLevel()}}</b>  <small>({{spSelected.flujoGenico | number:0 }})</small> </h4>
-		<p>{{spSelected.descripcion}}</p>
+		<h4 >Riesgo de Flujo Génico <b>{{spSelected.riskLevel()}}</b>  <small>({{spSelected.flujoGenico() | number:0 }}) </small> <span ng-show="spSelected.cira"> - CIRA: <b>{{spSelected.riskLevelCira()}}</b> <small>({{spSelected.cira | number:0}})</small></span></h4>
+		<p>{{spSelected.description()}}</p>
 	</div>
 		
 	<h4 class="well" ng-show="spSelected.dist.length !== 0 && spSelected">Distribución en Chile</h4>

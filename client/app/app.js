@@ -12,7 +12,7 @@ angular.module('fullstack012App', [
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/flujoapp'
       });
 
     $locationProvider.html5Mode(true);

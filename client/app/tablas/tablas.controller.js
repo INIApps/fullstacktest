@@ -8,6 +8,7 @@ angular.module('fullstack012App')
   		$scope.cultivadas = false;
   		$scope.introducidas = false;
   		$scope.nativas = false;
+  		$scope.polinizadores = false;
   	}
 
     $scope.getPage = function (n){

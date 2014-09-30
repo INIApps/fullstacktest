@@ -68,4 +68,3 @@ angular.module('fullstack012App')
 
     return dataFactory;
   });
-

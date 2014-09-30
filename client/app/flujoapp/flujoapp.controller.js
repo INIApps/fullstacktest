@@ -1,34 +1,53 @@
 'use strict';
 
 angular.module('fullstack012App')
-  .controller('FlujoappCtrl', function ($scope, $http, MainData) {
+  .controller('FlujoappCtrl', function ($scope,$http, MainData, Vegetal) {
     $scope.currentPage = 'flujoapp';
 
-    MainData.getTransgenicasResume().success(function(data) {
+    var vegetales = new Vegetal();
+
+    vegetales.getResume('transgenicas').then(function(data){
       $scope.transgenicas = data;
-      $scope.people = data;
     });
 
-    MainData.getCultivadasResume().success(function(data) {
+    vegetales.getResume('cultivadas').then(function(data){
       $scope.cultivadas = data;
     });
 
+    $scope.viewPollinators = function(sp){
+
+      $http.get('/api/pollinator/single/'+sp._id).then(function(data){
+        // console.log(data);
+      });
+    };
+
     $scope.getMatch = function (spCompare){
-      MainData.getMatch(spCompare).then(function(data){
-        //console.log(data);
+      $scope.especiesMatch = false;
+      $scope.spCompare = false;
+      $scope.taipo = false;
+      vegetales.getMatch(spCompare).then(function(data){
         $scope.especiesMatch = data;
       });
-      MainData.getPollinatorsSingle(spCompare).then(function(data){
+      vegetales.getPollinatorsSingle(spCompare).then(function(data){
         $scope.spCompare = data;
       });
     };
 
     $scope.getReport = function (spSelected){
-      MainData.getPollinators(spSelected).then(function(data){
+      vegetales.getPollinators(spSelected).then(function(data){
         $scope.spSelected = data;
       });
-      MainData.getPollinatorsSingle(spSelected).then(function(data){
+      vegetales.getPollinatorsSingle(spSelected).then(function(data){
         $scope.spSelected = data;
       });
     };
+
+    $scope.cleanVariables = function (){
+      $scope.especiesMatch = false;
+      $scope.spCompare = false;
+      $scope.spSelected = false;
+      $scope.taipo = false;
+    };
+
+
   });
