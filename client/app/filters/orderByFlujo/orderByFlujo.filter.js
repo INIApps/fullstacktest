@@ -12,25 +12,9 @@ angular.module('fullstack012App')
 	    filtered.sort(function (a, b) {
 	      return (a.flujoGenico() > b.flujoGenico() ? 1 : -1);
 	    });
-	    if(!reverse) filtered.reverse();
+	    if(!reverse){
+	    	filtered.reverse();
+	    }
 	    return filtered;
 	  };
   });
-
-
-// yourApp.filter('orderObjectBy', function() {
-//   return function(items, field, reverse) {
-//     var filtered = [];
-    
-//     angular.forEach(items, function(item) {
-//       filtered.push(item);
-//     });
-
-//     filtered.sort(function (a, b) {
-//       return (a['_id'] > b['_id'] ? 1 : -1);
-//     });
-//     if(reverse) filtered.reverse();
-//     return filtered;
-//   };
-// });
-

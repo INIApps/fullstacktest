@@ -4,7 +4,7 @@ angular.module('fullstack012App')
   .factory('Vegetal', function ($http, $q, Florae) {
 
     function Vegetal(){
-      this.name = 'prueba'
+      this.name = 'prueba';
     }
 
     Vegetal.prototype = {

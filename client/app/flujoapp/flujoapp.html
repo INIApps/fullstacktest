@@ -47,7 +47,7 @@
 					  	style="background:{{spR.colorRisk()}};">
 					  	<a class="mypointer" ng-click="getReport(spR)" >{{spR.taxa}}</a>
 					  	 <small>({{spR.riskLevel()}})</small>
-					  	 <a href="flora/{{spR._id}}">Edit</a>
+					  	 <a ng-show="admin" href="flora/{{spR._id}}">Edit</a>
 					  </li>
 					</ul> 
 				</div>
@@ -73,7 +73,7 @@
 					  	style="background:{{spR.colorRisk()}};">
 					  	<a class="mypointer" ng-click="getReport(spR)" >{{spR.taxa}}</a>
 					  	 <small>({{spR.riskLevel()}})</small>
-					  	 <a href="flora/{{spR._id}}">Edit</a>
+					  	 <a ng-show="admin" href="flora/{{spR._id}}">Edit</a>
 					  </li>
 					</ul> 
 				</div>
@@ -99,7 +99,7 @@
 					  	style="background:{{spR.colorRisk()}};">
 					  	<a class="mypointer" ng-click="getReport(spR)" >{{spR.taxa}}</a>
 					  	 <small>({{spR.riskLevel()}})</small>
-					  	 <a href="flora/{{spR._id}}">Edit</a>
+					  	 <a ng-show="admin" href="flora/{{spR._id}}">Edit</a>
 					  </li>
 					</ul> 
 				</div>
@@ -144,7 +144,7 @@
 		  <div class="panel panel-default">
 		    <div class="panel-body">
 		    	<h4>Especie seleccionada:</h4>
-				<h5>{{spCompare.taxa}} <small>({{spCompare.tipo}})</small></h5>
+				<h5>{{spCompare.taxa}} <small>({{spCompare.tipo}})</small> <small><a ng-show="admin" href="flora/{{spCompare._id}}">Edit</a></small></h5>
 				<div ng-show="spCompare.polSingle.list.length>0">
 					<hr>
 					<h6>Agentes polinizadores</h6>

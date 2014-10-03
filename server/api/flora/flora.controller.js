@@ -179,7 +179,6 @@ exports.related = function(req, res) {
   });
 };
 
-
 // Creates a new flora in the DB.
 exports.create = function(req, res) {
   Flora.create(req.body, function(err, flora) {
@@ -191,12 +190,15 @@ exports.create = function(req, res) {
 // Updates an existing flora in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
+  console.log(req.body);
   Flora.findById(req.params.id, function (err, flora) {
     if (err) { return handleError(res, err); }
     if(!flora) { return res.send(404); }
     var updated = _.merge(flora, req.body);
+    console.log(updated);
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
+      console.log('salvado');
       return res.json(200, flora);
     });
   });

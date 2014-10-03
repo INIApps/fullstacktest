@@ -1,59 +1,68 @@
 'use strict';
 
 angular.module('fullstack012App')
-  .controller('FloraCtrl', function ($scope,$http,$routeParams) {
+  .controller('FloraCtrl', function ($scope,$routeParams, SpeciesEdit, $window) {
 
-$scope.getGenus = function (familia){
-  $http.get('/api/flora/filter/genero/'+familia).success(function(data){
-    $scope.generos = data;
+  SpeciesEdit.getFlora($routeParams.id).then(function(data){
+    $scope.singleSp = data.data;
   });
-};
-
-$scope.getRelated = function (genero){
-  $http.get('/api/flora/filter/related/'+genero).success(function(data){
-    $scope.spRelated = data;
+  SpeciesEdit.getPollinators($routeParams.id).then(function(data){
+    $scope.pollinators = data.data;
   });
-};
 
-// Speed up calls to hasOwnProperty
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+  $scope.editThis = function(sp, key){
+    $scope.modal = true;
+    $scope.spEdit = sp;
+    $scope.spKey = key;
+    $scope.spValue = sp[key];
+  };
 
-function isEmpty(obj) {
+  $scope.dismis = function(){
+    $scope.modal = false;
+    $scope.spEdit = false;
+    $scope.spKey = false;
+    $scope.spValue = false;
+  };
 
-    // null and undefined are "empty"
-    if (obj === null){
-      return true;
+  $scope.save = function(key, newValue){
+    if($scope.singleSp[key] !== newValue && key !=='_id'){
+      $scope.ifChange = true;
+      $scope.singleSp[key] = newValue;
+      //console.log(newValue);
+        console.log('OK  pre-save');
+    }else if($scope.singleSp[key] === newValue){
+      // alert('No existen cambios');
+    }else{
+      //alert('No se puede modificar el ID');
     }
+    $scope.dismis();
+  };
 
-    // Assume if it has a length property with a non-zero value
-    // that that property is correct.
-    if (obj.length > 0){
-      return false;
-    }
-    if (obj.length === 0){
-      return true;
-    }
+  $scope.saveToDB = function(){
+    SpeciesEdit.save($scope.singleSp);
+    console.log('OK, save to the DB');
+    $window.location.reload();
+  };
 
-    // Otherwise, does it have any properties of its own?
-    // Note that this doesn't handle
-    // toString and valueOf enumeration bugs in IE < 9
-    for (var key in obj) {
-        if (hasOwnProperty.call(obj, key)){
-          return false;
-        }
-    }
+  $scope.addPollinator = function(){
+    SpeciesEdit.pollinatorList().then(function(data){
+      $scope.pollinatorList = data.data;
+    });
+  };
 
-    return true;
-}
+  $scope.savePollinator = function(){
+    var idPol = $scope.newPollinator._id;
+    var idVeg = $scope.singleSp._id;
+    SpeciesEdit.savePollinator(idVeg,idPol);
+    $window.location.reload();
+  };
 
-if(isEmpty($routeParams)){
-  $http.get('/api/flora/filter/familia').success(function(data){
-    $scope.familias = data;
-  });
-}else{
-    $http.get('api/flora/'+$routeParams.id).success(function(data){
-      $scope.singleSp = data;
-    });   
-}
-
+  $scope.deleteFlora = function(id){
+    var idPol = id;
+    var idVeg = $scope.singleSp._id;
+    SpeciesEdit.pullFlorae(idVeg,idPol).then(function(){
+      console.log('OK, borrado el vegetal');
+      $window.location.reload();
+    });
+  };
 });

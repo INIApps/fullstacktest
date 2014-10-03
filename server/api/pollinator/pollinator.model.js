@@ -4,9 +4,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var PollinatorSchema = new Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  flora: [String]
 });
 
 module.exports = mongoose.model('Pollinator', PollinatorSchema);

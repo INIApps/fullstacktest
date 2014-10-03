@@ -1,12 +1,13 @@
 <div class="container-fluid">
 	<div class="col-md-4">
 		<h3>{{singleSp.taxa}}</h3>
+		<button ng-show="ifChange" class="btn btn-lg btn-danger" ng-click="saveToDB()">Guardar los cambios en la base de datos</button>
 	</div>
 	<div class="col-md-8">
 		<ul>
-			<li ng-repeat="(key, value) in singleSp">{{key}}: <span ng-hide="key == 'dist' ">{{value}}</span>
-				<ul>
-					<li ng-repeat="s in value">{{s.name}}
+			<li ng-hide="key == 'dist' || key== 'IP' || key == 'JF' " ng-repeat="(key, value) in singleSp">{{key}}: <span ng-hide="key == 'dist' ">{{value}} <a ng-click="editThis(singleSp,key)" style="cursor:pointer;" ng-hide="key== '_id' ">edit</a></span>
+				<ul ng-show="key=='dist'">
+					<li ng-repeat="s in value track by $index">{{s.name}}
 						<ul>
 							<li ng-repeat="p in s.provincias">{{p.name}}
 								<ul>
@@ -18,5 +19,55 @@
 				</ul>
 			</li>
 		</ul>
+		<h3>Agentes polinizadores</h3>
+		<ul>
+			<li ng-repeat="pollinator in pollinators">{{pollinator.taxa}} : index: {{$index}} <a ng-click="deleteFlora(pollinator._id)">Eliminar</a> </li>
+		</ul>
+		<a style="cursor:pointer;" ng-click="addPollinator()">Agregar un polinizador</a>
+			<select ng-show="pollinatorList" style="margin-top:10px" class="form-control" ng-model="newPollinator" ng-change="" 
+			ng-options="a.taxa group by a.orden for a in pollinatorList | orderBy: 'taxa' ">
+				<option value="">Especies Transgénicas</option>
+			</select>
+			<div class="form-group" ng-show="pollinatorList">
+				<button class="btn btn-info" ng-click="pollinatorList=false">Cancelar</button>
+				<button class="btn btn-danger" ng-click="savePollinator()">Guardar</button>
+			</div>
+	</div>
+</div>
+<!-- modal de polinizadores -->
+<div class="jumbotron" ng-show="modalPol" style="padding:20px; width:60%; max-height:80%;overflow: scroll;  position:fixed; z-index:1000; top:100px; left:300px">
+	<h2><button ng-click="dismis()">X</button></h2>
+	<div >
+		<div class="row">
+			<div class="col-md-1">
+				
+			</div>
+			<div class="col-md-6">
+				<label for=""><h3>{{spKey}}: </h3></label>
+				<input class="form-control" type="text" ng-model="spValue">
+				<a class="btn btn-info" ng-click="dismis()">Cancelar</a>
+				<a class="btn btn-danger" ng-click="save(spKey,spValue)">Guardar</a>
+			</div>
+		</div>
+		 
+	</div>
+</div>
+
+<!-- modal de vegetal -->
+<div class="jumbotron" ng-show="modal" style="padding:20px; width:60%; max-height:80%;overflow: scroll;  position:fixed; z-index:1000; top:100px; left:300px">
+	<h2><button ng-click="dismis()">X</button></h2>
+	<div >
+		<div class="row">
+			<div class="col-md-1">
+				
+			</div>
+			<div class="col-md-6">
+				<label for=""><h3>{{spKey}}: </h3></label>
+				<input class="form-control" type="text" ng-model="spValue">
+				<a class="btn btn-info" ng-click="dismis()">Cancelar</a>
+				<a class="btn btn-danger" ng-click="save(spKey,spValue)">Guardar</a>
+			</div>
+		</div>
+		 
 	</div>
 </div>

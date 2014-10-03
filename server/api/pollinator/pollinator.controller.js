@@ -119,6 +119,35 @@ exports.update = function(req, res) {
   });
 };
 
+// Updates Flora an existing pollinator in the DB.
+exports.updateFlora = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  var floraId = req.body.flora;
+  Pollinator.findById(req.params.id, function (err, pollinator) {
+    if (err) { return handleError(res, err); }
+    if(!pollinator) { return res.send(404); }
+    pollinator.flora.push(floraId);
+    pollinator.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, pollinator);
+    });
+  });
+};
+// Updates Flora an existing pollinator in the DB.
+exports.updateFloraPull = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  var floraId = req.body.flora;
+  Pollinator.findById(req.params.id, function (err, pollinator) {
+    if (err) { return handleError(res, err); }
+    if(!pollinator) { return res.send(404); }
+    pollinator.flora.pull(floraId);
+    pollinator.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, pollinator);
+    });
+  });
+};
+
 // Deletes a pollinator from the DB.
 exports.destroy = function(req, res) {
   Pollinator.findById(req.params.id, function (err, pollinator) {

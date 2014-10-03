@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('fullstack012App')
-  .factory('Florae', function ($http) {
+  .factory('Florae', function () {
     function Florae(sp){
-
-      for(var s in sp){
-        this[s] = sp[s];
+      if (sp) {
+        this.setData(sp);
       }
+
+      // for(var s in sp){
+      //   this[s] = sp[s];
+      // }
 
       var R = {
             CtipO:  1,
@@ -330,6 +333,9 @@ angular.module('fullstack012App')
     }
 
     Florae.prototype = {
+      setData: function(Data){
+          angular.extend(this, Data);
+      },
       getShortName : function(){
         return this.genero+' '+this.especie;
       },
