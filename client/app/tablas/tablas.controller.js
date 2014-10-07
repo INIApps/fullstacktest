@@ -75,4 +75,8 @@ angular.module('fullstack012App')
     };
 
     $scope.getSp('transgenicas');
+
+    $http.get('api/flora/cout').success(function(data){
+    	$scope.count = data;
+    });
   });

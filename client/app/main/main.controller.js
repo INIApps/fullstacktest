@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fullstack012App')
-.controller('MainCtrl', function ($scope,$http) {
+.controller('MainCtrl', function ($scope) {
   $scope.currentPage = 'home';
   $scope.members1 = [
     {name:'Humberto Prieto',position:'Director',imgUrl:'assets/images/inia/humberto_prieto.jpg', altImg:'Humberto Prieto, director del proyecto Flujo génico'},
@@ -14,8 +14,8 @@ angular.module('fullstack012App')
     {name:'Carlos Aguirre',position:'Apoyo en desarrollo de aplicación',imgUrl:'assets/images/inia/carlos_aguirre.jpg', altImg:'Bioquímico'},
   ];
 
-  $http.get('http://www.sanidadvegetal.cl/api/get_recent_posts/').success(function(data){
-    $scope.sanidadvegetal = data;
-  });
+  // $http.get('http://www.sanidadvegetal.cl/api/get_recent_posts/').success(function(data){
+  //   $scope.sanidadvegetal = data;
+  // });
   
 });

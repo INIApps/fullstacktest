@@ -35,6 +35,37 @@ var paginationAsync = function(req, res, query, perPagex, sortx){
   });
 };
 
+// var countAsync = function(req, res, query, perPagex, sortx){
+//   var response = {};
+
+//   async.parallel([
+//     //
+//     function(callback){
+//       Flora.find({type:1})
+//       .count()
+//       .exec(function(err, data ){
+//         response.events = data;
+//         callback();
+//       });
+//     },
+//     function(callback){
+//       Flora.find(query).count().exec(function(err, data){
+//         response.count = data;
+//         callback();
+//       });
+//     }
+//   ], function(err){
+//     var total = Math.ceil(response.count / perPage);
+//     response.pages = total;
+//     return res.json(200, response);
+//   });
+// };
+
+// exports.getCount = function(req, res) {
+
+// countAsync(req,res,{}, 20, 'familia');
+
+// };
 
 // Get list of floras
 exports.index = function(req, res) {

@@ -14,6 +14,12 @@
   <li ng-class="{'active':polinizadores}"><a ng-click="getSpPol()">Polinizadores</a></li>
 </ul>
 
+<h5 ng-show="nativas">Total de flora Nativas: {{nativas.count}}</h5>
+<h5 ng-show="cultivadas">Total de especies Cultivadas: {{cultivadas.count}}</h5>
+<h5 ng-show="introducidas">Total de flora Introducidas: {{introducidas.count}}</h5>
+<h5 ng-show="polinizadores">Total de insectos Polinizadores: {{polinizadores.count}}</h5>
+<h5 ng-show="transgenicas">Total de especies Transgenicas: {{transgenicas.count}}</h5>
+
 <ul class="pagination">
   <!-- <li><a href="#">&laquo;</a></li> -->
   <li ng-repeat="num in pages" class="mypointer"><a ng-click="getPage(num-1)">{{num}}</a></li>

@@ -16,6 +16,14 @@ var path = require('path');
 var config = require('./environment');
 var passport = require('passport');
 
+//CORS middleware
+// var allowCrossDomain = function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   next();
+// }
+
+
 module.exports = function(app) {
   var env = app.get('env');
 
