@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24c148ab-c987-4e52-852e-94893f5fb2db" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/pablo.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/factory/Florae/Florae.service.js" afterPath="$PROJECT_DIR$/client/app/factory/Florae/Florae.service.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/factory/MainObj/MainObj.service.js" afterPath="$PROJECT_DIR$/client/app/factory/MainObj/MainObj.service.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/flujoapp/flujoapp.controller.js" afterPath="$PROJECT_DIR$/client/app/flujoapp/flujoapp.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/flujoapp/flujoapp.html" afterPath="$PROJECT_DIR$/client/app/flujoapp/flujoapp.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.html" afterPath="$PROJECT_DIR$/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/navbar/navbar.html" afterPath="$PROJECT_DIR$/client/components/navbar/navbar.html" />
     </list>
     <ignored path="fullstack012.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,18 +30,18 @@
       <file leaf-file-name="flujoapp.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/flujoapp/flujoapp.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="3090" max-vertical-offset="4245">
-              <caret line="206" column="32" selection-start-line="206" selection-start-column="32" selection-end-line="206" selection-end-column="32" />
+            <state vertical-scroll-proportion="-9.375" vertical-offset="2910" max-vertical-offset="4245">
+              <caret line="209" column="73" selection-start-line="209" selection-start-column="73" selection-end-line="209" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flujoapp.controller.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="flujoapp.controller.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/app/flujoapp/flujoapp.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="369" max-vertical-offset="1265">
-              <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.78381795" vertical-offset="553" max-vertical-offset="1449">
+              <caret line="51" column="44" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -54,19 +50,19 @@
       <file leaf-file-name="MainObj.service.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/factory/MainObj/MainObj.service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="200" max-vertical-offset="2980">
-              <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1329" max-vertical-offset="3240">
+              <caret line="129" column="36" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
               <folding>
-                <element signature="e#222#916#0" expanded="false" />
+                <element signature="e#4385#4540#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Florae.service.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Florae.service.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/app/factory/Florae/Florae.service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41044775" vertical-offset="0" max-vertical-offset="1860">
+            <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="1860">
               <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding>
                 <element signature="e#174#1090#0" expanded="false" />
@@ -105,10 +101,10 @@
         <option value="$PROJECT_DIR$/client/index.html" />
         <option value="$PROJECT_DIR$/client/components/navbar/navbar.html" />
         <option value="/AngularJS Fragment (flujoapp.html:8828).js" />
+        <option value="$PROJECT_DIR$/client/app/factory/Florae/Florae.service.js" />
         <option value="$PROJECT_DIR$/client/app/flujoapp/flujoapp.html" />
         <option value="$PROJECT_DIR$/client/app/factory/MainObj/MainObj.service.js" />
         <option value="$PROJECT_DIR$/client/app/flujoapp/flujoapp.controller.js" />
-        <option value="$PROJECT_DIR$/client/app/factory/Florae/Florae.service.js" />
       </list>
     </option>
   </component>
@@ -436,7 +432,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1807" max-vertical-offset="2460">
           <caret line="161" column="19" selection-start-line="161" selection-start-column="19" selection-end-line="161" selection-end-column="19" />
           <folding>
-            <element signature="e#222#916#0" expanded="false" />
+            <element signature="e#4385#4540#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -484,7 +480,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="2550">
           <caret line="10" column="15" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="15" />
           <folding>
-            <element signature="e#222#916#0" expanded="false" />
+            <element signature="e#4385#4540#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -532,7 +528,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="2550">
           <caret line="10" column="15" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="15" />
           <folding>
-            <element signature="e#222#916#0" expanded="false" />
+            <element signature="e#4385#4540#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -591,35 +587,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/flujoapp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3090" max-vertical-offset="4245">
-          <caret line="206" column="32" selection-start-line="206" selection-start-column="32" selection-end-line="206" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/flujoapp.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="461" max-vertical-offset="1265">
-          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/factory/MainObj/MainObj.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="2235">
-          <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
-          <folding>
-            <element signature="e#222#916#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/app/factory/Florae/Florae.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41044775" vertical-offset="0" max-vertical-offset="1860">
+        <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="1860">
           <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
           <folding>
             <element signature="e#174#1090#0" expanded="false" />
@@ -628,6 +598,32 @@
             <element signature="e#4262#4648#0" expanded="false" />
             <element signature="e#5751#13715#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/flujoapp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.375" vertical-offset="2910" max-vertical-offset="4245">
+          <caret line="209" column="73" selection-start-line="209" selection-start-column="73" selection-end-line="209" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/factory/MainObj/MainObj.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1329" max-vertical-offset="3240">
+          <caret line="129" column="36" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
+          <folding>
+            <element signature="e#4385#4540#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/flujoapp.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78381795" vertical-offset="553" max-vertical-offset="1449">
+          <caret line="51" column="44" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>

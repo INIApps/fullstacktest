@@ -36,9 +36,17 @@ angular.module('fullstack012App')
             });
             vegetales.getPollinators(spSelected).then(function(data){
                 $scope.spSelected = data;
-                console.log($scope.spSelected);
             });
         };
+
+        $scope.$watch('spSelected.R',function(data, old){
+            console.log(data);
+            var ecual = angular.equals(data, old);
+            console.log( $scope.spSelected);
+            if($scope.spSelected && !ecual && $scope.spSelected.pollinators && $scope.spSelected.pollinators.list.length ){
+                vegetales.pollinatorFxCalc($scope.spSelected);
+            }
+        },true);
 
         //funciones utilitarias
         $scope.cleanVariables = function (){
