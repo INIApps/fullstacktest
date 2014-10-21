@@ -9,7 +9,7 @@
 			<li ng-class="{active: selectedTab == 2}" style="cursor:pointer;"><a ng-click="selectedTab = 2; cleanVariables();">Cultivadas</a></li>
 		</ul>
 		<!-- Tab panes -->
-		<div class="scroll-block" style="height:50px;">
+		<div class="" style="height:50px;">
 			<div ng-hide="transgenicas">
 				<img ng-src="assets/images/loading.gif" class="loadingkrap">
 			</div>
@@ -202,8 +202,55 @@
 
 	<div ng-show="spSelected" class="well" style="background-color:{{spSelected.colorRisk()}};">
 		<br>
-		<h4 >Riesgo de Flujo Génico <b>{{spSelected.riskLevel()}}</b>  <small>({{spSelected.flujoGenico() | number:0 }}) </small> <span ng-show="spSelected.cira"> - CIRA: <b>{{spSelected.riskLevelCira()}}</b> <small>({{spSelected.cira | number:0}})</small></span></h4>
+		<h4 >Riesgo de Flujo Génico <b>{{spSelected.riskLevel()}}</b>  <small>({{spSelected.flujoGenico() | number:0 }}) </small>
+            <span ng-show="spSelected.cira"> - CIRA: <b>{{spSelected.riskLevelCira()}}</b> <small>({{spSelected.cira | number:0}})</small></span></h4>
 		<p>{{spSelected.description()}}</p>
+
+        <form>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cen"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cnati"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cin"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cnatu"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.CtipC"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cag"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cor"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cfo"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cma"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.CtipR"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cse"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cve"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Ccv"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Can"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cbi"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cpe"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cbu"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.CtipP"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cang"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Calg"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.CagP"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cent"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cane"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cart"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Cland"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Clan"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Itipoc"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Ia"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Io"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.If"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Ime"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Ima"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Iotr"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.In"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.NcEc"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Nex"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Np"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Nv"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Nr"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Notr"/>
+            <input type="range" min="1" max="6" ng-model="spSelected.R.Nen"/>
+
+
+        </form>
 	</div>
 		
 	<h4 class="well" ng-show="spSelected.dist.length !== 0 && spSelected">Distribución en Chile</h4>

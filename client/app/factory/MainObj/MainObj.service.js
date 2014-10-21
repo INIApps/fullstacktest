@@ -161,5 +161,4 @@ angular.module('fullstack012App')
 
     return Vegetal;
 
-
   });

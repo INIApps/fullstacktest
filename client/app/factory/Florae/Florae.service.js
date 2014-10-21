@@ -7,10 +7,6 @@ angular.module('fullstack012App')
         this.setData(sp);
       }
 
-      // for(var s in sp){
-      //   this[s] = sp[s];
-      // }
-
       var R = {
             CtipO:  1,
             Cen:  6,
@@ -68,9 +64,6 @@ angular.module('fullstack012App')
         if(this.spCompare.type===4){ resultFlujoGenico = this.flujoGenicoTransgenico(); }
         if(this.spCompare.type===1){ resultFlujoGenico = this.flujoGenicoCultivadas(); }
 
-        // if(){
-
-        // }
         return resultFlujoGenico;
       };
 
@@ -345,7 +338,6 @@ angular.module('fullstack012App')
         }
       }
     };
-
     return Florae;
   });
 //data = Calculusservice.setAndConfig(data,spCompare);
