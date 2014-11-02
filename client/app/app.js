@@ -5,9 +5,9 @@ angular.module('fullstack012App', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap',
   'NavbarModule',
-  'restangular'
+  'ngAnimate',
+  'mgcrea.ngStrap'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

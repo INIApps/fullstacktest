@@ -21,9 +21,13 @@ angular.module('NavbarModule', [])
     };
     //Navbar variables
     $scope.menu = [
-      {'title': 'Volver', 'link': 'http://flujogenico.cl/','id':'home'},
-      {'title': 'Tablas', 'link': '/tablas','id':'tablas'},
-      {'title': 'App', 'link': '/flujoapp','id':'app'},
+      {'title': 'Inicio', 'link': '/','id':'home'},
+      {'title': 'Bases de datos', 'link': '/base-de-datos','id':'tablas'},
+      {'title': 'Sistema computacional', 'link': '/sistema-computacional','id':'sistema'},
+      {'title': 'Clasificación de riesgo', 'link': '/clasificacion-riesgo','id':'riesgo'},
+      {'title': 'Escala de riesgo', 'link': '/escala-de-riesgo','id':'escala'},
+      {'title': 'Ir a la aplicación', 'link': '/flujoapp','id':'app'},
+
         // {'title': 'Proyecto', 'link': '#','id':'proyecto', 'subMenu':[
         //   {'title':'Bases','link':'/','id':'bases'},
         //   {'title':'Guía electronica','link':'/','id':'guia'},
@@ -45,7 +49,7 @@ angular.module('NavbarModule', [])
 .directive('toggleOpen',function(){
   var directive = {};
   directive.restrict = 'A';
-  directive.link = function(scope,element){ 
+  directive.link = function(scope,element){
     element.on('click',function($event){
       if(element.hasClass('dropdown') && !element.hasClass('open')){
         $event.preventDefault();

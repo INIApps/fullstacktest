@@ -1,0 +1,57 @@
+<div style="width: 100%; height: 100%; background-color:#ffffff ; position: fixed; top: 0;left: 0; z-index: 50">
+    <div class="row">
+        <div class="well text-center" >
+            <h3>Modelador</h3>
+            <p>En esta sección puedes modificar los valores por defecto que se utilizan para calcular el Índice de Riesgo Ambiental.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1" style="padding: 10px">
+            <ul class="nav well scroll-block">
+                <li ng-repeat="(key, value) in spSelected.R | orderBy: 'key' ">
+                    <label for="">{{spSelected.R[key].label}} <small>( Valor = {{spSelected.R[key].value}})</small></label>
+                    <input type="range" min=1 max=6 ng-model="spSelected.R[key].value"/>
+                    <ul>
+                        <li ng-repeat="(k,v) in spSelected.R[key].subItems">
+                            <label for="">{{spSelected.R[key].subItems[k].label}} <small>(Valor = {{spSelected.R[key].subItems[k].value}})</small></label>
+                            <input type="range" min=1 max=6 ng-model="spSelected.R[key].subItems[k].value"/>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-md-offset-1 well">
+            <h4 >Índice de Riesgo Ambiental por Flujo Génico
+            </h4>
+            <div class="jumbotron text-center" style="background-color: {{spSelected.colorRisk()}};">
+                <b> Nivel :{{ spSelected.riskLevelCira() || spSelected.riskLevel() | uppercase}}</b>  <div ng-show="true"> Valor numérico : {{ spSelected.cira || spSelected.flujoGenico() | number:1 }} </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-4 well text-center" ng-click="$hide()" style="cursor: pointer;">
+                    <span>CERRAR</span>
+                    <button type="button" class="close" >×</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- ngModel is optional -->
+  <div class="panel-group" ng-model="panels.activePanel" bs-collapse>
+    <div class="panel panel-default" ng-repeat="panel in panels">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a bs-collapse-toggle>
+            {{ panel.title }}
+          </a>
+        </h4>
+      </div>
+      <div class="panel-collapse" bs-collapse-target>
+        <div class="panel-body">
+          {{ panel.body }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

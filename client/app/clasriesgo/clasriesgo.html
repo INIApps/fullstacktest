@@ -1,0 +1,100 @@
+<section style="background-image:url('assets/images/abeja_flujo2.jpg');padding: 20px; background-position: top center; background-size: cover;min-height: 800px; background-attachment: fixed">
+  <div ng-include="'components/navbar/navbar.html'"></div>
+  <header class="page-header text-center " style="color:#ffffff;">
+    <h1 style="text-shadow: 2px 2px 2px black">Clasificación de riesgo</h1>
+    <h2></h2>
+  </header>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" style="background-color: rgba(255,255,255,0.85); padding: 20px; border-radius: 5px;">
+      <div class="col-md-12" style="text-align:justify;">
+
+        <p>Se han establecido dos tipos de riesgo:</p>
+        <ul>
+          <li>riesgo por flujo génico y</li>
+          <li>riesgo para la biodiversidad.</li>
+        </ul>
+
+        <p>Ambos riesgos permiten crear un “índice de riesgo informado” o “índice de riesgo para la biodiversidad, considerando el riesgo potencial de flujo génico” en los resultados de búsqueda, y que corresponderá a un número relativo que relaciona matemáticamente a ambos riesgos de manera simultánea. A esto, se adicionará, cuando exista, el factor de impacto dado por la presencia de agentes polinizadores que influye en cada modelamiento (o sea, para cada pareja de especies).</p>
+        <p>Como se mencionó, existen múltiples factores involucrados en la conformación de cada riesgo. Estos factores se han agrupado en tipos o grupos de características (en adelante, tipos).</p>
+        <p>En el caso de riesgo por flujo génico, los tipos están conformados por dos clases de flujo génico, esto es, por polen y por semilla; también se han incluido la viabilidad de la semilla o capacidad de formar banco de semillas y su persistencia y, finalmente, la presencia de agentes polinizadores para el caso de flujo por polen.</p>
+        <p>En el caso del riesgo para la biodiversidad, los tipos corresponden más bien a características específicas de las especies potencialmente receptoras del cultivo convencional o del cultivo transgénico, las que intentan relacionar el contexto ecológico de la especie en función de su nicho, de su población (número) y de su biología.</p>
+        <p>De este modo, se han incorporado los siguientes grupos de características (tipos):</p>
+        <ul>
+          <li>
+            Para las especies cultivadas
+            <ul>
+              <li>Origen</li>
+              <li>Cultivo</li>
+              <li>Landrace</li>
+              <li>Reproducción</li>
+              <li>Ciclo de vida</li>
+              <li>Polinización</li>
+              <li>Agente polinizante</li>
+            </ul>
+          </li>
+          <br/>
+          <li>
+            Para las especies nativas
+            <ul>
+              <li>Conservación</li>
+              <li>Endemismo</li>
+            </ul>
+          </li>
+          <br/>
+          <li>
+            Para las especies introducidas
+            <ul>
+              <li>Cultivo</li>
+              <li>Naturalización</li>
+            </ul>
+          </li>
+          <br/>
+          <li>
+            Para las especies transgénicas
+            <ul>
+              <li>Flujo por polen</li>
+              <li>Flujo por semilla</li>
+              <li>Formación de banco de semillas</li>
+            </ul>
+          </li>
+          <br/>
+          <li>
+            Para agentes polinizadores
+            <ul>
+              <li>Endémico</li>
+              <li>Introducida</li>
+              <li>Poliléctica</li>
+              <li>Oligoléctica</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p>Cada uno de estos grupos de características (tipos) se ha compuesto por caracteres asociados. Si por ejemplo se considera el grupo origen de una especie cultivada, tenemos que ésta podrá ser endémica, introducida, nativa o naturalizada. Para ver los caracteres de cada tipo haga click acá.</p>
+        <p>En líneas generales, el conjunto de eventos incluidos en estas simulaciones de interacción y riesgo, incluyen tres etapas biológicas bien específicas:</p>
+        <ul>
+          <li>el proceso de polinización cruzada,</li>
+          <li>la eventual introgresión (link a glosario) del transgén y</li>
+          <li>el impacto que tendría esta introgresión, desde el punto de vista del posible comportamiento ecológico de la especie receptora.</li>
+        </ul>
+
+        <p>Esto quiere decir que en el índice de riesgo informado, para una interacción especie cultivada o un cultivo transgénico y una especie receptora (sea esta nativa, introducida o agrícola), estarán reflejadas estas tres etapas; así, cada par dador-receptor tendrá un valor relativo propio (un valor simulado) que biológicamente representa la sucesión de estos tres procesos.</p>
+
+        <p class="alert alert-success col-sm-3" style="margin-right: 20px; border: 2px solid #808080;">
+          <b>Para saber!!!</b>
+          <br/>
+          <i>En el momento de generarse un reporte conteniendo estos índices de riesgo informado, se están asumiendo hechos que no necesariamente tienen viabilidad biológica.</i>
+          </p>
+
+        <p>Esto es válido para los tres procesos involucrados: flujo de polen, polinización cruzada e introgresión y expansión del híbrido. De la misma manera, aún en el contexto de existir el flujo de polen hacia una especie receptora, la existencia de polinización cruzada tampoco implicará necesariamente una introgresión del transgén.</p>
+        <p>También se debe considerar que la posible introgresión de un transgén en una especie receptora no necesariamente significa aumentar el riesgo de extinción para ella, esto se puede ejemplificar con la incorporación intencionada de un transgén para mejorar la sobrevivencia de una especie nativa en peligro de extinción.</p>
+
+
+
+      </div>
+    </div>
+
+  </div>
+<!--  <div class="row" style="text-align:center; margin-top: 20px">
+    <a href="/flujoapp" class="btn btn-primary btn-lg">Ir a la aplicación</a>
+  </div>-->
+</section>

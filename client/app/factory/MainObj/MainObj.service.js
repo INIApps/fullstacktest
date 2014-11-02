@@ -17,6 +17,7 @@ angular.module('fullstack012App')
                         answer.push(new Florae(container[i]));
                     }
                     return answer;
+                  //return data.data.map(Florae);
                 });
             }
             if(string==='cultivadas'){

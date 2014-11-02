@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: LogoutCtrl', function () {
+describe('Controller: DbCtrl', function () {
 
   // load the controller's module
   beforeEach(module('fullstack012App'));
 
-  var LogoutCtrl, scope;
+  var DbCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    LogoutCtrl = $controller('LogoutCtrl', {
+    DbCtrl = $controller('DbCtrl', {
       $scope: scope
     });
   }));

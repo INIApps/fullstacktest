@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: FloraCtrl', function () {
+describe('Controller: ModeladorCtrl', function () {
 
   // load the controller's module
   beforeEach(module('fullstack012App'));
 
-  var FloraCtrl, scope;
+  var ModeladorCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    FloraCtrl = $controller('FloraCtrl', {
+    ModeladorCtrl = $controller('ModeladorCtrl', {
       $scope: scope
     });
   }));

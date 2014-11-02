@@ -10,6 +10,7 @@ angular.module('fullstack012App')
   		$scope.nativas = false;
   		$scope.polinizadores = false;
   	}
+        $scope.currentPage = 'tablas';
 
     $scope.getPage = function (n){
     	if($scope.typeSp === 'polinizadores'){

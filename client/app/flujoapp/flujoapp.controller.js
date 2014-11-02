@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('fullstack012App')
-  .controller('FlujoappCtrl', function ($scope, Vegetal) {
+  .controller('FlujoappCtrl', function ($scope, Vegetal,Spselected) {
 
         // variables que se ejecutan al cargar la página
-        $scope.currentPage = 'flujoapp';
-        $scope.admin = true;
+        $scope.currentPage = 'app';
+        $scope.admin = false;
         var vegetales = new Vegetal();
 
         vegetales.getResume('transgenicas').then(function(data){
@@ -36,13 +36,14 @@ angular.module('fullstack012App')
             });
             vegetales.getPollinators(spSelected).then(function(data){
                 $scope.spSelected = data;
+                Spselected.selected = data;
+
             });
+          console.log(spSelected._id);
         };
 
         $scope.$watch('spSelected.R',function(data, old){
-            console.log(data);
             var ecual = angular.equals(data, old);
-            console.log( $scope.spSelected);
             if($scope.spSelected && !ecual && $scope.spSelected.pollinators && $scope.spSelected.pollinators.list.length ){
                 vegetales.pollinatorFxCalc($scope.spSelected);
             }
@@ -55,4 +56,24 @@ angular.module('fullstack012App')
             $scope.spSelected = false;
             $scope.taipo = false;
         };
+    $scope.panels = [
+      {
+        "title": "Collapsible Group Item #1",
+        "body": "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch."
+      },
+      {
+        "title": "Collapsible Group Item #2",
+        "body": "Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee."
+      },
+      {
+        "title": "Collapsible Group Item #3",
+        "body": "Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade."
+      },
+      {
+        "title": "Collapsible Group Item #4",
+        "body": "Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid."
+      }
+    ];
+    $scope.panels.activePanel = 1;
+
   });

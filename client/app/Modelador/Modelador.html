@@ -1,0 +1,61 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class=" text-center" >
+      <h3>Modelador</h3>
+      <p>En esta sección puedes modificar los valores por defecto que se utilizan para calcular el Índice de Riesgo Ambiental.</p>
+    </div>
+  </div>
+  <div class="row">
+    <!-- ngModel is optional -->
+    <div class="panel-group col-md-3 col-md-offset-1" ng-model="panels.activePanel" bs-collapse>
+      <div class="panel panel-default" ng-repeat="(key, value) in spSelected.R | orderBy: 'key' " >
+        <div class="panel-heading" bs-collapse-toggle style="cursor: pointer; background-color: #c1e2b3">
+          <h4 class="panel-title" >
+              {{spSelected.R[key].label}} <i class="pull-right fa fa-caret-square-o-down"></i>
+          </h4>
+        </div>
+        <div class="panel-collapse" bs-collapse-target>
+          <div class="panel-body">
+            <label for="">Ponderación general <small>( Valor = {{spSelected.R[key].value}})</small></label>
+            <input type="range" min=1 max=6 ng-model="spSelected.R[key].value"/>
+            <ul>
+              <li ng-repeat="(k,v) in spSelected.R[key].subItems">
+                <label for="">{{spSelected.R[key].subItems[k].label}} <small>(Valor = {{spSelected.R[key].subItems[k].value}})</small></label>
+                <input type="range" min=1 max=6 ng-model="spSelected.R[key].subItems[k].value"/>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-3 col-md-offset-1" style="padding: 10px">
+     <ul class="nav well scroll-block">
+        <li ng-repeat="(key, value) in spSelected.R | orderBy: 'key' ">
+          <label for="">{{spSelected.R[key].label}} <small>( Valor = {{spSelected.R[key].value}})</small></label>
+          <input type="range" min=1 max=6 ng-model="spSelected.R[key].value"/>
+          <ul>
+            <li ng-repeat="(k,v) in spSelected.R[key].subItems">
+              <label for="">{{spSelected.R[key].subItems[k].label}} <small>(Valor = {{spSelected.R[key].subItems[k].value}})</small></label>
+              <input type="range" min=1 max=6 ng-model="spSelected.R[key].subItems[k].value"/>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>-->
+    <div class="col-md-6 col-md-offset-1 well">
+      <h4 >Índice de Riesgo Ambiental por Flujo Génico de <b>{{spSelected.taxa}}</b>
+      </h4>
+      <div class="jumbotron text-center" style="background-color: {{spSelected.colorRisk()}};">
+        <b> Nivel :{{ spSelected.riskLevelCira() || spSelected.riskLevel() | uppercase}}</b>  <div ng-show="true"> Valor numérico : {{ spSelected.cira || spSelected.flujoGenico() | number:1 }} </div>
+      </div>
+      <div class="row text-center">
+        <a class="btn btn-info btn-lg" ng-href="/flujoapp" >Volver a la aplicación</a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+

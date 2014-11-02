@@ -1,18 +1,20 @@
 <nav class="navbar navbar-default" role="navigation" ng-controller="NavbarCtrl">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" ng-init="mobilNav=false" data-target="#bs-example-navbar-collapse-1" ng-click="mobilNav = !mobilNav">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{linkLogo}}"> 
-       <img src="{{logo1}}" alt="" style="height:30px"> <img src="{{logo2}}" alt="" style="height:30px"> <span>Sistema CIRA</span>
+      <a class="navbar-brand" href="/">
+       <!--<img src="{{logo1}}" alt="" style="height:30px"> -->
+        <img src="{{logo2}}" alt="" style="height:30px">
+        <span>Sistema CIRA <!--<small class="hidden-sm hidden-xs ">(Cálculo de Índice de Riesgo Ambiental)</small>--></span>
       </a>
     </div>
 
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse" ng-class="{'in':mobilNav}">
       <ul class="nav navbar-nav navbar-right">
         <li ng-repeat="item in menu" ng-class="{ 'active': item.id==currentPage, 'dropdown': item.subMenu, 'cursorShow':item.subMenu}" toggle-open>
           <a ng-href="{{item.link}}" class="dropdown-toggle" ng-class="{'dropdown-toggle':item.subMenu}">
@@ -28,7 +30,3 @@
     </div>
   </div>
 </nav>
-
-<!-- 
-<li ng-repeat="item in menu" ng-class="{ 'active': item.id==currentPage, 'dropdown': item.subMenu, 'cursorShow':item.subMenu}" toggle-open>
- -->

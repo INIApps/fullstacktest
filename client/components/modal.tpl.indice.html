@@ -1,0 +1,42 @@
+<div class="col-md-6 col-md-offset-3 modal" tabindex="-1" role="dialog">
+        <div class="modal-content">
+            <div class="modal-header well" >
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="modal-title" > Explicación de los índices de riesgo</h4>
+            </div>
+            <!--<div class="panel panel-default"  style=" padding-bottom: 10px;">-->
+                <!--<div class="panel-heading" style="margin-bottom: 10px">-->
+                <!--</div>-->
+                <div class="modal-body" style="text-align: justify">
+                    <p>Para el funcionamiento de la  Aplicación de Cálculo del Indice de Riesgo Ambiental se ha utilizado información recopilada de distintas fuentes bibliográficas (REF). Con esta información se construyeron tablas de datos para 4998 especies nativas, 272 especies cultivadas y 3528 especies introducidas presentes en Chile. De igual modo se organizó la información existente en relación a 138 organismos vegetales modificados genéticamente (VMGs) y 508 agentes polinizadores. Para una información detallada acerca del algoritmo utilizado para realizar los cálculos revise el siguiente enlace (LINK).</p>
+
+                    <p>Como resultado de este cálculo se obtiene un índice que varía entre 0 y 100, según el riesgo asociado. El índice de riesgo se ha clasificado en 5 categorías, asociadas a un color:</p>
+                    <table>
+                        <tr>
+                            <td class="cuadrado riesgo-muybajo"></td>
+                            <td> muy bajo: Rango de 0-20 </td>
+                        </tr>
+                        <tr>
+                            <td class="cuadrado riesgo-bajo"></td>
+                            <td> bajo: Rango de > 20-40</td>
+                        </tr>
+                        <tr>
+                            <td class="cuadrado riesgo-medio"></td>
+                            <td> medio: Rango de > 40-60</td>
+                        </tr>
+                        <tr>
+                            <td class="cuadrado riesgo-alto"></td>
+                            <td> alto: Rango de > 60-80</td>
+                        </tr>
+                        <tr>
+                            <td class="cuadrado riesgo-muyalto"></td>
+                            <td>muy alto: Rango de > 80-100 </td>
+                        </tr>
+                    </table>
+                </div>
+            <!--</div>-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" ng-click="$hide()">Cerrar</button>
+            </div>
+        </div>
+</div>

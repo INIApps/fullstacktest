@@ -1,0 +1,29 @@
+<section style="background-image:url('assets/images/abeja_flujo2.jpg');padding: 20px; background-position: top center; background-size: cover;min-height: 800px; background-attachment: fixed">
+  <div ng-include="'components/navbar/navbar.html'"></div>
+  <header class="page-header text-center " style="color:#ffffff;">
+    <h1 style="text-shadow: 2px 2px 2px black">Sistema Computacional</h1>
+    <h2></h2>
+  </header>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" style="background-color: rgba(255,255,255,0.85); padding: 20px; border-radius: 5px;">
+      <div class="col-md-12" style="text-align:justify;">
+         <p>Se diseñó un sistema computacional dinámico que permite modular la información contenida en las Tablas. Así se permite la búsqueda de las especies emparentadas (a nivel de género o de familia) entre las especies nativas, cultivadas o introducidas, que pudieran ser blanco de especies cultivadas y/o transgénicas que eventualmente están presentes o que pudieran ser introducidas en Chile.</p>
+         <p>En primer lugar, el sistema relaciona especies entre las bases de datos de cultivadas, transgénicas, introducidas y nativas, agrupando las coincidencias tanto en género como en especie, definiendo las de la conespecíficas <!--(link a glosario)-->.</p>
+         <p>Luego, agrupa las coincidencias en género solamente, produciendo una lista de especies emparentadas a este nivel; finalmente, agrupa las especies de una misma familia, entregando una lista de especies emparentadas a nivel de familia. Esta “información relacional” o listas de especies emparentadas, las entrega en formato de pantallas de consulta.</p>
+        <p>También el sistema entrega la información global de cada tabla sin relacionar, incluyendo todas las características ya descritas para cada especie, en formato de fichas o pantallas de consulta.</p>
+         <p>El sistema se diseñó de manera de entregar información rápida y sencilla cuya síntesis esté reflejada a través de un índice de riesgo asociado a la interacción entre el dador de polen o genes (entiéndase cultivo convencional y/o VGM) y la especie receptora (según especies nativas, cultivadas o introducidas). En forma adicional el sistema entrega un índice de riesgo dinámico que considera la presencia de insectos polinizadores para la pareja de especies compatibles que ha sido establecida. La información de agentes polinizadores también ha sido sistematizada para Chile y puede ser revisada desde la Tabla de Polinizadores (<a
+           href="/tablas">Ver tablas</a>).</p>
+         <p>Nuestra base de datos y sistema de modelamiento de la interacción permite ponderar los distintos criterios utilizados para determinar los riegos potenciales tanto de flujo génico para las especies dadoras (cultivadas y cultivadas genéticamente modificadas) como de riesgo a la biodiversidad de las especies receptoras; y también los factores que se adicionan a lo anterior debido a la presencia de agentes polinizadores. Esto puede ser obtenido mediante tu solicitud aquí.</p>
+         <p>Como usuario avanzado de CIRA, es posible ponderar entre estos criterios (en una escala de 1 a 6) los “tipos” o agrupación de caracteres (ver aquí), de modo de aumentar o disminuir la importancia de cada uno de ellos en el análisis particular que se realiza; esto en la medida que el estado del conocimiento o la discusión amerite estos cambios. Por ejemplo se le puede dar mayor importancia al estado de conservación sobre el tipo de cultivo para la estimación del índice de riesgo informado. (“tipos”, “caracteres” e “índice de riesgo informado” son definidos y explicados más adelante).</p>
+
+         <p>Si no eres usuario avanzado, los cálculos realizados en la versión pública de este sitio ponderan a todos los tipos de caracteres por igual y en un valor por defecto, el que se basa en el estado del arte actual, y definidos por expertos en el área. Es importante entender que variaciones en la ponderación de los criterios, modificarán el índice de riesgo informado para cada cruce de especies, y de allí la necesitad del uso correcto e informado de estos valores.</p>
+         <p>Es importante destacar que nuestra clasificación de riesgo para la biodiversidad, considerando el riesgo potencial de flujo génico que se expresa en los índices de riesgo es un ejemplo de lo que el sistema puede hacer. Como se ha indicado, su base es la opinión y criterios de los autores del sitio y, por lo tanto, puede ser modificado de acuerdo al nivel de conocimientos disponibles y la intención de los usuarios.</p>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="row" style="text-align:center; margin-top: 20px">
+    <a href="/flujoapp" class="btn btn-primary btn-lg">Ir a la aplicación</a>
+  </div>
+</section>

@@ -14,21 +14,28 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
-      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
+      <link rel="stylesheet" href="app/Modelador/Modelador.css">
       <link rel="stylesheet" href="app/account/login/login.css">
       <link rel="stylesheet" href="app/account/logout/logout.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/clasriesgo/clasriesgo.css">
+      <link rel="stylesheet" href="app/db/db.css">
+      <link rel="stylesheet" href="app/escalariesgo/escalariesgo.css">
       <link rel="stylesheet" href="app/flora/flora.css">
       <link rel="stylesheet" href="app/flujoapp/flujoapp.css">
       <link rel="stylesheet" href="app/informe/informe.css">
       <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/ponderacion/ponderacion.css">
+      <link rel="stylesheet" href="app/sistemacompu/sistemacompu.css">
       <link rel="stylesheet" href="app/tablas/tablas.css">
       <link rel="stylesheet" href="components/navbar/navbar.css">
       <!-- endinjector -->
@@ -44,6 +51,7 @@
     <div ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<!--
      <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -53,6 +61,7 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
+-->
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -67,15 +76,18 @@
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="bower_components/angular-route/angular-route.js"></script>
-      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-      <script src="bower_components/restangular/dist/restangular.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+      <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/Modelador/Modelador.controller.js"></script>
+          <script src="app/Modelador/Modelador.js"></script>
           <script src="app/account/account.js"></script>
           <script src="app/account/login/login.controller.js"></script>
           <script src="app/account/logout/logout.controller.js"></script>
@@ -84,10 +96,17 @@
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
+          <script src="app/clasriesgo/clasriesgo.controller.js"></script>
+          <script src="app/clasriesgo/clasriesgo.js"></script>
+          <script src="app/db/db.controller.js"></script>
+          <script src="app/db/db.js"></script>
+          <script src="app/escalariesgo/escalariesgo.controller.js"></script>
+          <script src="app/escalariesgo/escalariesgo.js"></script>
           <script src="app/factory/Florae/Florae.service.js"></script>
           <script src="app/factory/MainData/MainData.service.js"></script>
           <script src="app/factory/MainObj/MainObj.service.js"></script>
           <script src="app/factory/SpeciesEdit/SpeciesEdit.service.js"></script>
+          <script src="app/factory/Spselected/Spselected.service.js"></script>
           <script src="app/filters/orderByFlujo/orderByFlujo.filter.js"></script>
           <script src="app/flora/flora.controller.js"></script>
           <script src="app/flora/flora.js"></script>
@@ -97,7 +116,11 @@
           <script src="app/informe/informe.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/ponderacion/ponderacion.controller.js"></script>
+          <script src="app/ponderacion/ponderacion.js"></script>
           <script src="app/services/CalculusService/CalculusService.service.js"></script>
+          <script src="app/sistemacompu/sistemacompu.controller.js"></script>
+          <script src="app/sistemacompu/sistemacompu.js"></script>
           <script src="app/tablas/tablas.controller.js"></script>
           <script src="app/tablas/tablas.js"></script>
           <script src="components/auth/auth.service.js"></script>
