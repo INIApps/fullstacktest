@@ -4,7 +4,7 @@ angular.module('fullstack012App')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/modelador', {
-        templateUrl: 'app/Modelador/Modelador.html',
+        templateUrl: 'app/flujoapp/Modelador/Modelador.html',
         controller: 'ModeladorCtrl'
       });
   });

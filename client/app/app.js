@@ -7,7 +7,8 @@ angular.module('fullstack012App', [
   'ngRoute',
   'NavbarModule',
   'ngAnimate',
-  'mgcrea.ngStrap'
+  'mgcrea.ngStrap',
+  'NavbarThemeModule'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

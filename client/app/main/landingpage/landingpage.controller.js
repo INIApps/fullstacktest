@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('fullstack012App')
-  .controller('PonderacionCtrl', function ($scope) {
+  .controller('LandingpageCtrl', function ($scope) {
     $scope.message = 'Hello';
   });

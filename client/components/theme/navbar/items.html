@@ -1,0 +1,9 @@
+<li ng-repeat="item in menu" ng-class="{ 'active': isActive(item.link), 'dropdown': item.subMenu, 'cursorShow':item.subMenu}" toggle-open>
+  <a ng-href="{{item.link}}" class="dropdown-toggle" ng-class="{'dropdown-toggle':item.subMenu}">
+    {{item.title}}<span ng-show="item.subMenu" class="caret"></span></a>
+  <ul class="dropdown-menu" role="menu">
+    <li ng-repeat="subItem in item.subMenu">
+      <a ng-href="{{subItem.link}}">{{subItem.title}}</a>
+    </li>
+  </ul>
+</li>

@@ -22,22 +22,25 @@
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
-      <link rel="stylesheet" href="app/Modelador/Modelador.css">
       <link rel="stylesheet" href="app/account/login/login.css">
       <link rel="stylesheet" href="app/account/logout/logout.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
-      <link rel="stylesheet" href="app/clasriesgo/clasriesgo.css">
-      <link rel="stylesheet" href="app/db/db.css">
-      <link rel="stylesheet" href="app/escalariesgo/escalariesgo.css">
-      <link rel="stylesheet" href="app/flora/flora.css">
+      <link rel="stylesheet" href="app/flujoapp/Modelador/Modelador.css">
+      <link rel="stylesheet" href="app/flujoapp/flora/flora.css">
       <link rel="stylesheet" href="app/flujoapp/flujoapp.css">
-      <link rel="stylesheet" href="app/informe/informe.css">
+      <link rel="stylesheet" href="app/flujoapp/informe/informe.css">
+      <link rel="stylesheet" href="app/flujoapp/paginas/clasriesgo/clasriesgo.css">
+      <link rel="stylesheet" href="app/flujoapp/paginas/db/db.css">
+      <link rel="stylesheet" href="app/flujoapp/paginas/escalariesgo/escalariesgo.css">
+      <link rel="stylesheet" href="app/flujoapp/paginas/sistemacompu/sistemacompu.css">
+      <link rel="stylesheet" href="app/flujoapp/tablas/tablas.css">
+      <link rel="stylesheet" href="app/main/landingpage/landingpage.css">
       <link rel="stylesheet" href="app/main/main.css">
-      <link rel="stylesheet" href="app/ponderacion/ponderacion.css">
-      <link rel="stylesheet" href="app/sistemacompu/sistemacompu.css">
-      <link rel="stylesheet" href="app/tablas/tablas.css">
       <link rel="stylesheet" href="components/navbar/navbar.css">
+      <link rel="stylesheet" href="components/theme/navbar/navbar.css">
+      <link rel="stylesheet" href="components/theme/style.css">
+      <link rel="stylesheet" href="components/theme/themes.css">
       <!-- endinjector -->
     <!-- endbuild -->
 
@@ -86,8 +89,6 @@
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
-          <script src="app/Modelador/Modelador.controller.js"></script>
-          <script src="app/Modelador/Modelador.js"></script>
           <script src="app/account/account.js"></script>
           <script src="app/account/login/login.controller.js"></script>
           <script src="app/account/logout/logout.controller.js"></script>
@@ -96,37 +97,46 @@
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
-          <script src="app/clasriesgo/clasriesgo.controller.js"></script>
-          <script src="app/clasriesgo/clasriesgo.js"></script>
-          <script src="app/db/db.controller.js"></script>
-          <script src="app/db/db.js"></script>
-          <script src="app/escalariesgo/escalariesgo.controller.js"></script>
-          <script src="app/escalariesgo/escalariesgo.js"></script>
-          <script src="app/factory/Florae/Florae.service.js"></script>
-          <script src="app/factory/MainData/MainData.service.js"></script>
-          <script src="app/factory/MainObj/MainObj.service.js"></script>
-          <script src="app/factory/SpeciesEdit/SpeciesEdit.service.js"></script>
-          <script src="app/factory/Spselected/Spselected.service.js"></script>
-          <script src="app/filters/orderByFlujo/orderByFlujo.filter.js"></script>
-          <script src="app/flora/flora.controller.js"></script>
-          <script src="app/flora/flora.js"></script>
+          <script src="app/commons/directives/toggleOpen/toggleOpen.directive.js"></script>
+          <script src="app/flujoapp/Modelador/Modelador.controller.js"></script>
+          <script src="app/flujoapp/Modelador/Modelador.js"></script>
+          <script src="app/flujoapp/OldfactoryKrap/Florae/Florae.service.js"></script>
+          <script src="app/flujoapp/OldfactoryKrap/MainData/MainData.service.js"></script>
+          <script src="app/flujoapp/OldfactoryKrap/MainObj/MainObj.service.js"></script>
+          <script src="app/flujoapp/OldfactoryKrap/SpeciesEdit/SpeciesEdit.service.js"></script>
+          <script src="app/flujoapp/OldfactoryKrap/Spselected/Spselected.service.js"></script>
+          <script src="app/flujoapp/filters/orderByFlujo/orderByFlujo.filter.js"></script>
+          <script src="app/flujoapp/flora/FloraFactory/Flora.service.js"></script>
+          <script src="app/flujoapp/flora/FloraFactory/FloraAPI/FloraAPI.service.js"></script>
+          <script src="app/flujoapp/flora/FloraFactory/FloraTransform/FloraTransform.service.js"></script>
+          <script src="app/flujoapp/flora/FloraFactory/FloraeObj/FloraeObj.service.js"></script>
+          <script src="app/flujoapp/flora/flora.controller.js"></script>
+          <script src="app/flujoapp/flora/flora.js"></script>
           <script src="app/flujoapp/flujoapp.controller.js"></script>
           <script src="app/flujoapp/flujoapp.js"></script>
-          <script src="app/informe/informe.controller.js"></script>
-          <script src="app/informe/informe.js"></script>
+          <script src="app/flujoapp/informe/informe.controller.js"></script>
+          <script src="app/flujoapp/informe/informe.js"></script>
+          <script src="app/flujoapp/paginas/clasriesgo/clasriesgo.controller.js"></script>
+          <script src="app/flujoapp/paginas/clasriesgo/clasriesgo.js"></script>
+          <script src="app/flujoapp/paginas/db/db.controller.js"></script>
+          <script src="app/flujoapp/paginas/db/db.js"></script>
+          <script src="app/flujoapp/paginas/escalariesgo/escalariesgo.controller.js"></script>
+          <script src="app/flujoapp/paginas/escalariesgo/escalariesgo.js"></script>
+          <script src="app/flujoapp/paginas/sistemacompu/sistemacompu.controller.js"></script>
+          <script src="app/flujoapp/paginas/sistemacompu/sistemacompu.js"></script>
+          <script src="app/flujoapp/services/CalculusService/CalculusService.service.js"></script>
+          <script src="app/flujoapp/tablas/tablas.controller.js"></script>
+          <script src="app/flujoapp/tablas/tablas.js"></script>
+          <script src="app/main/landingpage/landingpage.controller.js"></script>
+          <script src="app/main/landingpage/landingpage.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
-          <script src="app/ponderacion/ponderacion.controller.js"></script>
-          <script src="app/ponderacion/ponderacion.js"></script>
-          <script src="app/services/CalculusService/CalculusService.service.js"></script>
-          <script src="app/sistemacompu/sistemacompu.controller.js"></script>
-          <script src="app/sistemacompu/sistemacompu.js"></script>
-          <script src="app/tablas/tablas.controller.js"></script>
-          <script src="app/tablas/tablas.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
           <script src="components/navbar/navbarController.js"></script>
+          <script src="components/theme/navbar/items.controller.js"></script>
+          <script src="components/theme/navbar/navbar.controller.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
         <!-- / boxedWrapper -->

@@ -60,6 +60,7 @@
 		<th>Familia</th>
 		<th>Genero</th>
 		<th>Taxa</th>
+    <th>Nombre común</th>
 		<th>Origen</th>
 		<th>Artificial</th>
 		<th>Endémico</th>
@@ -86,6 +87,7 @@
 		<td>{{sp.familia}}</td>
 		<td>{{sp.genero}}</td>
 		<td>{{sp.taxa}}</td>
+    <td>{{sp.nameEs}}</td>
 		<td>{{sp.origen}}</td>
 		<td>{{sp.artificial}}</td>
 		<td>{{sp.endemico}}</td>
@@ -121,7 +123,7 @@
 		<th>Nombre(es)</th>
 		<th>Nombre(en)</th>
 		<th>Registro</th>
-		<th>Flujo</th>		
+		<th>Flujo</th>
 		<th>GFFS</th>
 		<th>GFFC</th>
 		<th>SB</th>
@@ -152,7 +154,7 @@
 		<th>Nombre(es)</th>
 		<th>Origen</th>
 		<th>Agrícola</th>
-		<th>Maleza</th>		
+		<th>Maleza</th>
 		<th>Ornamental</th>
 		<th>Forestal</th>
 		<th>Medicinal</th>
@@ -187,7 +189,7 @@
 		<th>Endémico</th>
 		<th>Introducido</th>
 		<th>Poliléctica</th>
-		<th>Oligoléctica</th>		
+		<th>Oligoléctica</th>
 	</tr>
 	<tr ng-repeat="sp in polinizadores.events">
 		<td>{{sp.orden}}</td>

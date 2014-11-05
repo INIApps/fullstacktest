@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: PonderacionCtrl', function () {
+describe('Controller: LandingpageCtrl', function () {
 
   // load the controller's module
   beforeEach(module('fullstack012App'));
 
-  var PonderacionCtrl, scope;
+  var LandingpageCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    PonderacionCtrl = $controller('PonderacionCtrl', {
+    LandingpageCtrl = $controller('LandingpageCtrl', {
       $scope: scope
     });
   }));

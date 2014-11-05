@@ -10,7 +10,7 @@ angular.module('fullstack012App')
   		$scope.nativas = false;
   		$scope.polinizadores = false;
   	}
-        $scope.currentPage = 'tablas';
+    $scope.currentPage = 'tablas';
 
     $scope.getPage = function (n){
     	if($scope.typeSp === 'polinizadores'){
@@ -77,7 +77,4 @@ angular.module('fullstack012App')
 
     $scope.getSp('transgenicas');
 
-    $http.get('api/flora/cout').success(function(data){
-    	$scope.count = data;
-    });
   });
