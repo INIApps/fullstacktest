@@ -2,72 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24c148ab-c987-4e52-852e-94893f5fb2db" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/Modelador/Modelador.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/Modelador/Modelador.controller.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/Modelador/Modelador.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/Modelador/Modelador.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/Modelador/Modelador.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/clasriesgo/clasriesgo.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/clasriesgo/clasriesgo.controller.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/clasriesgo/clasriesgo.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/clasriesgo/clasriesgo.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/clasriesgo/clasriesgo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/db/db.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/db/db.controller.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/db/db.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/db/db.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/db/db.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/escalariesgo/escalariesgo.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/escalariesgo/escalariesgo.controller.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/escalariesgo/escalariesgo.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/escalariesgo/escalariesgo.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/escalariesgo/escalariesgo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/Florae/Florae.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/Florae/Florae.service.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/MainData/MainData.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/MainData/MainData.service.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/MainObj/MainObj.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/MainObj/MainObj.service.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/SpeciesEdit/SpeciesEdit.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/SpeciesEdit/SpeciesEdit.service.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/Spselected/Spselected.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/factory/Spselected/Spselected.service.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/filters/orderByFlujo/orderByFlujo.filter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/filters/orderByFlujo/orderByFlujo.filter.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/flora/flora-show.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/flora/flora.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/flora/flora.controller.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/flora/flora.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/flora/flora.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/flora/flora.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/informe/informe.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/informe/informe.controller.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/informe/informe.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/informe/informe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/informe/informe.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/ponderacion/ponderacion.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/ponderacion/ponderacion.controller.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/ponderacion/ponderacion.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/ponderacion/ponderacion.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/ponderacion/ponderacion.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/services/CalculusService/CalculusService.service.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/services/CalculusService/CalculusService.service.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/sistemacompu/sistemacompu.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/sistemacompu/sistemacompu.controller.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/sistemacompu/sistemacompu.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/sistemacompu/sistemacompu.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/sistemacompu/sistemacompu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/tablas/tablas.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/tablas/tablas.controller.spec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/tablas/tablas.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/tablas/tablas.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/tablas/tablas.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/app.js" afterPath="$PROJECT_DIR$/client/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/flujoapp/flujoapp.controller.js" afterPath="$PROJECT_DIR$/client/app/flujoapp/flujoapp.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/flujoapp/paginas/clasriesgo/clasriesgo.html" afterPath="$PROJECT_DIR$/client/app/flujoapp/paginas/clasriesgo/clasriesgo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/flujoapp/paginas/db/db.html" afterPath="$PROJECT_DIR$/client/app/flujoapp/paginas/db/db.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/flujoapp/paginas/escalariesgo/escalariesgo.html" afterPath="$PROJECT_DIR$/client/app/flujoapp/paginas/escalariesgo/escalariesgo.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/flujoapp/flujoapp.html" afterPath="$PROJECT_DIR$/client/app/flujoapp/flujoapp.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.html" afterPath="$PROJECT_DIR$/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/templates/modo-avanzado.html" afterPath="$PROJECT_DIR$/client/components/templates/modo-avanzado.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/navbar/navbarController.js" afterPath="$PROJECT_DIR$/client/components/navbar/navbarController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/main/landingpage/landingpage.controller.js" afterPath="$PROJECT_DIR$/client/app/main/landingpage/landingpage.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/main/landingpage/landingpage.html" afterPath="$PROJECT_DIR$/client/app/main/landingpage/landingpage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/main/main.html" afterPath="$PROJECT_DIR$/client/app/main/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/theme/navbar/navbar.controller.js" afterPath="$PROJECT_DIR$/client/components/theme/navbar/navbar.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/theme/navbar/navbar.css" afterPath="$PROJECT_DIR$/client/components/theme/navbar/navbar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/theme/navbar/navbar.html" afterPath="$PROJECT_DIR$/client/components/theme/navbar/navbar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/flujoapp/paginas/sistemacompu/sistemacompu.html" afterPath="$PROJECT_DIR$/client/app/flujoapp/paginas/sistemacompu/sistemacompu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/theme/style.css" afterPath="$PROJECT_DIR$/client/components/theme/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/commons/directives/toggleOpen/toggleOpen.directive.js" afterPath="$PROJECT_DIR$/client/app/commons/directives/toggleOpen/toggleOpen.directive.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="fullstack012.iws" />
@@ -92,57 +41,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="navbar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbar.html">
+      <file leaf-file-name="flujoapp.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/app/flujoapp/flujoapp.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="840">
-              <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.083333336" vertical-offset="0" max-vertical-offset="5235">
+              <caret line="3" column="63" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="63" />
               <folding>
-                <element signature="n#div#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="false" />
-                <element signature="n#ul#0;n#nav#0;n#div#0;n#div#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#header#0;n#!!top" expanded="true" />
-                <element signature="e#3265#21510#0" expanded="false" />
-                <element signature="e#21567#21994#0" expanded="false" />
+                <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#header#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#header#0;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#div#1;n#div#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#div#2;n#div#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#5;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#6;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#section#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="items.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/items.html">
+      <file leaf-file-name="navbar.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="225">
-              <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-              <folding />
+            <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="600">
+              <caret line="1" column="137" selection-start-line="1" selection-start-column="69" selection-end-line="1" selection-end-column="137" />
+              <folding>
+                <element signature="n#div#0;n#header#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#header#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="false" />
+                <element signature="n#ul#0;n#nav#0;n#div#0;n#div#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#header#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#header#0;n#!!top" expanded="true" />
+                <element signature="e#3405#21650#0" expanded="false" />
+                <element signature="e#21707#22134#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/theme/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="563">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navbar.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbar.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5213" max-vertical-offset="5835">
-              <caret line="383" column="0" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="137475">
+              <caret line="240" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="9159" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -151,8 +100,8 @@
       <file leaf-file-name="navbar.controller.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbar.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+              <caret line="40" column="69" selection-start-line="40" selection-start-column="69" selection-end-line="40" selection-end-column="69" />
               <folding>
                 <element signature="e#670#1570#0" expanded="false" />
               </folding>
@@ -160,11 +109,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toggleOpen.directive.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/commons/directives/toggleOpen/toggleOpen.directive.js">
+      <file leaf-file-name="appearing.directive.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/commons/directives/appearing/appearing.directive.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-              <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="landingpage.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/main/landingpage/landingpage.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="landingpage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/app/main/landingpage/landingpage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="6525">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="n#div#2;n#div#2;n#div#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navbar.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbar.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5880">
+              <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -185,7 +166,6 @@
       <list>
         <option value="$PROJECT_DIR$/client/app/factory/Tests/Flora/FloraAPI/FloraAPI.service.js" />
         <option value="$PROJECT_DIR$/client/app/factory/Tests/Flora/FloraTransform/FloraTransform.service.js" />
-        <option value="$PROJECT_DIR$/client/app/flujoapp/flujoapp.html" />
         <option value="$PROJECT_DIR$/client/app/flujoapp/flujoapp.controller.js" />
         <option value="$PROJECT_DIR$/client/app/Modelador/Modelador.controller.js" />
         <option value="$PROJECT_DIR$/client/app/factory/Tests/Flora/Flora.service.js" />
@@ -200,16 +180,33 @@
         <option value="$PROJECT_DIR$/client/app/flujoapp/paginas/clasriesgo/clasriesgo.js" />
         <option value="$PROJECT_DIR$/client/components/themes.css" />
         <option value="$PROJECT_DIR$/client/components/style.css" />
-        <option value="$PROJECT_DIR$/client/components/theme/navbar/navbar.css" />
-        <option value="$PROJECT_DIR$/client/app/main/landingpage/landingpage.html" />
-        <option value="$PROJECT_DIR$/client/app/app.js" />
         <option value="$PROJECT_DIR$/client/components/theme/navbar/items.controller.js" />
         <option value="$PROJECT_DIR$/client/components/navbar/navbarController.js" />
-        <option value="$PROJECT_DIR$/client/components/theme/navbar/navbar.controller.js" />
         <option value="$PROJECT_DIR$/client/components/theme/navbar/items.html" />
+        <option value="$PROJECT_DIR$/client/index.html" />
+        <option value="$PROJECT_DIR$/client/components/theme/navbar/navbarcira.controller.js" />
+        <option value="$PROJECT_DIR$/client/app/flujoapp/paginas/clasriesgo/clasriesgo.html" />
+        <option value="$PROJECT_DIR$/client/app/flujoapp/paginas/db/db.html" />
+        <option value="$PROJECT_DIR$/client/app/flujoapp/paginas/escalariesgo/escalariesgo.html" />
+        <option value="$PROJECT_DIR$/client/app/flujoapp/paginas/sistemacompu/sistemacompu.html" />
+        <option value="$PROJECT_DIR$/client/app/main/main.html" />
+        <option value="$PROJECT_DIR$/client/components/theme/navbar/navbarcira.html" />
+        <option value="$PROJECT_DIR$/client/components/sliderAngularJS/sliderController.js" />
+        <option value="$PROJECT_DIR$/client/components/sliderAngularJS/sliderTemplate.html" />
+        <option value="$PROJECT_DIR$/client/app/commons/directives/sliderPC/sliderPC.directive.js" />
+        <option value="$PROJECT_DIR$/client/app/app.js" />
+        <option value="$PROJECT_DIR$/client/app/commons/directives/sliderPC/sliderPC.css" />
+        <option value="$PROJECT_DIR$/client/components/sliderAngularJS/sliderStyle.css" />
+        <option value="$PROJECT_DIR$/client/app/commons/directives/sliderPC/sliderPC.html" />
         <option value="$PROJECT_DIR$/client/app/commons/directives/toggleOpen/toggleOpen.directive.js" />
+        <option value="$PROJECT_DIR$/client/components/theme/navbar/navbar.controller.js" />
+        <option value="$PROJECT_DIR$/client/app/main/landingpage/landingpage.controller.js" />
+        <option value="$PROJECT_DIR$/client/app/commons/directives/appearing/appearing.directive.js" />
+        <option value="$PROJECT_DIR$/client/app/main/landingpage/landingpage.html" />
         <option value="$PROJECT_DIR$/client/components/theme/navbar/navbar.html" />
+        <option value="$PROJECT_DIR$/client/components/theme/navbar/navbar.css" />
         <option value="$PROJECT_DIR$/client/components/theme/style.css" />
+        <option value="$PROJECT_DIR$/client/app/flujoapp/flujoapp.html" />
       </list>
     </option>
   </component>
@@ -303,38 +300,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fullstack012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fullstack012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fullstack012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fullstack012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -398,28 +363,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="theme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="navbar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fullstack012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fullstack012" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -507,15 +450,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="commons" />
+              <option name="myItemId" value="flujoapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="directives" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="toggleOpen" />
+              <option name="myItemId" value="paginas" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -654,11 +593,11 @@
     <layout>
       <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771084" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932693" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2879518" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28674698" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22621565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20084566" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18149039" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2752404" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -700,20 +639,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/app/account/logout/logout.controller.spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="19" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/templates/aside.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="549">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/components/modal.tpl.indice.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.666666" vertical-offset="182" max-vertical-offset="720">
@@ -807,17 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/flujoapp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.0" vertical-offset="1855" max-vertical-offset="4395">
-          <caret line="137" column="16" selection-start-line="137" selection-start-column="16" selection-end-line="137" selection-end-column="16" />
-          <folding>
-            <element signature="n#style#0;n#section#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#1;n#section#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/api/flora/flora.model.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.1657754" vertical-offset="654" max-vertical-offset="1215">
@@ -882,14 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1396648" vertical-offset="0" max-vertical-offset="2205">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/app/flujoapp/paginas/db/db.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26737967" vertical-offset="0" max-vertical-offset="561">
@@ -922,25 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/main/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.028571429" vertical-offset="0" max-vertical-offset="840">
-          <caret line="1" column="60" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/main/landingpage/landingpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="345">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/items.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
@@ -951,73 +838,260 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/navbar/navbarController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2522203" vertical-offset="0" max-vertical-offset="810">
-          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.0" vertical-offset="1390" max-vertical-offset="2280">
+          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/paginas/clasriesgo/clasriesgo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0" vertical-offset="15" max-vertical-offset="1590">
+          <caret line="1" column="68" selection-start-line="1" selection-start-column="68" selection-end-line="1" selection-end-column="68" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/paginas/db/db.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="480">
+          <caret line="1" column="68" selection-start-line="1" selection-start-column="68" selection-end-line="1" selection-end-column="68" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/paginas/escalariesgo/escalariesgo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="915">
+          <caret line="1" column="68" selection-start-line="1" selection-start-column="68" selection-end-line="1" selection-end-column="68" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/paginas/sistemacompu/sistemacompu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="525">
+          <caret line="1" column="68" selection-start-line="1" selection-start-column="68" selection-end-line="1" selection-end-column="68" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/navbar/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.256654" vertical-offset="0" max-vertical-offset="570">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/main/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="840">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbarcira.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.512334" vertical-offset="0" max-vertical-offset="527">
+          <caret line="96" column="43" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#1636#0" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#header#0;n#!!top" expanded="false" />
+            <element signature="e#2133#3722#0" expanded="false" />
+            <element signature="e#3804#3966#0" expanded="false" />
+            <element signature="e#3973#4222#0" expanded="false" />
+            <element signature="e#4229#4411#0" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#header#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/sliderAngularJS/sliderTemplate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2777778" vertical-offset="0" max-vertical-offset="645">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2925532" vertical-offset="0" max-vertical-offset="1080">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/commons/directives/sliderPC/sliderPC.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1590">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/app/commons/directives/toggleOpen/toggleOpen.directive.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        <state vertical-scroll-proportion="-10.961538" vertical-offset="0" max-vertical-offset="390">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/navbar/navbar.html">
+    <entry file="file://$PROJECT_DIR$/client/app/commons/directives/sliderPC/sliderPC.directive.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85551333" vertical-offset="0" max-vertical-offset="570">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/sliderAngularJS/sliderStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1011" max-vertical-offset="1590">
+          <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/commons/directives/sliderPC/sliderPC.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="585">
+          <caret line="23" column="110" selection-start-line="23" selection-start-column="110" selection-end-line="23" selection-end-column="110" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/sliderAngularJS/sliderController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="486" max-vertical-offset="1110">
+          <caret line="65" column="6" selection-start-line="28" selection-start-column="4" selection-end-line="65" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbarcira.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05319149" vertical-offset="0" max-vertical-offset="564">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/commons/directives/appearing/appearing.directive.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbar.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5213" max-vertical-offset="5835">
-          <caret line="383" column="0" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5880">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/theme/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="137475">
+          <caret line="240" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="9159" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbar.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <caret line="40" column="69" selection-start-line="40" selection-start-column="69" selection-end-line="40" selection-end-column="69" />
           <folding>
             <element signature="e#670#1570#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/app/app.js">
+    <entry file="file://$PROJECT_DIR$/client/app/main/landingpage/landingpage.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/theme/navbar/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="840">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        <state vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="600">
+          <caret line="1" column="137" selection-start-line="1" selection-start-column="69" selection-end-line="1" selection-end-column="137" />
           <folding>
+            <element signature="n#div#0;n#header#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#header#0;n#!!top" expanded="false" />
             <element signature="n#div#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="false" />
             <element signature="n#ul#0;n#nav#0;n#div#0;n#div#0;n#div#1;n#div#0;n#header#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#header#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#1;n#header#0;n#!!top" expanded="true" />
-            <element signature="e#3265#21510#0" expanded="false" />
-            <element signature="e#21567#21994#0" expanded="false" />
+            <element signature="e#3405#21650#0" expanded="false" />
+            <element signature="e#21707#22134#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/theme/style.css">
+    <entry file="file://$PROJECT_DIR$/client/app/main/landingpage/landingpage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="563">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="6525">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#2;n#div#2;n#div#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/app/flujoapp/flujoapp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.083333336" vertical-offset="0" max-vertical-offset="5235">
+          <caret line="3" column="63" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="63" />
+          <folding>
+            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#header#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#header#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#1;n#div#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#2;n#div#0;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#3;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#4;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#5;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#6;n#div#0;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#1;n#section#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

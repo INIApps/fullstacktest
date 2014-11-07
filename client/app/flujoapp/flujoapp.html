@@ -66,6 +66,10 @@
         <!-- INTRODUCIDAS -->
         <div class="panel panel-default" ng-show="especiesMatch.introducidas.length > 0">
             <div class="panel-heading">
+<!--            <span ng-hide="especiesMatch.introducidas.length > 0">
+                <input class="btn" type="text" placeholder="Introducidas" disabled>
+            </span>-->
+
             <span class="mypointer"  ng-click="taipo=2;" ng-class="{'btn btn-primary':especiesMatch.introducidas.length > 0}">
                 Introducidas <span class="badge">{{especiesMatch.introducidas.length}}</span>
             </span>
@@ -254,10 +258,28 @@
         <p>{{spSelected.description()}}</p>
 	<div ng-show="spSelected" class="well" style="background-color:{{spSelected.colorRisk()}};">
 		<br>
-		<h4 >Índice de Riesgo Ambiental por Flujo Génico: <b>{{ spSelected.riskLevel()}}</b>  <small ng-show="true">({{ spSelected.flujoGenico() | number:1 }}) </small>
-
+		<h4 >Índice de Riesgo Ambiental por Flujo Génico: <b>{{ spSelected.riskLevelCira() || spSelected.riskLevel()}}</b>  <small ng-show="false">({{ spSelected.cira || spSelected.flujoGenico() | number:0 }}) </small>
+            <!--<span ng-show="spSelected.cira"> - CIRA: <b>{{spSelected.riskLevelCira()}}</b> <small>({{spSelected.cira | number:0}})</small></span>-->
+        <!--<button ng-show="true" class="btn btn-info" ng-click="ponderador=!ponderador" ng-init="ponderador=false" bs-aside data-template="components/templates/ponderador.html">modelador</button>-->
+      <!--<a class="btn btn-info" ng-href="/modelador">modelador</a>-->
       <button class="btn btn-info" data-animation="am-fade-and-scale" data-placement="center" bs-modal data-template="components/templates/modo-avanzado.html">Modo Avanzado</button>
         </h4>
+		<!--<p>{{spSelected.description()}}</p>-->
+
+        <!--<div class="row" ng-show="ponderador">
+            <ul class="nav col-md-6 col-md-offset-3">
+                <li ng-repeat="(key, value) in spSelected.R | orderBy: 'key' ">
+                    <label for="">{{spSelected.R[key].label}} <small>( Valor = {{spSelected.R[key].value}})</small></label>
+                    <input type="range" min=1 max=6 ng-model="spSelected.R[key].value"/>
+                    <ul>
+                        <li ng-repeat="(k,v) in spSelected.R[key].subItems">
+                            <label for="">{{spSelected.R[key].subItems[k].label}} <small>(Valor = {{spSelected.R[key].subItems[k].value}})</small></label>
+                            <input type="range" min=1 max=6 ng-model="spSelected.R[key].subItems[k].value"/>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>-->
 	</div>
 
     <h4 class="well" ng-show="spSelected.dist.length == 0">Distribución en Chile: <small>no existe información de distribución</small></h4>
@@ -265,11 +287,24 @@
         <span ng-show="spSelected.dist.length > 1 ">presente en {{spSelected.dist.length}} regiones.</span></small></h4>
 
 	<div>
-
+<!--        <ul class="">
+            <li class="" ng-repeat="region in spSelected.dist | orderBy:'code'">
+                {{region.name}}
+                <ul class="">
+                    <li class="" ng-repeat="provincia in region.provincias  | orderBy:'code'"> Provincia: {{provincia.name}}
+                        <ul class="">
+                            <li class="" ng-repeat="comuna in provincia.comunas  | orderBy:'code'">Comuna : {{comuna.name}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>-->
         <div class="panel panel-default" ng-repeat="region in spSelected.dist | orderBy:'code'">
             <!-- Default panel contents -->
             <div class="panel-heading">{{region.name}}</div>
-
+   <!--         <div class="panel-body">
+                <p>...</p>
+            </div>-->
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="provincia in region.provincias  | orderBy:'code'"> Provincia: {{provincia.name}}
                     <ul class="">
@@ -278,8 +313,29 @@
                 </li>
             </ul>
 
+            <!-- List group -->
+<!--            <ul class="list-group">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>-->
         </div>
-
+<!--		<accordion close-others="oneAtATime">
+			<accordion-group ng-repeat="region in spSelected.dist | orderBy:'code'">
+				<accordion-heading >
+				<span style="cursor:pointer;">{{region.name}}</span>
+				</accordion-heading>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="provincia in region.provincias  | orderBy:'code'"> Provincia: {{provincia.name}}
+						<ul class="list-group">
+						  <li class="list-group-item" ng-repeat="comuna in provincia.comunas  | orderBy:'code'">Comuna : {{comuna.name}}</li>
+						</ul>
+					</li>
+				</ul>
+			<accordion-group>
+		</accordion>-->
 	</div>
 </section>
 

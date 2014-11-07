@@ -1,0 +1,113 @@
+<!--<nav class="navbar navbar-default" role="navigation" ng-controller="NavbarCiraCtrl">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" ng-init="mobilNav=false" data-target="#bs-example-navbar-collapse-1" ng-click="mobilNav = !mobilNav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        &lt;!&ndash;<img src="{{logo1}}" alt="" style="height:30px"> &ndash;&gt;
+        <img src="{{logo2}}" alt="" style="height:30px">
+        <span>Sistema CIRA &lt;!&ndash;<small class="hidden-sm hidden-xs ">(Cálculo de Índice de Riesgo Ambiental)</small>&ndash;&gt;</span>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" ng-class="{'in':mobilNav}">
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-repeat="item in menu" ng-class="{ 'active': item.id==currentPage, 'dropdown': item.subMenu, 'cursorShow':item.subMenu}" toggle-open>
+          <a ng-href="{{item.link}}" class="dropdown-toggle" ng-class="{'dropdown-toggle':item.subMenu}">
+            {{item.title}}<span ng-show="item.subMenu" class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="subItem in item.subMenu">
+              <a ng-href="{{subItem.link}}">{{subItem.title}}</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">{{getCurrentUser().name}}</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>-->
+
+<header class="header  sides" ng-controller="NavbarCiraCtrl">
+  <div class="container-fluid htop">
+    <div class="col-md-8 col-sm-7">
+      <div class="col-md-6 contact-info">
+        <span class="phone">+5 489 956 128</span>
+        <a class="a-email" href="mailto:info@camaro.com">info@camaro.com</a>
+      </div>
+      <div class="logo pull-left">
+        <a href="index.html">CIRA</a>
+      </div>
+      <div class="slogan hidden-xs">Cálculo del Índice de Riesgo Ambiental</div>
+    </div>
+<!--    <div class="col-md-4 col-sm-5 text-right">
+      <div class="hcart pull-left">
+        <a href="cart.html"><i class="custom-icon custom-icon-ico-cart"></i> 4 items - $164,50</a>
+        <div class="dropdown">
+          <nav>
+            <ul class="hcart-list">
+              <li>
+                <a href="product.html" class="fig pull-left"><img src="http://placehold.it/60x108" alt=""></a>
+                <div class="block">
+                  <a href="product.html">Koppel 417 Crhonograph</a>
+                  <div class="cost">1 x $67,50</div>
+                </div>
+              </li>
+              <li>
+                <a href="product.html" class="fig pull-left"><img src="http://placehold.it/60x78" alt=""></a>
+                <div class="block">
+                  <a href="product.html">Georg Teapot</a>
+                  <div class="cost">2 x $39,00</div>
+                </div>
+              </li>
+              <li>
+                <a href="product.html" class="fig pull-left"><img src="http://placehold.it/60x92" alt=""></a>
+                <div class="block">
+                  <a href="product.html">Glow Candelholder</a>
+                  <div class="cost">1 x $19,00</div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="hcart-total">
+            <a href="cart.html" class="btn btn-default">Cart</a>
+            <div class="total">Total - <ins>$164,50</ins></div>
+          </div>
+        </div>
+      </div>
+      <a href="" data-popup="login" class="a-login btn btn-primary pull-right">Login</a>
+    </div>-->
+  </div>
+  <div class="hbottom right-pos">
+    <div class="container-fluid">
+    <!--  <div class="col-md-4 col-sm-3 logo not-sticky">
+        <a href="#"style="font-size: 20px">Internet para el desarrollo agrícola de Chile</a>
+      </div>-->
+      <!--<div class="col-md-1 col-sm-2 iconmenu pull-right">
+        <a href="" class="a-search"><i class="custom-icon custom-icon-ico-search"></i></a>
+        <a href="" class="a-menu"><i class="custom-icon custom-icon-ico-menu"></i></a>
+      </div>-->
+      <!--<div class="col-md-4 contact-info">
+        <span class="phone">+5 489 956 128</span>
+        <a class="a-email" href="mailto:info@camaro.com">info@camaro.com</a>
+      </div>-->
+      <div class="col-md-10 col-md-offset-2 col-sm-12 mainmenu">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+          <nav>
+            <ul class="nav navbar-nav text-center" ng-include="'components/theme/navbar/items.html'" ></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
