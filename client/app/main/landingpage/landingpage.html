@@ -1,11 +1,55 @@
+
+
 <!-- WRAPPER -->
-<div class="wrapper container-fluid" appearing appearing-offset="180" ng-class="{'margin-top180':boolChangeClass}">
+<div class="container-fluid">
 
   <div ng-include="'components/theme/navbar/navbar.html'"></div>
+
   <!-- HOME -->
   <div class="home">
     <!-- ONESLIDER -->
-    <div slider-p-c slide-data="pics"></div>
+    <div class="oneslider">
+      <ul>
+        <li class="large-size overlay">
+          <div class="bg bg-about"></div>
+          <div class="container vmiddle">
+            <div class="row">
+              <div class="col-sm-4 col-sm-offset-2 col-xs-8 col-xs-offset-2 text-center">
+                <h1>Welcome to <span class="color">Camaro</span></h1>
+              </div>
+              <div class="col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2">
+                <p class="color-ccc">Mellentesque habitant morbi tristique senectus et netus et malesuada famesac turpis egestas. Ut non enim eleifend felis pretium feugiat.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="large-size overlay">
+          <div class="bg bg-gallery"></div>
+          <div class="container vmiddle">
+            <div class="row text-center">
+              <div class="icon-big color icon icon-picture-streamline"></div>
+              <h1>Our Photo Gallery</h1>
+            </div>
+          </div>
+        </li>
+        <li class="large-size overlay">
+          <div class="bg bg-team"></div>
+          <div class="container vmiddle">
+            <div class="row text-center">
+              <div class="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+                <div class="icon icon-big color icon-chaplin-hat-movie-streamline"></div>
+                <h1>Behind the Scenes</h1>
+                <p class="color-ccc">Mellentesque habitant morbi tristique senectus et netus et malesuada famesac turpis egestas. Ut non enim eleifend felis pretium feugiat.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="slidebar">
+        <a href="#" class="arrow prev"><i class="custom-icon custom-icon-arrow-prev"></i></a>
+        <a href="#" class="arrow next"><i class="custom-icon custom-icon-arrow-next"></i></a>
+      </div>
+    </div>
     <!-- /.oneslider -->
   </div>
   <!-- /.home -->
@@ -15,26 +59,6 @@
 
     <!-- HIGHLIGHT -->
     <div class="highlight">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-4">
-            <h2>Proyecto de investigación</h2>
-            <p class="grey">Working Since 1976</p>
-          </div>
-          <div class="col-sm-8">
-            <p ng-bind-html="landingText.content"></p>
-          </div>
-<!--          <div class="col-sm-4">
-            <p>Mellentesque habitant morbi tristique senectus et netus et malesuada famesac turpis egestas. Ut non enim eleifend felis pretium feugiat. Vivamus quis mi.</p>
-            <h4><a href="about_me.html">Susana Jacobs</a></h4>
-            <small>Startegy Manager</small>
-          </div>-->
-        </div>
-      </div>
-    </div>
-    <!-- /.highlight -->
-    <!-- HIGHLIGHT -->
-    <div class="highlight " >
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-4">
@@ -55,7 +79,7 @@
     <!-- /.highlight -->
 
     <!-- CONTAINER -->
-    <div ng-show="false" class="container-fluid text-center">
+    <div class="container-fluid text-center">
       <div class="row">
         <div class="col-md-3 col-sm-6 container">
           <div class="icon-norm">
@@ -104,7 +128,7 @@
     <!-- /.container -->
 
     <!-- CONTAINER -->
-    <div ng-show="false" class="container-fluid team text-center">
+    <div class="container-fluid team text-center">
       <div class="row">
         <div class="page-header col-sm-8 col-sm-offset-2">
           <h2>Our Team</h2>
@@ -126,7 +150,7 @@
               <a href="#" class="close"><i class="custom-icon custom-icon-close"></i></a>
             </div>
             <div class="inner">
-              <div class="container-fluid text-center">
+              <div class="container text-center">
                 <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                   <p>Consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor.</p>
                   <ul class="social">
@@ -155,7 +179,7 @@
               <a href="#" class="close"><i class="custom-icon custom-icon-close"></i></a>
             </div>
             <div class="inner">
-              <div class="container-fluid text-center">
+              <div class="container text-center">
                 <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                   <p>Consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus.</p>
                   <ul class="social">
@@ -184,7 +208,7 @@
               <a href="#" class="close"><i class="custom-icon custom-icon-close"></i></a>
             </div>
             <div class="inner">
-              <div class="container-fluid text-left">
+              <div class="container text-left">
                 <div class="col-md-4">
                   <h3 class="color">Project Manager</h3>
                   <h5>London Office</h5>
@@ -217,7 +241,7 @@
               <a href="#" class="close"><i class="custom-icon custom-icon-close"></i></a>
             </div>
             <div class="inner">
-              <div class="container-fluid text-center">
+              <div class="container text-center">
                 <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                   <p>Consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus.</p>
                   <ul class="social">
@@ -235,10 +259,10 @@
     <!-- /.container -->
 
     <!-- CONTAINER -->
-    <div ng-show="false" class="slider highlight text-center oneslider">
+    <div class="slider highlight text-center oneslider">
       <ul data-auto="true">
         <li>
-          <div class="container-fluid big-padding">
+          <div class="container big-padding">
             <div class="col-xs-8 col-xs-offset-2">
               <blockquote class="lead">Game snake applies to the general game design original was not named snake</blockquote>
               <h4>Mero Newton</h4>
@@ -247,7 +271,7 @@
           </div>
         </li>
         <li>
-          <div class="container-fluid big-padding">
+          <div class="container big-padding">
             <div class="col-xs-8 col-xs-offset-2">
               <blockquote class="lead">Incredibly organized, easy to communicate with, responsive with next iterations</blockquote>
               <h4>David Levinson</h4>
@@ -256,7 +280,7 @@
           </div>
         </li>
         <li>
-          <div class="container-fluid big-padding">
+          <div class="container big-padding">
             <div class="col-xs-8 col-xs-offset-2">
               <blockquote class="lead">When feedback was needed, new versions of the logo were made very quickly</blockquote>
               <h4>Tanny Soonerger</h4>
@@ -277,7 +301,7 @@
     <!-- /.container -->
 
     <!-- CONTAINER -->
-    <div ng-show="false" class="container-fluid text-center">
+    <div class="container-fluid text-center">
       <div class="row">
         <div class="page-header col-sm-8 col-sm-offset-2">
           <h2>Facts &amp; Figures</h2>
@@ -313,7 +337,7 @@
     <!-- /.container -->
 
     <!-- CONTAINER: Logos -->
-    <div ng-show="false" class="container-fluid slider logos text-center">
+    <div class="container-fluid slider logos text-center">
       <div class="row">
         <ul>
           <li><a href="clients_1.html"><img src="http://placehold.it/200x110" alt=""></a></li>
@@ -339,7 +363,7 @@
     <!-- /.container -->
 
     <!-- CONTACT-map -->
-    <div ng-show="false" class="contact-map margin-top-big">
+    <div class="contact-map margin-top-big">
       <div id="contact-map" class="contact-map-medium"></div>
     </div>
 
@@ -348,127 +372,3 @@
 </div>
 <!-- /.wrapper -->
 
-<!-- FOOTER -->
-<footer class="footer">
-  <!-- CONTAINER -->
-  <div class="container-fluid foorow-1 foorow">
-    <div class="row">
-      <div class="col-md-4 col-sm-6 fabout">
-        <h3><a href="about_1.html">About Us</a></h3>
-        <p>Mellentesque habitant morbi tristique senectus et netus et malesuada famesac turpis egestas. Ut non enim eleifend felis pretium feugiat. Vivamus quis mi.</p>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <h3><a href="elements_recent_works.html">Recent Works</a></h3>
-        <nav>
-          <ul class="recentworks clearfix">
-            <li>
-              <a href="elements_recent_works.html"><img src="http://placehold.it/80x80" alt=""/></a>
-            </li>
-            <li>
-              <a href="elements_recent_works.html"><img src="http://placehold.it/80x80" alt=""/></a>
-            </li>
-            <li>
-              <a href="elements_recent_works.html"><img src="http://placehold.it/80x80" alt=""/></a>
-            </li>
-            <li>
-              <a href="elements_recent_works.html"><img src="http://placehold.it/80x80" alt=""/></a>
-            </li>
-            <li>
-              <a href="elements_recent_works.html"><img src="http://placehold.it/80x80" alt=""/></a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-md-2 col-sm-6">
-        <h3><a href="sitemap.html">Links</a></h3>
-        <nav>
-          <ul class="links">
-            <li><a href="sitemap.html">Presentation</a></li>
-            <li><a href="http://camaro.aisconverse.com/docs">Documentation</a></li>
-            <li><a href="http://aisconverse.com">Support</a></li>
-            <li><a href="privacy_policy.html">Privacy Policy</a></li>
-            <li><a href="privacy_policy.html">Terms Of Use</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <h3><a href="blog_standart.html">Latest Posts</a></h3>
-        <nav>
-          <ul class="latestposts">
-            <li>
-              <a href="blog_single_post_photo.html">Desktop Wallpaper Calendars</a>
-              <div class="date">September 21, 2014</div>
-            </li>
-            <li>
-              <a href="blog_single_post_vimeo.html">The Mystery Of The jQuery Basic Introduction</a>
-              <div class="date">December 28, 2014</div>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-  <!-- /.container -->
-
-  <div class="separator foorow-1 foorow"></div>
-
-  <!-- CONTAINER -->
-  <div class="container">
-    <div class="row foorow-2 foorow">
-      <div class="col-sm-4">
-        <h3><a href="contact_1.html">Contact</a></h3>
-        <address>
-          +44 20 7734 8000<br>
-          +44 20 7734 8945<br>
-          <a href="mailto:info@comarocompany.com">info@comarocompany.com</a><br>
-          <br>
-          Le Meridien Piccadilly, 21 Piccadilly<br>
-          London W1J 0BH, United Kingdom
-        </address>
-      </div>
-      <div class="col-md-5 col-sm-4">
-        <h3>Twitter Feed</h3>
-        <ul class="twitter-list">
-          <li>
-            <div class="fa fa-twitter"></div><p><a href="">@camaro:</a> Utnon enim eleifend felis pretium feugiat <a href="">goo.gl/56Rt78</a> famesac turpis egestas</p>
-            <div class="date">June 18, 2014</div>
-          </li>
-          <li>
-            <div class="fa fa-twitter"></div><p><a href="">@camaro:</a> Mellentesque habitant morbi tristique senectus et netus et malesuada <a href="">goo.gl/A65qt</a> enim eleifend felis pretium</p>
-            <div class="date">September 8, 2014</div>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-3 col-sm-4">
-        <h3>Newsletter</h3>
-        <div id="feedback-form">
-          <form action="http://aisconverse.us8.list-manage.com/subscribe/post?u=86ec31fd6b7533ccaa2435111&amp;id=a1293dd461" method="post">
-            <input name="EMAIL" placeholder="Your Email" required type="email" class="pull-left">
-            <button type="submit" class="btn btn-default pull-right">Ok</button>
-          </form>
-          <div class="success-block"></div>
-          <p>Mellentesque habitant morbi tristique senectus et netus et malesuada famesac turpis egestas.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row foorow-3 foorow">
-      <div class="col-md-6 col-sm-7">
-        <a href="index.html" class="logo">Camaro</a>
-        <p>&copy; 2014 Camaro. All Rights Reserved</p>
-      </div>
-      <div class="col-md-6 col-sm-5">
-        <ul class="social pull-right">
-          <li><a href=""><i class="fa fa-twitter"></i></a></li>
-          <li><a href=""><i class="fa fa-facebook"></i></a></li>
-          <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-          <li><a href=""><i class="fa fa-instagram"></i></a></li>
-          <li><a href=""><i class="fa fa-github-alt"></i></a></li>
-          <li><a href=""><i class="fa fa-tumblr-square"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- /.container -->
-</footer>
-<!-- /.footer -->

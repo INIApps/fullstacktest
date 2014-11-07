@@ -38,6 +38,4 @@ angular.module('NavbarThemeModule', [])
          {'title': 'Registrarse', 'link': '/signup','id':'signup'}
       ]}
     ];
-    //$scope.hascdcd = angular.element('#header').hasClass('sticky');
-
   });
