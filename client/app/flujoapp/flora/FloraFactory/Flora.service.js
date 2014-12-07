@@ -1,12 +1,19 @@
 'use strict';
 
 angular.module('fullstack012App')
-  .factory('Flora', function ($http, FloraeObj, FloraAPI, FloraTransform) {
+  .factory('Flora', function ($http, FloraeObj, FloraAPI, FloraTransform, $q) {
     return {
       getResumeTransgenicas : function(){
-          return FloraAPI.getTrangenicasResumen().then(function(data){
+        var deferred = $q.defer();
+        var value = deferred.promise.$object = [];
+        FloraAPI.getTrangenicasResumen().then(function(data){
+          angular.extend(value, data.map(FloraeObj.build));
+          deferred.resolve(value);
+        });
+        return deferred.promise.$object;
+          /*return FloraAPI.getTrangenicasResumen().then(function(data){
             return data.map(FloraeObj.build);
-          });
+          });*/
       },
       getResumeCultivadas : function(){
         return FloraAPI.getCultivadasResumen().then(function(data){

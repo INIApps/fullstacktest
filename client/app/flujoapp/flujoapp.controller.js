@@ -9,9 +9,11 @@ angular.module('fullstack012App')
     /**
      * Lista resumen de transgénicas
      */
-    Flora.getResumeTransgenicas().then(function(data){
+    /*Flora.getResumeTransgenicas().then(function(data){
       $scope.transgenicas = data;
-    });
+    });*/
+    $scope.transgenicas = Flora.getResumeTransgenicas();
+
     Flora.getResumeCultivadas().then(function(data){
       $scope.cultivadas = data;
     });

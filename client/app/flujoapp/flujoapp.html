@@ -1,6 +1,6 @@
 
 <section style="background-image:url('assets/images/abeja_flujo2.jpg');padding: 20px; background-position: top center; background-size: cover;min-height: 800px; background-attachment: fixed">
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div id="menu_superior" ng-include="'components/navbar/navbar.html'"></div>
 <header class="page-header text-center " style="color:#ffffff;">
   <h1 style="text-shadow: 2px 2px 2px black">Cálculo del Índice de Riesgo Ambiental</h1>
   <h2></h2>
@@ -20,6 +20,7 @@
             <div class="tab-pane" ng-show="selectedTab == 1" id="home">
                 <select style="margin-top:10px" class="form-control" ng-model="spCompare" ng-change="getMatch(spCompare); spSelected=null;"
                         ng-options="a.getShortName() group by a.familia for a in transgenicas | orderBy: 'familia'">
+
                     <option value="">Especies Transgénicas</option>
                 </select>
             </div>
