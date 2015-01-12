@@ -7,6 +7,4 @@ module.exports = {
   mongo: {
     uri: 'mongodb://localhost/fullstack014-dev'
   },
-
-  //seedDB: true
 };
