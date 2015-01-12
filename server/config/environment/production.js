@@ -18,6 +18,5 @@ module.exports = {
     uri:    process.env.MONGOLAB_URI ||
             process.env.MONGOHQ_URL ||
             process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
-            'mongodb://pablo:cid123@kahana.mongohq.com:10045/app27729999'
   }
 };
