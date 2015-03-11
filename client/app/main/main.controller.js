@@ -17,5 +17,5 @@ angular.module('fullstack012App')
   // $http.get('http://www.sanidadvegetal.cl/api/get_recent_posts/').success(function(data){
   //   $scope.sanidadvegetal = data;
   // });
-  
+
 });

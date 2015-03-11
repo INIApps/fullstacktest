@@ -23,6 +23,14 @@
     <div class="row" style="text-align:center; margin-top: 20px">
         <a href="/flujoapp" class="btn btn-primary btn-lg" style="text-transform: uppercase">Ir a la aplicación</a>
     </div>
+  <h1>{{kaka}}</h1>
+
+  <input type="text" ng-model="pepe"/>
+  <ul>
+    <li ng-repeat="personas in members2 | filter:pepe">{{personas.name }}</li>
+  </ul>
+  <h3>{{pepe}}</h3>
+
 </section>
 
 <!--
