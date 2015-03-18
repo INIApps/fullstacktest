@@ -5,3 +5,4 @@ public
 dist
 .idea
 .DS_Store
+client/bower_components
